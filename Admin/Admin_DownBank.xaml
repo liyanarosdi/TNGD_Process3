@@ -1,17 +1,25 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Admin_SubmitMolPay" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Admin_SubmitMolPay" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="io_CurrDate" Type="InArgument(x:String)" />
+    <x:Property Name="io_FolderMonth" Type="InArgument(x:String)" />
+    <x:Property Name="io_CurrDateFormat" Type="InArgument(x:String)" />
   </x:Members>
   <this:Admin_SubmitMolPay.io_CurrDate>
     <InArgument x:TypeArguments="x:String" />
   </this:Admin_SubmitMolPay.io_CurrDate>
+  <this:Admin_SubmitMolPay.io_FolderMonth>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Admin_SubmitMolPay.io_FolderMonth>
+  <this:Admin_SubmitMolPay.io_CurrDateFormat>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Admin_SubmitMolPay.io_CurrDateFormat>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>910.4,4618.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>581.6,3780.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Admin_SubmitMolPay_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <sco:Collection x:TypeArguments="x:String">
+    <scg:List x:TypeArguments="x:String" Capacity="23">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -35,10 +43,10 @@
       <x:String>System.Windows.Markup</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
       <x:String>System.Activities.DynamicUpdate</x:String>
-    </sco:Collection>
+    </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <sco:Collection x:TypeArguments="AssemblyReference">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="25">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -64,23 +72,38 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
-    </sco:Collection>
+    </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Admin_DownBank" sap:VirtualizedContainerService.HintSize="592,4473.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Admin_DownBank" sap:VirtualizedContainerService.HintSize="592,3676" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="bFolderMOL" />
+      <Variable x:TypeArguments="x:Boolean" Name="bFolderIPay88" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="550.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start Admin_Admin_DownBank&quot;]" />
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe  glo'" sap:VirtualizedContainerService.HintSize="550.4,4115.2" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="d1cc4542cb9e9b5f0f93400a1dcf76e1" Selector="&lt;html app='chrome.exe' title='glo' /&gt;">
+    <ui:PathExists DisplayName="Path Exists - Month" Exists="[bFolderMOL]" sap:VirtualizedContainerService.HintSize="550.4,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\15. Reload - MolPay\1. Terminal Activity Report\3. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth]" PathType="Folder" />
+    <If Condition="[bFolderMOL = False]" DisplayName="If - File path month" sap:VirtualizedContainerService.HintSize="550.4,230.4" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\15. Reload - MolPay\1. Terminal Activity Report\3. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth]" />
+      </If.Then>
+    </If>
+    <ui:PathExists DisplayName="Path Exists - Month" Exists="[bFolderIPay88]" sap:VirtualizedContainerService.HintSize="550.4,90.4" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\5. Reload - IPay88 FPX Report\1. Terminal Activity Report\4. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth]" PathType="Folder" />
+    <If Condition="[bFolderIPay88 = False]" DisplayName="If - File path month" sap:VirtualizedContainerService.HintSize="550.4,230.4" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\5. Reload - IPay88 FPX Report\1. Terminal Activity Report\4. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth]" />
+      </If.Then>
+    </If>
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe  glo'" sap:VirtualizedContainerService.HintSize="550.4,2516" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="d1cc4542cb9e9b5f0f93400a1dcf76e1" Selector="&lt;html app='chrome.exe' title='glo' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="516.8,3968" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="516.8,2368.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="bTempA" />
             </Sequence.Variables>
@@ -89,14 +112,14 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Sequence - MolPay" sap:VirtualizedContainerService.HintSize="475.2,1668" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence DisplayName="Sequence - MolPay" sap:VirtualizedContainerService.HintSize="475.2,68.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Admin button" sap:VirtualizedContainerService.HintSize="358.4,107.2" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Admin button" sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                 <ui:Click.CursorPosition>
                   <ui:CursorPosition Position="Center">
                     <ui:CursorPosition.OffsetX>
@@ -115,7 +138,7 @@
                   </ui:Target>
                 </ui:Click.Target>
               </ui:Click>
-              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Report button" sap:VirtualizedContainerService.HintSize="358.4,107.2" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Report button" sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                 <ui:Click.CursorPosition>
                   <ui:CursorPosition Position="Center">
                     <ui:CursorPosition.OffsetX>
@@ -134,7 +157,7 @@
                   </ui:Target>
                 </ui:Click.Target>
               </ui:Click>
-              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Reconciliation Management button" sap:VirtualizedContainerService.HintSize="358.4,107.2" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Reconciliation Management button" sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                 <ui:Click.CursorPosition>
                   <ui:CursorPosition Position="Center">
                     <ui:CursorPosition.OffsetX>
@@ -153,7 +176,7 @@
                   </ui:Target>
                 </ui:Click.Target>
               </ui:Click>
-              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - List Reconciliation Reports button" sap:VirtualizedContainerService.HintSize="358.4,107.2" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - List Reconciliation Reports button" sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                 <ui:Click.CursorPosition>
                   <ui:CursorPosition Position="Center">
                     <ui:CursorPosition.OffsetX>
@@ -172,7 +195,7 @@
                   </ui:Target>
                 </ui:Click.Target>
               </ui:Click>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="358.4,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_2">
                 <ui:CommentOut.Body>
                   <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,228" sap2010:WorkflowViewState.IdRef="Sequence_8">
                     <sap:WorkflowViewStateService.ViewState>
@@ -198,7 +221,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:CommentOut>
-              <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text - Settlement Date" sap:VirtualizedContainerService.HintSize="358.4,135.2" sap2010:WorkflowViewState.IdRef="SetValue_5" Text="10/09/2019">
+              <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text - Settlement Date" sap:VirtualizedContainerService.HintSize="433.6,135.2" sap2010:WorkflowViewState.IdRef="SetValue_5" Text="10/09/2019">
                 <ui:SetValue.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4bb97472-b07d-438d-8fb5-bbdc3eeff8aa" InformativeScreenshot="26fd8f92210463c8cf80d6b601d467ed" Selector="&lt;webctrl id='date' tag='INPUT' type='text' /&gt;" WaitForReady="INTERACTIVE">
                     <ui:Target.TimeoutMS>
@@ -207,7 +230,7 @@
                   </ui:Target>
                 </ui:SetValue.Target>
               </ui:SetValue>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 'INPUT  date'" sap:VirtualizedContainerService.HintSize="358.4,156" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="enter" KeyModifiers="None" SpecialKey="True">
+              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 'INPUT  date'" sap:VirtualizedContainerService.HintSize="433.6,156" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="enter" KeyModifiers="None" SpecialKey="True">
                 <ui:SendHotkey.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b71fe070-e67f-4307-bf1d-8e0ab9ce9bd9" InformativeScreenshot="ce81598f80fb0a58bce3e3b1ad326caa" Selector="&lt;webctrl id='date' tag='INPUT' type='text' /&gt;" WaitForReady="INTERACTIVE">
                     <ui:Target.TimeoutMS>
@@ -216,7 +239,7 @@
                   </ui:Target>
                 </ui:SendHotkey.Target>
               </ui:SendHotkey>
-              <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item - Service Provider" sap:VirtualizedContainerService.HintSize="358.4,135.2" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="MolPay-FPX">
+              <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item - Service Provider" sap:VirtualizedContainerService.HintSize="433.6,135.2" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="MolPay-FPX">
                 <ui:SelectItem.Items>
                   <scg:List x:TypeArguments="x:String" Capacity="16">
                     <x:String>All</x:String>
@@ -244,7 +267,7 @@
                   </ui:Target>
                 </ui:SelectItem.Target>
               </ui:SelectItem>
-              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Search button" sap:VirtualizedContainerService.HintSize="358.4,107.2" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Search button" sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                 <ui:Click.CursorPosition>
                   <ui:CursorPosition Position="Center">
                     <ui:CursorPosition.OffsetX>
@@ -263,7 +286,7 @@
                   </ui:Target>
                 </ui:Click.Target>
               </ui:Click>
-              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Download link button" sap:VirtualizedContainerService.HintSize="358.4,107.2" sap2010:WorkflowViewState.IdRef="Click_8" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Download link button" sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Click_8" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                 <ui:Click.CursorPosition>
                   <ui:CursorPosition Position="Center">
                     <ui:CursorPosition.OffsetX>
@@ -282,7 +305,7 @@
                   </ui:Target>
                 </ui:Click.Target>
               </ui:Click>
-              <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear 'chrome.exe  Open'" sap:VirtualizedContainerService.HintSize="358.4,52.8" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_1" RepeatForever="False">
+              <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear 'chrome.exe  Open'" sap:VirtualizedContainerService.HintSize="433.6,552" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_1" RepeatForever="False">
                 <ui:OnUiElementAppear.Body>
                   <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,375.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
                     <sap:WorkflowViewStateService.ViewState>
@@ -290,7 +313,7 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text - Folder Path" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="SetValue_1" Text="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\15. Reload - MolPay\1. Terminal Activity Report\3. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot;+ &quot;3. &quot; + Now.AddDays(-1).ToString(&quot;MMM&quot;) + &quot;'&quot; + Now.AddDays(-1).ToString(&quot;yy&quot;) + &quot;\MOLPAYFPX_tngdigital_&quot; + Now.AddDays(-1).ToString(&quot;ddMMyyyy&quot;) + &quot;.csv&quot;]">
+                    <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text - Folder Path" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="SetValue_1" Text="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\15. Reload - MolPay\1. Terminal Activity Report\3. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\MOLPAYFPX_tngdigital_&quot; + Now.AddDays(-1).ToString(&quot;ddMMyyyy&quot;) + &quot;.csv&quot;]">
                       <ui:SetValue.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="71624776-6413-408b-b1dc-4bee1a23a30a" InformativeScreenshot="950ebe9de11f3117fd97de2afeb15cfb" Selector="&lt;wnd app='chrome.exe' cls='#32770' title='Save As' /&gt;&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd aaname='File name:' cls='ComboBox' /&gt;&lt;wnd aaname='File name:' /&gt;" WaitForReady="INTERACTIVE">
                           <ui:Target.TimeoutMS>
@@ -329,7 +352,7 @@
                 </ui:OnUiElementAppear.Target>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -536,7 +559,7 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text - Folder Path" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="SetValue_7" Text="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\5. Reload - IPay88 FPX Report\1. Terminal Activity Report\4. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot;+ &quot;3. &quot; + Now.AddDays(-1).ToString(&quot;MMM&quot;) + &quot;'&quot; + Now.AddDays(-1).ToString(&quot;yy&quot;) + &quot;\ipay88 Transaction Report &quot; + Now.AddDays(-1).ToString(&quot;ddMMyyyy&quot;) + &quot;.xlsx&quot;]">
+                    <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text - Folder Path" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="SetValue_7" Text="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\5. Reload - IPay88 FPX Report\1. Terminal Activity Report\4. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\ipay88 Transaction Report &quot; + Now.AddDays(-1).ToString(&quot;ddMMyyyy&quot;) + &quot;.xlsx&quot;]">
                       <ui:SetValue.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="71624776-6413-408b-b1dc-4bee1a23a30a" InformativeScreenshot="950ebe9de11f3117fd97de2afeb15cfb" Selector="&lt;wnd app='chrome.exe' cls='#32770' title='Save As' /&gt;&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd aaname='File name:' cls='ComboBox' /&gt;&lt;wnd aaname='File name:' /&gt;" WaitForReady="INTERACTIVE">
                           <ui:Target.TimeoutMS>
