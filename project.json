@@ -4,6 +4,7 @@
   "main": "Main.xaml",
   "dependencies": {
     "BalaReva.EasyDataTable.Activities": "[3.0.1]",
+    "BalaReva.Excel.Activities": "[2020.3.3]",
     "UiPath.Credentials.Activities": "[1.1.6479.13204]",
     "UiPath.Excel.Activities": "[2.9.5]",
     "UiPath.System.Activities": "[20.10.3]",
