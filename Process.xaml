@@ -15,7 +15,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>936.8,2211.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>936.8,2342.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -76,7 +76,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="652,2066.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="652,2237.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Double" Name="MotoColN" />
       <Variable x:TypeArguments="x:Int32" Name="DSColL" />
@@ -103,6 +103,14 @@
       <Variable x:TypeArguments="x:Double" Name="SumColMMoto" />
       <Variable x:TypeArguments="x:Double" Name="SumColP3DS" />
       <Variable x:TypeArguments="x:Double" Name="SumColM3DS" />
+      <Variable x:TypeArguments="x:Double" Name="DSEarlyPT1" />
+      <Variable x:TypeArguments="x:Double" Name="DSLatestPT1" />
+      <Variable x:TypeArguments="x:Double" Name="DSLatestMT1" />
+      <Variable x:TypeArguments="x:Double" Name="DSEarlyMT1" />
+      <Variable x:TypeArguments="x:Double" Name="MTEarlyMT1" />
+      <Variable x:TypeArguments="x:Double" Name="MTEarlyPT1" />
+      <Variable x:TypeArguments="x:Double" Name="MTLatestMT1" />
+      <Variable x:TypeArguments="x:Double" Name="MTLatestPT1" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -207,29 +215,64 @@
         <InArgument x:TypeArguments="x:String" x:Key="io_FolderMonth">[FolderMonth]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke iPay88_Daily workflow" sap:VirtualizedContainerService.HintSize="610.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="iPay88_Daily.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_IPayColI">[IPAYColI]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_IPAYColJ">[IPAYColJ]</InOutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="610.4,284.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,206.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke iPay88_Daily workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="iPay88_Daily.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_IPayColI">[IPAYColI]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_IPAYColJ">[IPAYColJ]</InOutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke MBB_Daily workflow" sap:VirtualizedContainerService.HintSize="610.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="MBB_Daily.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="io_FolderMonth">
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="FolderMonth" />
         </InArgument>
-        <InArgument x:TypeArguments="x:Double" x:Key="io_SumColPMoto">
-          <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="SumColPMoto" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Double" x:Key="io_SumColMMoto">
-          <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="SumColMMoto" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Double" x:Key="io_SumColP3DS">
-          <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="SumColP3DS" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Double" x:Key="io_SumColM3DS">
-          <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="SumColM3DS" />
-        </InArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumColPMoto">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="SumColPMoto" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumColMMoto">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="SumColMMoto" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumColP3DS">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="SumColP3DS" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumColM3DS">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="SumColM3DS" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSLatestPT1">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="DSLatestPT1" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSLatestMT1">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="DSLatestMT1" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSEarlyMT1">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="DSEarlyMT1" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSEarlyPT1">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="DSEarlyPT1" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTEarlyMT1">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="MTEarlyMT1" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTEarlyPT1">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="MTEarlyPT1" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTLatestMT1">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="MTLatestMT1" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTLatestPT1">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="MTLatestPT1" />
+        </InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke MBB_CreditDebit workflow" sap:VirtualizedContainerService.HintSize="610.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="MBB_CreditDebit.xaml">
@@ -311,23 +354,47 @@
         <InOutArgument x:TypeArguments="x:Double" x:Key="io_IPAYColJ">
           <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="IPAYColJ" />
         </InOutArgument>
-        <InArgument x:TypeArguments="x:Double" x:Key="io_SumColM3DS">
-          <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="SumColM3DS" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Double" x:Key="io_SumColP3DS">
-          <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="SumColP3DS" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Double" x:Key="io_SumColMMoto">
-          <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="SumColMMoto" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Double" x:Key="io_SumColPMoto">
-          <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="SumColPMoto" />
-        </InArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumColM3DS">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="SumColM3DS" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumColP3DS">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="SumColP3DS" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumColMMoto">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="SumColMMoto" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumColPMoto">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="SumColPMoto" />
+        </InOutArgument>
         <InOutArgument x:TypeArguments="x:Double" x:Key="io_MBBColET1">
           <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="SumMBBColET1" />
         </InOutArgument>
         <InOutArgument x:TypeArguments="x:Double" x:Key="io_MBBColMT1">
           <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="SumMBBColMT1" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTLatestPT1">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="MTLatestPT1" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTLatestMT1">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="MTLatestMT1" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTEarlyPT1">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="MTEarlyPT1" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTEarlyMT1">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="MTEarlyMT1" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSEarlyPT1">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="DSEarlyPT1" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSLatestMT1">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="DSLatestMT1" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSEarlyMT1">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="DSEarlyMT1" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSLatestPT1">
+          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="DSLatestPT1" />
         </InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>

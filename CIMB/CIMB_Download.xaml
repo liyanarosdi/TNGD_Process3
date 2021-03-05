@@ -345,13 +345,10 @@
         </Sequence>
       </ui:OnUiElementAppear.Body>
       <ui:OnUiElementAppear.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0a8fea0b-a0b9-45ca-ab7e-f5c8f02a4b01" InformativeScreenshot="ecb6c71d15cd565a530b2d176402c00b" Selector="&lt;wnd app='chrome.exe' cls='#32770' title='Confirm Save As' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0a8fea0b-a0b9-45ca-ab7e-f5c8f02a4b01" InformativeScreenshot="ecb6c71d15cd565a530b2d176402c00b" Selector="&lt;wnd app='chrome.exe' cls='#32770' title='Confirm Save As' /&gt;" WaitForReady="INTERACTIVE">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
-          <ui:Target.WaitForReady>
-            <InArgument x:TypeArguments="ui:WaitForReady" />
-          </ui:Target.WaitForReady>
         </ui:Target>
       </ui:OnUiElementAppear.Target>
       <sap:WorkflowViewStateService.ViewState>
