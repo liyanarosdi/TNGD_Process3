@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>936.8,903.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>943.2,903.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -150,9 +150,13 @@
                             <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField2">[TransactionField2]</OutArgument>
                             <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionID">[TransactionID]</OutArgument>
                             <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_TransactionData">[TransactionData]</InOutArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="io_CurrDate0">[CurrDate0]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="io_CurrDateI1">[CurrDateI1]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="io_CurrDate">[CurrDate]</InArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="io_CurrDate0">[CurrDate0]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="io_CurrDateI1">[CurrDateI1]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="io_CurrDate">[CurrDate]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMBBMOTO">[statMBBMOTO]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMBB3DS">[statMBB3DS]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMOL">[statMOL]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statiPay88">[statiPay88]</InOutArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                       </If.Then>
@@ -251,6 +255,10 @@
                           <InOutArgument x:TypeArguments="x:String" x:Key="io_CurrDate">[CurrDate]</InOutArgument>
                           <InOutArgument x:TypeArguments="x:String" x:Key="io_CurrDateI1">[CurrDateI1]</InOutArgument>
                           <InOutArgument x:TypeArguments="x:String" x:Key="io_CurrDate0">[CurrDate0]</InOutArgument>
+                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMBBMOTO">[statMBBMOTO]</InOutArgument>
+                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMBB3DS">[statMBB3DS]</InOutArgument>
+                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMOL">[statMOL]</InOutArgument>
+                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statiPay88">[statiPay88]</InOutArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                     </Sequence>
@@ -690,6 +698,10 @@
       <Variable x:TypeArguments="x:String" Name="CurrDate" />
       <Variable x:TypeArguments="x:String" Name="CurrDateI1" />
       <Variable x:TypeArguments="x:String" Name="CurrDate0" />
+      <Variable x:TypeArguments="x:Int32" Name="statiPay88" />
+      <Variable x:TypeArguments="x:Int32" Name="statMOL" />
+      <Variable x:TypeArguments="x:Int32" Name="statMBB3DS" />
+      <Variable x:TypeArguments="x:Int32" Name="statMBBMOTO" />
     </StateMachine.Variables>
   </StateMachine>
 </Activity>

@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1053.6,3238.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1053.6,3278.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SAGE_Login_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -80,7 +80,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="SAGE_Login" sap:VirtualizedContainerService.HintSize="1064,3133.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SAGE_Login" sap:VirtualizedContainerService.HintSize="1064,3173.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="sID" />
       <Variable x:TypeArguments="ss:SecureString" Name="sPWD" />
@@ -91,9 +91,9 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1022.4,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1022.4,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_7">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,206.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,206.4" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -116,9 +116,9 @@
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1022.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Opening SAGE portal&quot;]" />
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1022.4,2815.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1022.4,2855.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser - SAGE portal" sap:VirtualizedContainerService.HintSize="985.6,2030.4" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[in_Config(&quot;SAGE_Path&quot;).ToString]">
+        <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser - SAGE portal" sap:VirtualizedContainerService.HintSize="985.6,2070.4" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[in_Config(&quot;SAGE_Path&quot;).ToString]">
           <ui:OpenBrowser.Body>
             <ActivityAction x:TypeArguments="x:Object">
               <ActivityAction.Argument>

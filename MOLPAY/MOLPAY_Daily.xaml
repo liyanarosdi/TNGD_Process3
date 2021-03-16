@@ -1,19 +1,43 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="MOLPAY_Daily" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="MOLPAY_Daily" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:be="clr-namespace:BalaReva.EasyDataTable;assembly=BalaReva.EasyDataTable" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="io_DoubleColK" Type="InOutArgument(x:Double)" />
-    <x:Property Name="io_DouleColH" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_FolderMonth" Type="InArgument(x:String)" />
+    <x:Property Name="io_DouleColM" Type="InOutArgument(x:Double)" />
+    <x:Property Name="io_DoubleColP" Type="InOutArgument(x:Double)" />
+    <x:Property Name="in_MiddleDateMolM" Type="InArgument(x:Double)" />
+    <x:Property Name="in_MiddleDateMolP" Type="InArgument(x:Double)" />
+    <x:Property Name="in_LatestDateMolM" Type="InArgument(x:Double)" />
+    <x:Property Name="in_LatestDateMolP" Type="InArgument(x:Double)" />
+    <x:Property Name="in_EarlyDateMolP" Type="InArgument(x:Double)" />
+    <x:Property Name="in_EarlyDateMolM" Type="InArgument(x:Double)" />
   </x:Members>
   <this:MOLPAY_Daily.io_FolderMonth>
     <InArgument x:TypeArguments="x:String" />
   </this:MOLPAY_Daily.io_FolderMonth>
+  <this:MOLPAY_Daily.in_MiddleDateMolM>
+    <InArgument x:TypeArguments="x:Double" />
+  </this:MOLPAY_Daily.in_MiddleDateMolM>
+  <this:MOLPAY_Daily.in_MiddleDateMolP>
+    <InArgument x:TypeArguments="x:Double" />
+  </this:MOLPAY_Daily.in_MiddleDateMolP>
+  <this:MOLPAY_Daily.in_LatestDateMolM>
+    <InArgument x:TypeArguments="x:Double" />
+  </this:MOLPAY_Daily.in_LatestDateMolM>
+  <this:MOLPAY_Daily.in_LatestDateMolP>
+    <InArgument x:TypeArguments="x:Double" />
+  </this:MOLPAY_Daily.in_LatestDateMolP>
+  <this:MOLPAY_Daily.in_EarlyDateMolP>
+    <InArgument x:TypeArguments="x:Double" />
+  </this:MOLPAY_Daily.in_EarlyDateMolP>
+  <this:MOLPAY_Daily.in_EarlyDateMolM>
+    <InArgument x:TypeArguments="x:Double" />
+  </this:MOLPAY_Daily.in_EarlyDateMolM>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>464.8,1123.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>616,4354.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>MOLPAY_Daily_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="29">
+    <scg:List x:TypeArguments="x:String" Capacity="32">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -43,10 +67,13 @@
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Xml.Serialization</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>BalaReva.EasyDataTable</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="31">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -74,96 +101,98 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>BalaReva.EasyDataTable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="MOLPAY_Daily" sap:VirtualizedContainerService.HintSize="475.2,1018.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="MOLPAY_Daily" sap:VirtualizedContainerService.HintSize="492,4289.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Int32" Name="SumColK" />
-      <Variable x:TypeArguments="x:Int32" Name="SumColH" />
+      <Variable x:TypeArguments="x:Int32" Name="SumColP" />
+      <Variable x:TypeArguments="x:Int32" Name="SumColM" />
+      <Variable x:TypeArguments="sd:DataTable" Name="MainDt" />
+      <Variable x:TypeArguments="x:String" Name="SheetName" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start MOLPAY_Daily&quot;]" />
-    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="433.6,660" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\15. Reload - MolPay\1. Terminal Activity Report\3. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\MOLPAYFPX_tngdigital_&quot; + Now.AddDays(-1).ToString(&quot;ddMMyyyy&quot;) + &quot;.csv&quot;]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="450.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start MOLPAY_Daily&quot;]" />
+    <Assign sap:VirtualizedContainerService.HintSize="450.4,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[SheetName]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Now.AddDays(-1).ToString("ddMMyyyy")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="450.4,697.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\15. Reload - MolPay\1. Terminal Activity Report\3. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\Recon_Report_MolPay_FPX_&quot; + Now.AddDays(-1).ToString(&quot;ddMMyyyy&quot;) + &quot;.csv&quot;]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,550.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="sd:DataTable" Name="MainDt" />
-            </Sequence.Variables>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,588" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelReadRange AddHeaders="False" DataTable="[MainDt]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[&quot;MOLPAYFPX_tngdigital_&quot; + Now.AddDays(-1).ToString(&quot;ddMMyyyy&quot;)]">
+            <ui:ExcelReadRange AddHeaders="False" DataTable="[MainDt]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[&quot;Recon_Report_MolPay_FPX_&quot; + SheetName.Substring(0,7)]">
               <ui:ExcelReadRange.Range>
                 <InArgument x:TypeArguments="x:String">
                   <Literal x:TypeArguments="x:String" Value="" />
                 </InArgument>
               </ui:ExcelReadRange.Range>
             </ui:ExcelReadRange>
-            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="333.6,255.2" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="333.6,192.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
                     <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:Int32">[SumColH]</OutArgument>
+                      <OutArgument x:TypeArguments="x:Int32">[SumColM]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Int32">[MainDt.AsEnumerable.Sum(Function(x) If(x(7).ToString.Trim.IsNumeric,CInt(x(7).ToString.Trim),0))]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32">[MainDt.AsEnumerable.Sum(Function(x) If(x(12).ToString.Trim.IsNumeric,CInt(x(12).ToString.Trim),0))]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
                     <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:Int32">[SumColK]</OutArgument>
+                      <OutArgument x:TypeArguments="x:Int32">[SumColP]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Int32">[MainDt.AsEnumerable.Sum(Function(x) If(x(10).ToString.Trim.IsNumeric,CInt(x(10).ToString.Trim),0))]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32">[MainDt.AsEnumerable.Sum(Function(x) If(x(15).ToString.Trim.IsNumeric,CInt(x(15).ToString.Trim),0))]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
                     <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:Double">[io_DouleColH]</OutArgument>
+                      <OutArgument x:TypeArguments="x:Double">[io_DouleColM]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Double">[Convert.ToDouble(SumColH)]</InArgument>
+                      <InArgument x:TypeArguments="x:Double">[Convert.ToDouble(SumColM)]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
                     <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:Double">[io_DoubleColK]</OutArgument>
+                      <OutArgument x:TypeArguments="x:Double">[io_DoubleColP]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Double">[Convert.ToDouble(SumColK)]</InArgument>
-                    </ui:AssignOperation.Value>
-                  </ui:AssignOperation>
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
-                    <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:Double">[io_DouleColH]</OutArgument>
-                    </ui:AssignOperation.To>
-                    <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Double">[(io_DouleColH/100)]</InArgument>
-                    </ui:AssignOperation.Value>
-                  </ui:AssignOperation>
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
-                    <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:Double">[io_DoubleColK]</OutArgument>
-                    </ui:AssignOperation.To>
-                    <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Double">[(io_DoubleColK/100)]</InArgument>
+                      <InArgument x:TypeArguments="x:Double">[Convert.ToDouble(SumColP)]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                 </scg:List>
               </ui:MultipleAssign.AssignOperations>
             </ui:MultipleAssign>
             <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="333.6,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;2272765&quot; + &quot;327963400&quot;]" />
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[MainDt]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_6" SheetName="[&quot;Recon_Report_MolPay_FPX_&quot; + SheetName.Substring(0,7)]">
+              <ui:ExcelReadRange.Range>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ui:ExcelReadRange.Range>
+            </ui:ExcelReadRange>
           </Sequence>
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
@@ -174,6 +203,303 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - MOLPAY (T-1)" sap:VirtualizedContainerService.HintSize="450.4,3031.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="C:\Users\rpavendor\Desktop\RPATEST\Process 3\Molpay.xlsx">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence sap:VirtualizedContainerService.HintSize="416.8,2921.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="Do - Early Date" sap:VirtualizedContainerService.HintSize="375.2,1371.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="sd:DataTable" Name="dtAfterMol" />
+                <Variable x:TypeArguments="sd:DataTable" Name="dtOutMol" />
+                <Variable x:TypeArguments="s:DateTime" Name="dateColKMol" />
+                <Variable x:TypeArguments="x:String" Name="ValueColJT2" />
+                <Variable x:TypeArguments="s:String[]" Name="ValueColJArrT2" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ExcelWriteRange AddHeaders="False" DataTable="[MainDt]" DisplayName="Write Range - MOLPAY (T-1)" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="Sheet1">
+                <ui:ExcelWriteRange.StartingCell>
+                  <InArgument x:TypeArguments="x:String">
+                    <Literal x:TypeArguments="x:String" Value="" />
+                  </InArgument>
+                </ui:ExcelWriteRange.StartingCell>
+              </ui:ExcelWriteRange>
+              <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="Wallet Txn Date" DataTable="[MainDt]" DisplayName="Sort Data Table - Column J" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="SortDataTable_2" Order="Ascending" OutputDataTable="[MainDt]" SortOrder="Ascending" />
+              <ui:ExcelWriteRange AddHeaders="True" DataTable="[MainDt]" DisplayName="Write Range - MOLPAY (T-1)" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_3" SheetName="Sheet1">
+                <ui:ExcelWriteRange.StartingCell>
+                  <InArgument x:TypeArguments="x:String">
+                    <Literal x:TypeArguments="x:String" Value="" />
+                  </InArgument>
+                </ui:ExcelWriteRange.StartingCell>
+              </ui:ExcelWriteRange>
+              <ui:ExcelInsertDeleteRows DisplayName="Insert/Delete Rows" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelInsertDeleteRows_1" Mode="Remove" NoRows="4" Position="2" SheetName="Sheet1" />
+              <ui:ExcelReadRange AddHeaders="True" DataTable="[dtAfterMol]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_5" SheetName="Sheet1">
+                <ui:ExcelReadRange.Range>
+                  <InArgument x:TypeArguments="x:String">
+                    <Literal x:TypeArguments="x:String" Value="" />
+                  </InArgument>
+                </ui:ExcelReadRange.Range>
+              </ui:ExcelReadRange>
+              <be:ColumnDataTypeConvertor ColumnName="{x:Null}" NullValue="{x:Null}" ColumnIndex="[{9}]" DisplayName="Change Column DataType" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ColumnDataTypeConvertor_1" InDataTable="[dtAfterMol]" OutDataTable="[dtOutMol]" />
+              <ui:ExcelReadCell Cell="J2" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_2" SheetName="Sheet1">
+                <ui:ExcelReadCell.Result>
+                  <OutArgument x:TypeArguments="s:DateTime">[dateColKMol]</OutArgument>
+                </ui:ExcelReadCell.Result>
+              </ui:ExcelReadCell>
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="333.6,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[dateColKMol.ToString(&quot;ddMMyy&quot;)]" />
+              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[ValueColJT2]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[dtOutMol.Rows(1).Item(9).ToString]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="s:String[]">[ValueColJArrT2]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="s:String[]">[Split(ValueColJT2.ToString,“ ”)]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="333.6,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[ValueColJArrT2(0)]" />
+              <ui:FilterDataTable DataTable="[dtAfterMol]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dtAfterMol]" SelectColumnsMode="Keep">
+                <ui:FilterDataTable.Filters>
+                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                      <ui:FilterOperationArgument.Column>
+                        <InArgument x:TypeArguments="x:String">["Wallet Txn Date"]</InArgument>
+                      </ui:FilterOperationArgument.Column>
+                      <ui:FilterOperationArgument.Operand>
+                        <InArgument x:TypeArguments="x:String">[ValueColJArrT2(0)]</InArgument>
+                      </ui:FilterOperationArgument.Operand>
+                    </ui:FilterOperationArgument>
+                  </scg:List>
+                </ui:FilterDataTable.Filters>
+                <ui:FilterDataTable.SelectColumns>
+                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                    <x:Null />
+                  </scg:List>
+                </ui:FilterDataTable.SelectColumns>
+              </ui:FilterDataTable>
+              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="333.6,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                <ui:MultipleAssign.AssignOperations>
+                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:Double">[in_EarlyDateMolM]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:Double">[dtAfterMol.AsEnumerable.Sum(Function(x) If(x(12).ToString.Trim.IsNumeric,CDbl(x(12).ToString.Trim),0))]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:Double">[in_EarlyDateMolP]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:Double">[dtAfterMol.AsEnumerable.Sum(Function(x) If(x(15).ToString.Trim.IsNumeric,CDbl(x(15).ToString.Trim),0))]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                  </scg:List>
+                </ui:MultipleAssign.AssignOperations>
+              </ui:MultipleAssign>
+            </Sequence>
+            <Sequence DisplayName="Do - Latest Date" sap:VirtualizedContainerService.HintSize="375.2,1308.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="sd:DataTable" Name="dtAfterMolLat" />
+                <Variable x:TypeArguments="sd:DataTable" Name="dtOutMol" />
+                <Variable x:TypeArguments="s:DateTime" Name="dateColKMolLat" />
+                <Variable x:TypeArguments="x:String" Name="LatColJT2" />
+                <Variable x:TypeArguments="s:String[]" Name="LatColJArrT2" />
+                <Variable x:TypeArguments="sd:DataTable" Name="MainLatestdt" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ExcelWriteRange AddHeaders="False" DataTable="[MainDt]" DisplayName="Write Range - MOLPAY (T-1)" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_4" SheetName="Sheet1">
+                <ui:ExcelWriteRange.StartingCell>
+                  <InArgument x:TypeArguments="x:String">
+                    <Literal x:TypeArguments="x:String" Value="" />
+                  </InArgument>
+                </ui:ExcelWriteRange.StartingCell>
+              </ui:ExcelWriteRange>
+              <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="Wallet Txn Date" DataTable="[MainDt]" DisplayName="Sort Data Table - Column J" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="SortDataTable_3" Order="Decending" OutputDataTable="[MainDt]" SortOrder="Descending" />
+              <ui:ExcelWriteRange AddHeaders="True" DataTable="[MainDt]" DisplayName="Write Range - MOLPAY (T-1)" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_5" SheetName="Sheet1">
+                <ui:ExcelWriteRange.StartingCell>
+                  <InArgument x:TypeArguments="x:String">
+                    <Literal x:TypeArguments="x:String" Value="" />
+                  </InArgument>
+                </ui:ExcelWriteRange.StartingCell>
+              </ui:ExcelWriteRange>
+              <ui:ExcelReadRange AddHeaders="True" DataTable="[MainLatestdt]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_8" SheetName="Sheet1">
+                <ui:ExcelReadRange.Range>
+                  <InArgument x:TypeArguments="x:String">
+                    <Literal x:TypeArguments="x:String" Value="" />
+                  </InArgument>
+                </ui:ExcelReadRange.Range>
+              </ui:ExcelReadRange>
+              <be:ColumnDataTypeConvertor ColumnName="{x:Null}" NullValue="{x:Null}" ColumnIndex="[{9}]" DisplayName="Change Column DataType" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ColumnDataTypeConvertor_2" InDataTable="[MainLatestdt]" OutDataTable="[dtOutMol]" />
+              <ui:ExcelReadCell Cell="J2" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_3" SheetName="Sheet1">
+                <ui:ExcelReadCell.Result>
+                  <OutArgument x:TypeArguments="s:DateTime">[dateColKMolLat]</OutArgument>
+                </ui:ExcelReadCell.Result>
+              </ui:ExcelReadCell>
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="333.6,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="[dateColKMolLat.ToString(&quot;ddMMyy&quot;)]" />
+              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[LatColJT2]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[dtOutMol.Rows(1).Item(9).ToString]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="s:String[]">[LatColJArrT2]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="s:String[]">[Split(LatColJT2.ToString,“ ”)]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="333.6,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="[LatColJArrT2(0)]" />
+              <ui:FilterDataTable DataTable="[dtAfterMolLat]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_3" OutputDataTable="[dtAfterMolLat]" SelectColumnsMode="Keep">
+                <ui:FilterDataTable.Filters>
+                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                      <ui:FilterOperationArgument.Column>
+                        <InArgument x:TypeArguments="x:String">["Wallet Txn Date"]</InArgument>
+                      </ui:FilterOperationArgument.Column>
+                      <ui:FilterOperationArgument.Operand>
+                        <InArgument x:TypeArguments="x:String">[LatColJArrT2(0)]</InArgument>
+                      </ui:FilterOperationArgument.Operand>
+                    </ui:FilterOperationArgument>
+                  </scg:List>
+                </ui:FilterDataTable.Filters>
+                <ui:FilterDataTable.SelectColumns>
+                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                    <x:Null />
+                  </scg:List>
+                </ui:FilterDataTable.SelectColumns>
+              </ui:FilterDataTable>
+              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="333.6,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+                <ui:MultipleAssign.AssignOperations>
+                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:Double">[in_LatestDateMolM]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:Double">[dtAfterMolLat.AsEnumerable.Sum(Function(x) If(x(12).ToString.Trim.IsNumeric,CDbl(x(12).ToString.Trim),0))]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:Double">[in_LatestDateMolP]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:Double">[dtAfterMolLat.AsEnumerable.Sum(Function(x) If(x(15).ToString.Trim.IsNumeric,CDbl(x(15).ToString.Trim),0))]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                  </scg:List>
+                </ui:MultipleAssign.AssignOperations>
+              </ui:MultipleAssign>
+            </Sequence>
+            <Sequence DisplayName="Do - Middle Date" sap:VirtualizedContainerService.HintSize="375.2,68.8" sap2010:WorkflowViewState.IdRef="Sequence_11">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="sd:DataTable" Name="dtAfterMolMid" />
+                <Variable x:TypeArguments="s:DateTime" Name="dateT3" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ExcelWriteRange AddHeaders="True" DataTable="[MainDt]" DisplayName="Write Range - MOLPAY (T-1)" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_6" SheetName="Sheet1">
+                <ui:ExcelWriteRange.StartingCell>
+                  <InArgument x:TypeArguments="x:String">
+                    <Literal x:TypeArguments="x:String" Value="" />
+                  </InArgument>
+                </ui:ExcelWriteRange.StartingCell>
+              </ui:ExcelWriteRange>
+              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="s:DateTime">[dateT3]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="s:DateTime">[Now.AddDays(-3)]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:FilterDataTable DataTable="[dtAfterMolMid]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_4" OutputDataTable="[dtAfterMolMid]" SelectColumnsMode="Keep">
+                <ui:FilterDataTable.Filters>
+                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                      <ui:FilterOperationArgument.Column>
+                        <InArgument x:TypeArguments="x:String">["Wallet Txn Date"]</InArgument>
+                      </ui:FilterOperationArgument.Column>
+                      <ui:FilterOperationArgument.Operand>
+                        <InArgument x:TypeArguments="x:String">[dateT3.ToString("MM/dd/yyyy")]</InArgument>
+                      </ui:FilterOperationArgument.Operand>
+                    </ui:FilterOperationArgument>
+                  </scg:List>
+                </ui:FilterDataTable.Filters>
+                <ui:FilterDataTable.SelectColumns>
+                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                    <x:Null />
+                  </scg:List>
+                </ui:FilterDataTable.SelectColumns>
+              </ui:FilterDataTable>
+              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="333.6,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
+                <ui:MultipleAssign.AssignOperations>
+                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_17">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:Double">[in_MiddleDateMolM]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:Double">[dtAfterMolMid.AsEnumerable.Sum(Function(x) If(x(12).ToString.Trim.IsNumeric,CDbl(x(12).ToString.Trim),0))]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_18">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:Double">[in_MiddleDateMolP]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:Double">[dtAfterMolMid.AsEnumerable.Sum(Function(x) If(x(15).ToString.Trim.IsNumeric,CDbl(x(15).ToString.Trim),0))]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                  </scg:List>
+                </ui:MultipleAssign.AssignOperations>
+              </ui:MultipleAssign>
+            </Sequence>
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ExcelApplicationScope>
+    <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="450.4,22.4" sap2010:WorkflowViewState.IdRef="Delete_1" Path="C:\Users\rpavendor\Desktop\RPATEST\Process 3\Molpay.xlsx" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;End MOLPAY_Daily&quot;]" />
   </Sequence>
 </Activity>
