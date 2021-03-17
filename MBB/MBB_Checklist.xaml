@@ -43,7 +43,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>943.2,8221.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>943.2,9820.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>MBB_Checklist_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -113,7 +113,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="MBB_Checklist" sap:VirtualizedContainerService.HintSize="801.6,8156.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="MBB_Checklist" sap:VirtualizedContainerService.HintSize="801.6,9716" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Double" Name="ValueCT2" />
       <Variable x:TypeArguments="x:Double" Name="ValueDT2" />
@@ -131,7 +131,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Bank_Checklist" sap:VirtualizedContainerService.HintSize="760,8064" sap2010:WorkflowViewState.IdRef="Sequence_14">
+    <Sequence DisplayName="Bank_Checklist" sap:VirtualizedContainerService.HintSize="760,9623.2" sap2010:WorkflowViewState.IdRef="Sequence_14">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="CurrDate2" />
         <Variable x:TypeArguments="x:String" Name="FolderMonth2" />
@@ -308,7 +308,7 @@
                                         <InArgument x:TypeArguments="x:Int32">[IndexMBBT3 + 1]</InArgument>
                                       </Assign.Value>
                                     </Assign>
-                                    <ui:InterruptibleWhile DisplayName="While" sap:VirtualizedContainerService.HintSize="339.2,520" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_6">
+                                    <ui:InterruptibleWhile Condition="[IndexMBBT3 &gt; 0]" DisplayName="While" sap:VirtualizedContainerService.HintSize="339.2,520" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_6">
                                       <ui:InterruptibleWhile.Body>
                                         <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,352.8" sap2010:WorkflowViewState.IdRef="Sequence_33">
                                           <sap:WorkflowViewStateService.ViewState>
@@ -342,9 +342,6 @@
                                           </Assign>
                                         </Sequence>
                                       </ui:InterruptibleWhile.Body>
-                                      <ui:InterruptibleWhile.Condition>
-                                        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="IndexMBBT3 &gt; 0" />
-                                      </ui:InterruptibleWhile.Condition>
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -388,7 +385,7 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="524.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[item.ColumnName]" />
-                        <If Condition="[item.ColumnName = Now.AddDays(-3).ToString(&quot;ddMMyy&quot;)]" DisplayName="If - Check column date (T-2)" sap:VirtualizedContainerService.HintSize="524.8,964.8" sap2010:WorkflowViewState.IdRef="If_9">
+                        <If Condition="[item.ColumnName = Now.AddDays(-3).ToString(&quot;ddMMyy&quot;)]" DisplayName="If - Check column date (T-3)" sap:VirtualizedContainerService.HintSize="524.8,964.8" sap2010:WorkflowViewState.IdRef="If_9">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -410,7 +407,7 @@
                                   <InArgument x:TypeArguments="x:Int32">[IndexMBBT2 + 1]</InArgument>
                                 </Assign.Value>
                               </Assign>
-                              <ui:InterruptibleWhile Condition="[IndexMBBT2 &gt; 0]" DisplayName="While" sap:VirtualizedContainerService.HintSize="339.2,520" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_8">
+                              <ui:InterruptibleWhile DisplayName="While" sap:VirtualizedContainerService.HintSize="339.2,520" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_8">
                                 <ui:InterruptibleWhile.Body>
                                   <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,352.8" sap2010:WorkflowViewState.IdRef="Sequence_43">
                                     <sap:WorkflowViewStateService.ViewState>
@@ -426,7 +423,7 @@
                                         <InArgument x:TypeArguments="x:Int32">[(IndexMBBT2 - 1) mod 26]</InArgument>
                                       </Assign.Value>
                                     </Assign>
-                                    <Assign DisplayName="Assign - Column Name (T-2)" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_34">
+                                    <Assign DisplayName="Assign - Column Name (T-3)" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_34">
                                       <Assign.To>
                                         <OutArgument x:TypeArguments="x:String">[ColMBBT3]</OutArgument>
                                       </Assign.To>
@@ -434,7 +431,7 @@
                                         <InArgument x:TypeArguments="x:String">[Convert.ToChar(65+ModuloMBB2).ToString + ColMBBT2]</InArgument>
                                       </Assign.Value>
                                     </Assign>
-                                    <Assign DisplayName="Assign - Column Index (T-2)" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_35">
+                                    <Assign DisplayName="Assign - Column Index (T-3)" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_35">
                                       <Assign.To>
                                         <OutArgument x:TypeArguments="x:Int32">[IndexMBBT2]</OutArgument>
                                       </Assign.To>
@@ -444,6 +441,9 @@
                                     </Assign>
                                   </Sequence>
                                 </ui:InterruptibleWhile.Body>
+                                <ui:InterruptibleWhile.Condition>
+                                  <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="IndexMBBT2 &gt; 0" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
+                                </ui:InterruptibleWhile.Condition>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -549,7 +549,7 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="524.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[item.ColumnName]" />
-                        <If Condition="[item.ColumnName = Now.AddDays(-3).ToString(&quot;ddMMyy&quot;)]" DisplayName="If - Check column date (T-2)" sap:VirtualizedContainerService.HintSize="524.8,964.8" sap2010:WorkflowViewState.IdRef="If_6">
+                        <If Condition="[item.ColumnName = Now.AddDays(-2).ToString(&quot;ddMMyy&quot;)]" DisplayName="If - Check column date (T-2)" sap:VirtualizedContainerService.HintSize="524.8,964.8" sap2010:WorkflowViewState.IdRef="If_6">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -678,13 +678,13 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:ExcelApplicationScope>
-      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-2)" sap:VirtualizedContainerService.HintSize="718.4,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + Now.AddDays(-2).ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + Now.AddDays(-2).ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderMonth2 + &quot;\&quot; + &quot;1. Reload Recon &quot; + Now.AddDays(-2).ToString(&quot;MMM&quot;) + &quot;'&quot; + Now.AddDays(-2).ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
+      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-2)" sap:VirtualizedContainerService.HintSize="718.4,1737.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + Now.AddDays(-2).ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + Now.AddDays(-2).ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderMonth2 + &quot;\&quot; + &quot;1. Reload Recon &quot; + Now.AddDays(-2).ToString(&quot;MMM&quot;) + &quot;'&quot; + Now.AddDays(-2).ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
         <ui:ExcelApplicationScope.Body>
           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,1628" sap2010:WorkflowViewState.IdRef="Sequence_8">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="DatePre2" />
                 <Variable x:TypeArguments="x:String" Name="SheetName" />
@@ -695,7 +695,7 @@
               </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
@@ -824,7 +824,7 @@
                   </scg:List>
                 </ui:MultipleAssign.AssignOperations>
               </ui:MultipleAssign>
-              <ui:ExcelWriteCell Cell="[&quot;B&quot; + IndexColBank1.ToString]" DisplayName="Write Cell -  Sheet IPAY, Column B" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_37" SheetName="[SheetName2  + &quot; IPAY&quot;]" Text="[io_SumE01.ToString]" />
+              <ui:ExcelWriteCell Cell="[&quot;B&quot; + IndexColBank1.ToString]" DisplayName="Write Cell -  Sheet IPAY, Column B" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_37" SheetName="[SheetName1  + &quot; MBB&quot;]" Text="[io_SumE01.ToString]" />
             </Sequence>
           </ActivityAction>
         </ui:ExcelApplicationScope.Body>

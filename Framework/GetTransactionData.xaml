@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="GetTransactionData" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="GetTransactionData" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Sequential counter of transaction items." Name="in_TransactionNumber" Type="InArgument(x:Int32)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
@@ -14,11 +14,16 @@
     <x:Property Name="io_statMBB3DS" Type="InOutArgument(x:Int32)" />
     <x:Property Name="io_statMOL" Type="InOutArgument(x:Int32)" />
     <x:Property Name="io_statiPay88" Type="InOutArgument(x:Int32)" />
+    <x:Property Name="io_statCIMB" Type="InOutArgument(x:Int32)" />
+    <x:Property Name="io_statNextCloud" Type="InArgument(x:Int32)" />
   </x:Members>
+  <this:GetTransactionData.io_statNextCloud>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:GetTransactionData.io_statNextCloud>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>641.6,2361.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>943.2,2515.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetTransactionData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="27">
@@ -83,7 +88,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Get a transaction item from a specified source (e.g., Orchestrator queues, spreadsheets, databases, mailboxes or web APIs). &#xA;&#xA;If there are no transaction items remaining, out_TransactionItem is set to Nothing, which leads to the End Process state. &#xA;&#xA;For cases in which there is only a single transaction (i.e., a linear process), use an If activity to check whether the argument in_TransactionNumber has the value 1 (meaning it is the first and only transaction) and assign the transaction item to out_TransactionItem. For any other value of in_TransactionNumber, out_TransactionItem should be set to Nothing.&#xA;&#xA;If there are multiple transactions, use the argument in_TransactionNumber as an index to retrieve the correct transaction to be processed. If there are no more transactions left, it is necessary to set out_TransactionItem to Nothing, thus ending the process." DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="652,2256.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Get a transaction item from a specified source (e.g., Orchestrator queues, spreadsheets, databases, mailboxes or web APIs). &#xA;&#xA;If there are no transaction items remaining, out_TransactionItem is set to Nothing, which leads to the End Process state. &#xA;&#xA;For cases in which there is only a single transaction (i.e., a linear process), use an If activity to check whether the argument in_TransactionNumber has the value 1 (meaning it is the first and only transaction) and assign the transaction item to out_TransactionItem. For any other value of in_TransactionNumber, out_TransactionItem should be set to Nothing.&#xA;&#xA;If there are multiple transactions, use the argument in_TransactionNumber as an index to retrieve the correct transaction to be processed. If there are no more transactions left, it is necessary to set out_TransactionItem to Nothing, thus ending the process." DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="652,2410.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="CurrDateFormat" />
       <Variable x:TypeArguments="x:String" Name="FolderMonth" />
@@ -242,69 +247,61 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CIMB_Download workflow" sap:VirtualizedContainerService.HintSize="610.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="CIMB\CIMB_Download.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="io_CurrDateI1">[io_CurrDateI1]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="io_CurrDateFormat">[CurrDateFormat]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="io_FolderMonth">[FolderMonth]</InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke NextCloud_Download workflow" sap:VirtualizedContainerService.HintSize="610.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="NextCloud\NextCloud_Download.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <scg:Dictionary x:TypeArguments="x:String, Argument" />
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="610.4,284.8" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="610.4,284.8" sap2010:WorkflowViewState.IdRef="CommentOut_6">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,206.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,206.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Admin_SubmitCIMB workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Admin\Admin_SubmitCIMB.xaml">
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CIMB_Download workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="CIMB\CIMB_Download.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="io_CurrDateI1">[io_CurrDateI1]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="io_FolderMonth">[FolderMonth]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="io_CurrDateFormat">[CurrDateFormat]</InArgument>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="io_CurrDateI1">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_CurrDateI1" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="io_CurrDateFormat">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrDateFormat" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="io_FolderMonth">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="FolderMonth" />
+              </InArgument>
+              <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statCIMB">
+                <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="io_statCIMB" />
+              </InOutArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+              </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
       </ui:CommentOut.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Admin_DownBank workflow" sap:VirtualizedContainerService.HintSize="610.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Admin\Admin_DownBank.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Admin_Login - Copy (1) workflow" sap:VirtualizedContainerService.HintSize="610.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Admin\Admin_Login - Copy (1).xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="io_CurrDate">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_CurrDateI1" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="io_FolderMonth">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="FolderMonth" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="io_CurrDateFormat">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrDateFormat" />
-        </InArgument>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
           <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
         </InArgument>
-        <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statiPay88">
-          <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="io_statiPay88" />
-        </InOutArgument>
-        <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMOL">
-          <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="io_statMOL" />
-        </InOutArgument>
-        <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMBB3DS">
-          <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="io_statMBB3DS" />
-        </InOutArgument>
-        <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMBBMOTO">
-          <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="io_statMBBMOTO" />
-        </InOutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Admin_SubmitCIMB workflow" sap:VirtualizedContainerService.HintSize="610.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Admin\Admin_SubmitCIMB.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="io_CurrDateI1">[io_CurrDateI1]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="io_FolderMonth">[FolderMonth]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="io_CurrDateFormat">[CurrDateFormat]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Admin_DownBank workflow" sap:VirtualizedContainerService.HintSize="610.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Admin\Admin_DownBank.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="io_CurrDate">[io_CurrDateI1]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="io_FolderMonth">[FolderMonth]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="io_CurrDateFormat">[CurrDateFormat]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statiPay88">[io_statiPay88]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMOL">[io_statMOL]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMBB3DS">[io_statMBB3DS]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMBBMOTO">[io_statMBBMOTO]</InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SAGE_ReloadReconCIMB workflow" sap:VirtualizedContainerService.HintSize="610.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="SAGE\SAGE_ReloadReconCIMB.xaml">
@@ -315,6 +312,16 @@
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SAGE_Close workflow" sap:VirtualizedContainerService.HintSize="610.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="SAGE\SAGE_Close.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke NextCloud_Download workflow" sap:VirtualizedContainerService.HintSize="610.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="NextCloud\NextCloud_Download.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:Int32" x:Key="io_statNextCloud">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="io_statNextCloud" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>

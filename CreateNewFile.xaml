@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CreateNewFile" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="828.8,3667.2" sap2010:WorkflowViewState.IdRef="CreateNewFile_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:bew="clr-namespace:BalaReva.Excel.WorkBook;assembly=BalaReva.Excel" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CreateNewFile" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="943.2,3940.8" sap2010:WorkflowViewState.IdRef="CreateNewFile_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:bew="clr-namespace:BalaReva.Excel.WorkBook;assembly=BalaReva.Excel" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
       <x:String>System.Activities</x:String>
@@ -63,9 +63,10 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CreateNewFile" sap:VirtualizedContainerService.HintSize="839.2,3562.4" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence DisplayName="CreateNewFile" sap:VirtualizedContainerService.HintSize="839.2,3836" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:DateTime" Name="NextMonth" />
       <Variable x:TypeArguments="x:Boolean" Name="bIPAY" />
@@ -141,6 +142,18 @@
         <InArgument x:TypeArguments="x:String" xml:space="preserve">[CurrMonth + ". " +  NextMonth.ToString("MMM") + "'" + NextMonth.ToString("yy")]</InArgument>
       </Assign.Value>
     </Assign>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="797.6,233.6" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="270.4,155.2" sap2010:WorkflowViewState.IdRef="Sequence_20">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="228.8,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="[Now.ToString(&quot;dd&quot;)]" />
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
     <If Condition="[LastDay.ToString(&quot;dd&quot;) = Now.ToString(&quot;dd&quot;)]" sap:VirtualizedContainerService.HintSize="797.6,2825.6" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="524.8,2676" sap2010:WorkflowViewState.IdRef="Sequence_18">
