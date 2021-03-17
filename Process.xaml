@@ -24,7 +24,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>943.2,4869.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>943.2,3645.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -88,7 +88,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="652,4724.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="652,3500.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Double" Name="MotoColN" />
       <Variable x:TypeArguments="x:Int32" Name="DSColL" />
@@ -139,7 +139,11 @@
       <Variable x:TypeArguments="x:Double" Name="MiddleDateMolP" />
       <Variable x:TypeArguments="x:Double" Name="LatestDateMolM" />
       <Variable x:TypeArguments="x:Double" Name="LatestDateMolP" />
-      <Variable x:TypeArguments="x:Double" Name="EarlyDateMolP" />
+      <Variable x:TypeArguments="x:Double" Name="EarlyDateMolP">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:Double" Value="90.12" />
+        </Variable.Default>
+      </Variable>
       <Variable x:TypeArguments="x:Double" Name="EarlyDateMolM" />
       <Variable x:TypeArguments="x:Double" Name="MainTotalM" />
       <Variable x:TypeArguments="x:Double" Name="MainTotalP" />
@@ -218,15 +222,15 @@
         <InArgument x:TypeArguments="x:String">[io_CurrDateI1 + ". " + Now.AddDays(-1).ToString("MMM") + "'" + Now.AddDays(-1).ToString("yy")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="610.4,284.8" sap2010:WorkflowViewState.IdRef="CommentOut_34">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="610.4,1241.6" sap2010:WorkflowViewState.IdRef="CommentOut_41">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,206.4" sap2010:WorkflowViewState.IdRef="Sequence_42">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="560.8,1163.2" sap2010:WorkflowViewState.IdRef="Sequence_49">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke NextCloud_Daily workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="NextCloud\NextCloud_Daily.xaml">
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke NextCloud_Daily workflow" sap:VirtualizedContainerService.HintSize="519.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="NextCloud\NextCloud_Daily.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="io_CurrDate1">[io_CurrDateI1]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="io_FolderMontth">[FolderMonth]</InArgument>
@@ -235,18 +239,7 @@
               <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumE01">[SumE01]</InOutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="610.4,324" sap2010:WorkflowViewState.IdRef="CommentOut_36">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,245.6" sap2010:WorkflowViewState.IdRef="Sequence_44">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+          <Assign sap:VirtualizedContainerService.HintSize="519.2,60" sap2010:WorkflowViewState.IdRef="Assign_11">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[io_statCIMB]</OutArgument>
             </Assign.To>
@@ -254,10 +247,10 @@
               <InArgument x:TypeArguments="x:Int32">0</InArgument>
             </Assign.Value>
           </Assign>
-          <If Condition="[io_statCIMB &lt;&gt; 1]" sap:VirtualizedContainerService.HintSize="262.4,52.8" sap2010:WorkflowViewState.IdRef="If_6">
+          <If Condition="[io_statCIMB &lt;&gt; 1]" sap:VirtualizedContainerService.HintSize="519.2,663.2" sap2010:WorkflowViewState.IdRef="If_6">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -300,94 +293,39 @@
                 </ui:InvokeWorkflowFile>
                 <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CIMB_Checklist workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="CIMB\CIMB_Checklist.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
-                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_3DSColL">
-                      <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="DSColL" />
-                    </InOutArgument>
-                    <InOutArgument x:TypeArguments="x:Double" x:Key="io_3DSColN">
-                      <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="DSColN" />
-                    </InOutArgument>
-                    <InOutArgument x:TypeArguments="x:Double" x:Key="io_3DSColNLatest">
-                      <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="DSColNLatest" />
-                    </InOutArgument>
-                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_3DSColLLatest">
-                      <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="DSColLLatest" />
-                    </InOutArgument>
-                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_3DSColLEarly">
-                      <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="DSColLEarly" />
-                    </InOutArgument>
-                    <InOutArgument x:TypeArguments="x:Double" x:Key="io_3DSColNEarly">
-                      <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="DSColNEarly" />
-                    </InOutArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="io_FolderMonth">
-                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="FolderMonth" />
-                    </InArgument>
-                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_MotoColL">
-                      <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="MotoColL" />
-                    </InOutArgument>
-                    <InOutArgument x:TypeArguments="x:Double" x:Key="io_MotoColN">
-                      <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="MotoColN" />
-                    </InOutArgument>
-                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_MotoColLEarly">
-                      <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="MotoColLEarly" />
-                    </InOutArgument>
-                    <InOutArgument x:TypeArguments="x:Double" x:Key="io_MotoColNEarly">
-                      <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="MotoColNEarly" />
-                    </InOutArgument>
-                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_MotoColLLatest">
-                      <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="MotoColLLatest" />
-                    </InOutArgument>
-                    <InOutArgument x:TypeArguments="x:Double" x:Key="io_MotoColNLatest">
-                      <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="MotoColNLatest" />
-                    </InOutArgument>
-                    <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumE54">
-                      <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="SumE54" />
-                    </InOutArgument>
-                    <InArgument x:TypeArguments="s:DateTime" x:Key="in_ValueIEarly">
-                      <mva:VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="ValueIEarly" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="s:DateTime" x:Key="in_ValueILatest">
-                      <mva:VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="ValueILatest" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="s:DateTime" x:Key="in_ValueMEarly">
-                      <mva:VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="ValueMEarly" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="s:DateTime" x:Key="in_ValueMLatest">
-                      <mva:VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="ValueMLatest" />
-                    </InArgument>
+                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_3DSColL">[DSColL]</InOutArgument>
+                    <InOutArgument x:TypeArguments="x:Double" x:Key="io_3DSColN">[DSColN]</InOutArgument>
+                    <InOutArgument x:TypeArguments="x:Double" x:Key="io_3DSColNLatest">[DSColNLatest]</InOutArgument>
+                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_3DSColLLatest">[DSColLLatest]</InOutArgument>
+                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_3DSColLEarly">[DSColLEarly]</InOutArgument>
+                    <InOutArgument x:TypeArguments="x:Double" x:Key="io_3DSColNEarly">[DSColNEarly]</InOutArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="io_FolderMonth">[FolderMonth]</InArgument>
+                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_MotoColL">[MotoColL]</InOutArgument>
+                    <InOutArgument x:TypeArguments="x:Double" x:Key="io_MotoColN">[MotoColN]</InOutArgument>
+                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_MotoColLEarly">[MotoColLEarly]</InOutArgument>
+                    <InOutArgument x:TypeArguments="x:Double" x:Key="io_MotoColNEarly">[MotoColNEarly]</InOutArgument>
+                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_MotoColLLatest">[MotoColLLatest]</InOutArgument>
+                    <InOutArgument x:TypeArguments="x:Double" x:Key="io_MotoColNLatest">[MotoColNLatest]</InOutArgument>
+                    <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumE54">[SumE54]</InOutArgument>
+                    <InArgument x:TypeArguments="s:DateTime" x:Key="in_ValueIEarly">[ValueIEarly]</InArgument>
+                    <InArgument x:TypeArguments="s:DateTime" x:Key="in_ValueILatest">[ValueILatest]</InArgument>
+                    <InArgument x:TypeArguments="s:DateTime" x:Key="in_ValueMEarly">[ValueMEarly]</InArgument>
+                    <InArgument x:TypeArguments="s:DateTime" x:Key="in_ValueMLatest">[ValueMLatest]</InArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
               </Sequence>
             </If.Then>
           </If>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="610.4,284.8" sap2010:WorkflowViewState.IdRef="CommentOut_38">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,206.4" sap2010:WorkflowViewState.IdRef="Sequence_46">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CIMB_StatementYear workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="CIMB\CIMB_StatementYear.xaml">
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CIMB_StatementYear workflow" sap:VirtualizedContainerService.HintSize="519.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="CIMB\CIMB_StatementYear.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="io_CurrDateI1">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_CurrDateI1" />
-              </InArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_PaymentMOL">
-                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="PaymentMOL" />
-              </InOutArgument>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="io_CurrDateI1">[io_CurrDateI1]</InArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_PaymentMOL">[PaymentMOL]</InOutArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
       </ui:CommentOut.Body>
     </ui:CommentOut>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="610.4,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[PaymentMOL.ToString]" />
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="610.4,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="3039537.05" />
     <Assign sap:VirtualizedContainerService.HintSize="610.4,60" sap2010:WorkflowViewState.IdRef="Assign_9">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[io_statMOL]</OutArgument>
@@ -396,10 +334,10 @@
         <InArgument x:TypeArguments="x:Int32">0</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[io_statMOL &lt;&gt; 1]" sap:VirtualizedContainerService.HintSize="610.4,509.6" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[io_statMOL &lt;&gt; 1]" sap:VirtualizedContainerService.HintSize="610.4,52.8" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -481,84 +419,61 @@
         </Sequence>
       </If.Then>
     </If>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="610.4,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_4" />
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="610.4,324" sap2010:WorkflowViewState.IdRef="CommentOut_30">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,245.6" sap2010:WorkflowViewState.IdRef="Sequence_38">
+    <Assign sap:VirtualizedContainerService.HintSize="610.4,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[io_statiPay88]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[io_statiPay88 &lt;&gt; 1]" sap:VirtualizedContainerService.HintSize="610.4,52.8" sap2010:WorkflowViewState.IdRef="If_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="375.2,360" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_10">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:Int32">[io_statiPay88]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:Int32">0</InArgument>
-            </Assign.Value>
-          </Assign>
-          <If Condition="[io_statiPay88 &lt;&gt; 1]" sap:VirtualizedContainerService.HintSize="262.4,52.8" sap2010:WorkflowViewState.IdRef="If_3">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="375.2,360" sap2010:WorkflowViewState.IdRef="Sequence_6">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke iPay88_Daily workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="IPAY88\iPay88_Daily.xaml">
-                  <ui:InvokeWorkflowFile.Arguments>
-                    <InOutArgument x:TypeArguments="x:Double" x:Key="io_IPayColI">[IPAYColI]</InOutArgument>
-                    <InOutArgument x:TypeArguments="x:Double" x:Key="io_IPAYColJ">[IPAYColJ]</InOutArgument>
-                  </ui:InvokeWorkflowFile.Arguments>
-                </ui:InvokeWorkflowFile>
-                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke iPay88_Checlist workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="IPAY88\iPay88_Checlist.xaml">
-                  <ui:InvokeWorkflowFile.Arguments>
-                    <InOutArgument x:TypeArguments="x:Double" x:Key="io_IPAYColJ">[IPAYColJ]</InOutArgument>
-                    <InOutArgument x:TypeArguments="x:Double" x:Key="io_IPAYColI">[IPAYColI]</InOutArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="io_FolderMonth">[FolderMonth]</InArgument>
-                    <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumE01">[SumE01]</InOutArgument>
-                  </ui:InvokeWorkflowFile.Arguments>
-                </ui:InvokeWorkflowFile>
-              </Sequence>
-            </If.Then>
-          </If>
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke iPay88_Daily workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="IPAY88\iPay88_Daily.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_IPayColI">[IPAYColI]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_IPAYColJ">[IPAYColJ]</InOutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke iPay88_Checlist workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="IPAY88\iPay88_Checlist.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_IPAYColJ">[IPAYColJ]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_IPAYColI">[IPAYColI]</InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="io_FolderMonth">[FolderMonth]</InArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumE01">[SumE01]</InOutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
         </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="610.4,331.2" sap2010:WorkflowViewState.IdRef="CommentOut_31">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,252.8" sap2010:WorkflowViewState.IdRef="Sequence_39">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_5">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:Int32">[io_statMBB3DS]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:Int32">0</InArgument>
-            </Assign.Value>
-          </Assign>
-          <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_6">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:Int32">[io_statMBBMOTO]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:Int32">0</InArgument>
-            </Assign.Value>
-          </Assign>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
+      </If.Then>
+    </If>
+    <Assign sap:VirtualizedContainerService.HintSize="610.4,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[io_statMBB3DS]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="610.4,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[io_statMBBMOTO]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+      </Assign.Value>
+    </Assign>
     <If Condition="[io_statMBB3DS &lt;&gt;1 And io_statMBBMOTO &lt;&gt; 1]" sap:VirtualizedContainerService.HintSize="610.4,509.6" sap2010:WorkflowViewState.IdRef="If_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -568,6 +483,12 @@
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="375.2,360" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:Double" Name="TotalJDSColMT1" />
+            <Variable x:TypeArguments="x:Double" Name="TotalJDSColPT1" />
+            <Variable x:TypeArguments="x:Double" Name="TotalJMColMT1" />
+            <Variable x:TypeArguments="x:Double" Name="TotalJMColPT1" />
+          </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -575,61 +496,97 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke MBB_Daily workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="MBB\MBB_Daily.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="io_FolderMonth">[FolderMonth]</InArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumColPMoto">[SumColPMoto]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumColMMoto">[SumColMMoto]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumColP3DS">[SumColP3DS]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumColM3DS">[SumColM3DS]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSLatestPT1">[DSLatestPT1]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSLatestMT1">[DSLatestMT1]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSEarlyMT1">[DSEarlyMT1]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSEarlyPT1">[DSEarlyPT1]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTEarlyMT1">[MTEarlyMT1]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTEarlyPT1">[MTEarlyPT1]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTLatestMT1">[MTLatestMT1]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTLatestPT1">[MTLatestPT1]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="in_TotalColPMT2">[TotalColPMT2]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="in_TotalColMMT2">[TotalColMMT2]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="in_TotalColPDS2">[TotalColPDS2]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="in_TotalColMDS2">[TotalColMDS2]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="in_MainTotalP">[MainTotalP]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="in_MainTotalM">[MainTotalM]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="in_MotoMainTotalM">[MotoMainTotalM]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="in_MotoMainTotalP">[MotoMainTotalP]</InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="io_FolderMonth">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="FolderMonth" />
+              </InArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSLatestPT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="DSLatestPT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSLatestMT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="DSLatestMT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSEarlyMT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="DSEarlyMT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSEarlyPT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="DSEarlyPT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTEarlyMT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="MTEarlyMT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTEarlyPT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="MTEarlyPT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTLatestMT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="MTLatestMT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTLatestPT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="MTLatestPT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_TotalJDSColMT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="TotalJDSColMT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_TotalJDSColPT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="TotalJDSColPT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_TotalJMColPT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="TotalJMColPT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_TotalJMColMT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="TotalJMColMT1" />
+              </InOutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke MBB_Checklist workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="MBB\MBB_Checklist.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTLatestPT1">[MTLatestPT1]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTLatestMT1">[MTLatestMT1]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTEarlyPT1">[MTEarlyPT1]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTEarlyMT1">[MTEarlyMT1]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSEarlyPT1">[DSEarlyPT1]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSLatestMT1">[DSLatestMT1]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSEarlyMT1">[DSEarlyMT1]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSLatestPT1">[DSLatestPT1]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_MBBColMT1">[SumMBBColMT1]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_MBBColET1">[SumMBBColET1]</InOutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="io_FolderMonth">[FolderMonth]</InArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumColM3DS">[SumColM3DS]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumColP3DS">[SumColP3DS]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumColMMoto">[SumColMMoto]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumColPMoto">[SumColPMoto]</InOutArgument>
-              <InArgument x:TypeArguments="x:Double" x:Key="in_TotalColMMT2">[TotalColMMT2]</InArgument>
-              <InArgument x:TypeArguments="x:Double" x:Key="in_TotalColPMT2">[TotalColPMT2]</InArgument>
-              <InArgument x:TypeArguments="x:Double" x:Key="in_TotalColMDS2">[TotalColMDS2]</InArgument>
-              <InArgument x:TypeArguments="x:Double" x:Key="in_TotalColPDS2">[TotalColPDS2]</InArgument>
-              <InArgument x:TypeArguments="x:Double" x:Key="in_MainTotalM">[MainTotalM]</InArgument>
-              <InArgument x:TypeArguments="x:Double" x:Key="in_MainTotalP">[MainTotalP]</InArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="in_MotoMainTotalM">[MotoMainTotalM]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="in_MotoMainTotalP">[MotoMainTotalP]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumE01">[SumE01]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTLatestPT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="MTLatestPT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTLatestMT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="MTLatestMT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTEarlyPT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="MTEarlyPT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_MTEarlyMT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="MTEarlyMT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSEarlyPT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="DSEarlyPT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSLatestMT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="DSLatestMT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSEarlyMT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="DSEarlyMT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_DSLatestPT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="DSLatestPT1" />
+              </InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="io_FolderMonth">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="FolderMonth" />
+              </InArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_SumE01">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="SumE01" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_TotalJDSColPT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="TotalJDSColPT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_TotalJDSColMT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="TotalJDSColMT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_TotalJMColMT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="TotalJMColMT1" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_TotalJMColPT1">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="TotalJMColPT1" />
+              </InOutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
       </If.Then>
     </If>
-    <ui:CommentOut DisplayName="Comment Out - Not use it" sap:VirtualizedContainerService.HintSize="610.4,438.4" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+    <ui:CommentOut DisplayName="Comment Out - Not use it" sap:VirtualizedContainerService.HintSize="610.4,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_2">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,360" sap2010:WorkflowViewState.IdRef="Sequence_8">
           <sap:WorkflowViewStateService.ViewState>
@@ -687,7 +644,7 @@
       </ui:CommentOut.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
