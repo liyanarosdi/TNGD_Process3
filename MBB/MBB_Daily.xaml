@@ -99,7 +99,6 @@
       <AssemblyReference>BalaReva.Excel.Base</AssemblyReference>
       <AssemblyReference>BalaReva.EasyDataTable</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="MBB_Filter" sap:VirtualizedContainerService.HintSize="524.8,4158.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
