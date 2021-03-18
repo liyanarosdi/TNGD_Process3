@@ -17,7 +17,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>943.2,6274.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>943.2,6071.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>MBB_Filter_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -93,7 +93,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="MBB_Filter" sap:VirtualizedContainerService.HintSize="533.6,6169.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="MBB_Filter" sap:VirtualizedContainerService.HintSize="533.6,5966.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="CurrDate" />
       <Variable x:TypeArguments="x:String" Name="FolderT2" />
@@ -232,7 +232,7 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="375.2,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+              <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="375.2,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_4">
                 <ui:CommentOut.Body>
                   <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416.8,1091.2" sap2010:WorkflowViewState.IdRef="Sequence_30">
                     <sap:WorkflowViewStateService.ViewState>
@@ -441,9 +441,9 @@
                   </ui:FilterDataTable.SelectColumns>
                 </ui:FilterDataTable>
               </Sequence>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="375.2,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+              <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="375.2,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_5">
                 <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,145.6" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="241.6,145.6" sap2010:WorkflowViewState.IdRef="Sequence_31">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -616,7 +616,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:ExcelApplicationScope>
     </Sequence>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="492,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+    <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="492,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_8">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="241.6,270.4" sap2010:WorkflowViewState.IdRef="Sequence_40">
           <sap:WorkflowViewStateService.ViewState>
@@ -1421,7 +1421,7 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_10">
+              <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_10">
                 <ui:CommentOut.Body>
                   <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416.8,161.6" sap2010:WorkflowViewState.IdRef="Sequence_48">
                     <sap:WorkflowViewStateService.ViewState>
@@ -1663,7 +1663,7 @@
                   </scg:List>
                 </ui:MultipleAssign.AssignOperations>
               </ui:MultipleAssign>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_11">
+              <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_11">
                 <ui:CommentOut.Body>
                   <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,348" sap2010:WorkflowViewState.IdRef="Sequence_49">
                     <sap:WorkflowViewStateService.ViewState>
@@ -1787,7 +1787,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:ExcelApplicationScope>
     </Sequence>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="492,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_9">
+    <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="492,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_9">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="516.8,270.4" sap2010:WorkflowViewState.IdRef="Sequence_47">
           <sap:WorkflowViewStateService.ViewState>
@@ -1795,7 +1795,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Sequence - MBB MOTO (T-2)" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_16">
+          <Sequence DisplayName="Sequence - MBB MOTO (T-2)" sap:VirtualizedContainerService.HintSize="475.2,68.8" sap2010:WorkflowViewState.IdRef="Sequence_16">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dtMainMOTOT2" />
               <Variable x:TypeArguments="sd:DataTable" Name="dtOutMColT2" />
@@ -2029,7 +2029,7 @@
               </sap:WorkflowViewStateService.ViewState>
             </ui:ExcelApplicationScope>
           </Sequence>
-          <Sequence DisplayName="Sequence - MBB MOTO (T-1)" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_46">
+          <Sequence DisplayName="Sequence - MBB MOTO (T-1)" sap:VirtualizedContainerService.HintSize="475.2,68.8" sap2010:WorkflowViewState.IdRef="Sequence_46">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dtMainMOTOT1" />
               <Variable x:TypeArguments="sd:DataTable" Name="dtTotalMT1" />
@@ -2391,9 +2391,9 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="492,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="492,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="475.2,1232.8" sap2010:WorkflowViewState.IdRef="Sequence_23">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="475.2,1192.8" sap2010:WorkflowViewState.IdRef="Sequence_23">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -2518,7 +2518,7 @@
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
     <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete - MBB 3DS (T-1)" sap:VirtualizedContainerService.HintSize="492,22.4" sap2010:WorkflowViewState.IdRef="Delete_1" Path="C:\Users\rpavendor\Desktop\RPATEST\Process 3\3DST1.xlsx" />
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="492,256" sap2010:WorkflowViewState.IdRef="CommentOut_12">
+    <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="492,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_12">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="241.6,177.6" sap2010:WorkflowViewState.IdRef="Sequence_50">
           <sap:WorkflowViewStateService.ViewState>
@@ -2530,6 +2530,12 @@
           <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete - MBB MOTO (T-2)" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Delete_4" Path="C:\Users\rpavendor\Desktop\RPATEST\Process 3\MOTOT2.xlsx" />
         </Sequence>
       </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
     <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete - MBB MOTO (T-1)" sap:VirtualizedContainerService.HintSize="492,22.4" sap2010:WorkflowViewState.IdRef="Delete_3" Path="C:\Users\rpavendor\Desktop\RPATEST\Process 3\MOTOT1.xlsx" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="492,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;End MBB_Daily&quot;]" />
