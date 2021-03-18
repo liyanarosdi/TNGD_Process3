@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>943.2,863.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1000.8,903.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -72,7 +72,6 @@
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -144,54 +143,22 @@
                       <If.Then>
                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetTransactionData workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="Framework\GetTransactionData.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="x:Int32" x:Key="in_TransactionNumber">
-                              <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="TransactionNumber" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                              <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                            </InArgument>
-                            <OutArgument x:TypeArguments="ui:QueueItem" x:Key="out_TransactionItem">
-                              <mva:VisualBasicReference x:TypeArguments="ui:QueueItem" ExpressionText="TransactionItem" />
-                            </OutArgument>
-                            <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField1">
-                              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="TransactionField1" />
-                            </OutArgument>
-                            <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField2">
-                              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="TransactionField2" />
-                            </OutArgument>
-                            <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionID">
-                              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="TransactionID" />
-                            </OutArgument>
-                            <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_TransactionData">
-                              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="TransactionData" />
-                            </InOutArgument>
-                            <InOutArgument x:TypeArguments="x:String" x:Key="io_CurrDate0">
-                              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="CurrDate0" />
-                            </InOutArgument>
-                            <InOutArgument x:TypeArguments="x:String" x:Key="io_CurrDateI1">
-                              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="CurrDateI1" />
-                            </InOutArgument>
-                            <InOutArgument x:TypeArguments="x:String" x:Key="io_CurrDate">
-                              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="CurrDate" />
-                            </InOutArgument>
-                            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMBBMOTO">
-                              <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="statMBBMOTO" />
-                            </InOutArgument>
-                            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMBB3DS">
-                              <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="statMBB3DS" />
-                            </InOutArgument>
-                            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMOL">
-                              <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="statMOL" />
-                            </InOutArgument>
-                            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statiPay88">
-                              <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="statiPay88" />
-                            </InOutArgument>
-                            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statCIMB">
-                              <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="statCIMB" />
-                            </InOutArgument>
-                            <InArgument x:TypeArguments="x:Int32" x:Key="io_statNextCloud">
-                              <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="statNextCloud" />
-                            </InArgument>
+                            <InArgument x:TypeArguments="x:Int32" x:Key="in_TransactionNumber">[TransactionNumber]</InArgument>
+                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                            <OutArgument x:TypeArguments="ui:QueueItem" x:Key="out_TransactionItem">[TransactionItem]</OutArgument>
+                            <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField1">[TransactionField1]</OutArgument>
+                            <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField2">[TransactionField2]</OutArgument>
+                            <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionID">[TransactionID]</OutArgument>
+                            <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_TransactionData">[TransactionData]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="io_CurrDate0">[CurrDate0]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="io_CurrDateI1">[CurrDateI1]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="io_CurrDate">[CurrDate]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMBBMOTO">[statMBBMOTO]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMBB3DS">[statMBB3DS]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMOL">[statMOL]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statiPay88">[statiPay88]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statCIMB">[statCIMB]</InOutArgument>
+                            <InArgument x:TypeArguments="x:Int32" x:Key="io_statNextCloud">[statNextCloud]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                       </If.Then>
@@ -285,39 +252,17 @@
                       </Assign>
                       <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Process workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Process.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-                            <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="TransactionItem" />
-                          </InArgument>
-                          <InOutArgument x:TypeArguments="x:String" x:Key="io_CurrDate">
-                            <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="CurrDate" />
-                          </InOutArgument>
-                          <InOutArgument x:TypeArguments="x:String" x:Key="io_CurrDateI1">
-                            <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="CurrDateI1" />
-                          </InOutArgument>
-                          <InOutArgument x:TypeArguments="x:String" x:Key="io_CurrDate0">
-                            <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="CurrDate0" />
-                          </InOutArgument>
-                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMBBMOTO">
-                            <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="statMBBMOTO" />
-                          </InOutArgument>
-                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMBB3DS">
-                            <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="statMBB3DS" />
-                          </InOutArgument>
-                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMOL">
-                            <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="statMOL" />
-                          </InOutArgument>
-                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statiPay88">
-                            <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="statiPay88" />
-                          </InOutArgument>
-                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statCIMB">
-                            <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="statCIMB" />
-                          </InOutArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="io_statNextCloud">
-                            <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="statNextCloud" />
-                          </InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[TransactionItem]</InArgument>
+                          <InOutArgument x:TypeArguments="x:String" x:Key="io_CurrDate">[CurrDate]</InOutArgument>
+                          <InOutArgument x:TypeArguments="x:String" x:Key="io_CurrDateI1">[CurrDateI1]</InOutArgument>
+                          <InOutArgument x:TypeArguments="x:String" x:Key="io_CurrDate0">[CurrDate0]</InOutArgument>
+                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMBBMOTO">[statMBBMOTO]</InOutArgument>
+                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMBB3DS">[statMBB3DS]</InOutArgument>
+                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statMOL">[statMOL]</InOutArgument>
+                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statiPay88">[statiPay88]</InOutArgument>
+                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_statCIMB">[statCIMB]</InOutArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="io_statNextCloud">[statNextCloud]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                     </Sequence>

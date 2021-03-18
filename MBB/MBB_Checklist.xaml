@@ -21,7 +21,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>943.2,7948</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1000.8,7948</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>MBB_Checklist_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -636,7 +636,7 @@
                 <ui:ExcelWriteCell Cell="[ColMBBT2 + &quot;3&quot;]" DisplayName="Write Cell -  MBB Row 3 for Sum M (T-2)" sap:VirtualizedContainerService.HintSize="483.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_38" SheetName="MBB" Text="[io_TotalJDSColMT1.ToString]" />
                 <ui:ExcelWriteCell Cell="[ColMBBT2 + &quot;4&quot;]" DisplayName="Write Cell -  MBB Row 4 for Sum P (T-2)" sap:VirtualizedContainerService.HintSize="483.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_39" SheetName="MBB" Text="[&quot;-&quot; + io_TotalJDSColPT1.ToString]" />
                 <ui:ExcelWriteCell Cell="[ColMBBT2 + &quot;5&quot;]" DisplayName="Write Cell -  MBB Row 5 for Sum C (T-2)" sap:VirtualizedContainerService.HintSize="483.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_40" SheetName="MBB" Text="[io_TotalJMColMT1.ToString]" />
-                <ui:ExcelWriteCell Cell="[ColMBBT2 + &quot;6&quot;]" DisplayName="Write Cell -  MBB Row 6 for Sum C (T-2)" sap:VirtualizedContainerService.HintSize="483.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_41" SheetName="MBB" Text="[&quot;-&quot; + io_TotalJDSColPT1.ToString]" />
+                <ui:ExcelWriteCell Cell="[ColMBBT2 + &quot;6&quot;]" DisplayName="Write Cell -  MBB Row 6 for Sum C (T-2)" sap:VirtualizedContainerService.HintSize="483.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_41" SheetName="MBB" Text="[&quot;-&quot; + io_TotalJMColPT1.ToString]" />
                 <ui:ExcelWriteCell Cell="[ColMBBT2 + &quot;22&quot;]" DisplayName="Write Cell -  MBB Row 22 for Sum 3DS (earlier date)" sap:VirtualizedContainerService.HintSize="483.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_42" SheetName="MBB" Text="[io_DSLatestMT1 .ToString]" />
                 <ui:ExcelWriteCell Cell="[ColMBBT2 + &quot;23&quot;]" DisplayName="Write Cell -  MBB Row 23 for Sum 3DS (earlier date)" sap:VirtualizedContainerService.HintSize="483.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_43" SheetName="MBB" Text="[&quot;-&quot; + io_DSLatestPT1.ToString]" />
                 <ui:ExcelWriteCell Cell="[ColMBBT2 + &quot;32&quot;]" DisplayName="Write Cell -  MBB Row 32 for Sum MOTO (earlier date)" sap:VirtualizedContainerService.HintSize="483.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_46" SheetName="MBB" Text="[io_MTLatestMT1.ToString]" />

@@ -1,10 +1,10 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="CIMB_3DS" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="io_3DSColL" Type="InOutArgument(x:Int32)" />
+    <x:Property Name="io_3DSColL" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_3DSColN" Type="InOutArgument(x:Double)" />
-    <x:Property Name="io_3DSColLEarly" Type="InOutArgument(x:Int32)" />
+    <x:Property Name="io_3DSColLEarly" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_3DSColNEarly" Type="InOutArgument(x:Double)" />
-    <x:Property Name="io_3DSColLLatest" Type="InOutArgument(x:Int32)" />
+    <x:Property Name="io_3DSColLLatest" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_3DSColNLatest" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_CurrDate0" Type="InArgument(x:String)" />
     <x:Property Name="io_CurrDate1" Type="InArgument(x:String)" />
@@ -18,7 +18,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>943.2,2393.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>621.6,2393.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CIMB_3DS_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="62">
@@ -89,6 +89,7 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>BalaReva.EasyExcel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="CIMB_3DS" sap:VirtualizedContainerService.HintSize="475.2,2288.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -189,10 +190,10 @@
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
                     <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:Int32">[io_3DSColL]</OutArgument>
+                      <OutArgument x:TypeArguments="x:Double">[io_3DSColL]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Int32">[dt3DS.AsEnumerable.Sum(Function(x) If(x(11).ToString.Trim.IsNumeric,CInt(x(11).ToString.Trim),0))]</InArgument>
+                      <InArgument x:TypeArguments="x:Double">[dt3DS.AsEnumerable.Sum(Function(x) If(x(11).ToString.Trim.IsNumeric,CInt(x(11).ToString.Trim),0))]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
@@ -289,7 +290,7 @@
                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
                       <ui:AssignOperation.To>
-                        <OutArgument x:TypeArguments="x:Int32">[io_3DSColLEarly]</OutArgument>
+                        <OutArgument x:TypeArguments="x:Double">[io_3DSColLEarly]</OutArgument>
                       </ui:AssignOperation.To>
                       <ui:AssignOperation.Value>
                         <InArgument x:TypeArguments="x:Int32">[dtMainEarly.AsEnumerable.Sum(Function(x) If(x(11).ToString.Trim.IsNumeric,CInt(x(11).ToString.Trim),0))]</InArgument>
@@ -381,7 +382,7 @@
                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
                       <ui:AssignOperation.To>
-                        <OutArgument x:TypeArguments="x:Int32">[io_3DSColLLatest]</OutArgument>
+                        <OutArgument x:TypeArguments="x:Double">[io_3DSColLLatest]</OutArgument>
                       </ui:AssignOperation.To>
                       <ui:AssignOperation.Value>
                         <InArgument x:TypeArguments="x:Int32">[dtMainLatest.AsEnumerable.Sum(Function(x) If(x(11).ToString.Trim.IsNumeric,CInt(x(11).ToString.Trim),0))]</InArgument>

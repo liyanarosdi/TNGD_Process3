@@ -1,17 +1,17 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="CIMB_Checklist" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="io_3DSColL" Type="InOutArgument(x:Int32)" />
+    <x:Property Name="io_3DSColL" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_3DSColN" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_3DSColNLatest" Type="InOutArgument(x:Double)" />
-    <x:Property Name="io_3DSColLLatest" Type="InOutArgument(x:Int32)" />
-    <x:Property Name="io_3DSColLEarly" Type="InOutArgument(x:Int32)" />
+    <x:Property Name="io_3DSColLLatest" Type="InOutArgument(x:Double)" />
+    <x:Property Name="io_3DSColLEarly" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_3DSColNEarly" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_FolderMonth" Type="InArgument(x:String)" />
-    <x:Property Name="io_MotoColL" Type="InOutArgument(x:Int32)" />
+    <x:Property Name="io_MotoColL" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_MotoColN" Type="InOutArgument(x:Double)" />
-    <x:Property Name="io_MotoColLEarly" Type="InOutArgument(x:Int32)" />
+    <x:Property Name="io_MotoColLEarly" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_MotoColNEarly" Type="InOutArgument(x:Double)" />
-    <x:Property Name="io_MotoColLLatest" Type="InOutArgument(x:Int32)" />
+    <x:Property Name="io_MotoColLLatest" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_MotoColNLatest" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_SumE54" Type="InOutArgument(x:Double)" />
     <x:Property Name="in_ValueIEarly" Type="InArgument(s:DateTime)" />
@@ -37,7 +37,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>943.2,7639.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>868,7679.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CIMB_Checklist_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
