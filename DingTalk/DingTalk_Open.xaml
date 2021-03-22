@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>943.2,2223.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>700,2398.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DingTalk_Open_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -86,7 +86,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="DingTalk_Open" sap:VirtualizedContainerService.HintSize="710.4,2118.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DingTalk_Open" sap:VirtualizedContainerService.HintSize="710.4,2293.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="sID" />
       <Variable x:TypeArguments="ss:SecureString" Name="sPWD" />
@@ -102,27 +102,27 @@
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="668.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start DingTalk&quot;]" />
     <ui:StartProcess Arguments="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Start Process" FileName="C:\Program Files (x86)\DingTalkLite\DingtalkLauncher.exe" sap:VirtualizedContainerService.HintSize="668.8,88" sap2010:WorkflowViewState.IdRef="StartProcess_1" />
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="668.8,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[In_Msg]" />
-    <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear - DingTalk window" sap:VirtualizedContainerService.HintSize="668.8,1382.4" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_2" RepeatForever="False">
+    <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear - DingTalk window" sap:VirtualizedContainerService.HintSize="668.8,1557.6" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_2" RepeatForever="False">
       <ui:OnUiElementAppear.Body>
-        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="533.6,1205.6" sap2010:WorkflowViewState.IdRef="Sequence_28">
+        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="533.6,1380.8" sap2010:WorkflowViewState.IdRef="Sequence_28">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window - Main DingTalk" sap:VirtualizedContainerService.HintSize="492,1112.8" sap2010:WorkflowViewState.IdRef="WindowScope_7" InformativeScreenshot="54441274005aa49f933266049442f577" Selector="&lt;wnd app='dingtalklite.exe' cls='StandardFrame_*' title='DingTalk' /&gt;">
+          <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window - Main DingTalk" sap:VirtualizedContainerService.HintSize="492,1288" sap2010:WorkflowViewState.IdRef="WindowScope_7" InformativeScreenshot="54441274005aa49f933266049442f577" Selector="&lt;wnd app='dingtalklite.exe' cls='StandardFrame_*' title='DingTalk' /&gt;">
             <ui:WindowScope.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                 </ActivityAction.Argument>
-                <Sequence sap:VirtualizedContainerService.HintSize="458.4,965.6" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                <Sequence sap:VirtualizedContainerService.HintSize="458.4,1140.8" sap2010:WorkflowViewState.IdRef="Sequence_26">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416.8,736" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416.8,911.2" sap2010:WorkflowViewState.IdRef="Sequence_25">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -173,13 +173,32 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:CommentOut>
-                    <Sequence DisplayName="Basic" sap:VirtualizedContainerService.HintSize="375.2,550.4" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                    <Sequence DisplayName="Basic" sap:VirtualizedContainerService.HintSize="375.2,725.6" sap2010:WorkflowViewState.IdRef="Sequence_39">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
+                      <ui:ClickText ContinueOnError="{x:Null}" DelayMS="{x:Null}" FormattedText="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="5000" DisplayName="Click Text - Messages button" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="ClickText_1" KeyModifiers="None" MouseButton="BTN_LEFT" Occurrence="1" SendWindowMessages="True" Text="Messages">
+                        <ui:ClickText.CursorPosition>
+                          <ui:CursorPosition Position="Center">
+                            <ui:CursorPosition.OffsetX>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetX>
+                            <ui:CursorPosition.OffsetY>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetY>
+                          </ui:CursorPosition>
+                        </ui:ClickText.CursorPosition>
+                        <ui:ClickText.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c9d963d2-fd13-446c-92b9-2072d3175cab" InformativeScreenshot="47c228214fee499e9cc4c10355f1bbe2" Selector="&lt;wnd cls='DingSwitchBarWnd' /&gt;" WaitForReady="INTERACTIVE">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                          </ui:Target>
+                        </ui:ClickText.Target>
+                      </ui:ClickText>
                       <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Search field" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_24" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
                         <ui:Click.CursorPosition>
                           <ui:CursorPosition OffsetX="122" OffsetY="50" Position="TopLeft" />
