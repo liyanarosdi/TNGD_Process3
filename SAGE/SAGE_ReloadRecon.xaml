@@ -1,7 +1,9 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="SAGE_ReloadReconCIMB" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="SAGE_ReloadReconCIMB" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="io_FolderMonth" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_DateT2" Type="InArgument(s:DateTime)" />
+    <x:Property Name="in_DateT1" Type="InArgument(s:DateTime)" />
   </x:Members>
   <this:SAGE_ReloadReconCIMB.in_Config>
     <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
@@ -9,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1004,9068.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>660.8,8698.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SAGE_ReloadReconCIMB_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -76,9 +78,8 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SAGE_ReloadReconCIMB" sap:VirtualizedContainerService.HintSize="560.8,8964" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SAGE_ReloadReconCIMB" sap:VirtualizedContainerService.HintSize="662.4,8593.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="CurrDate" />
       <Variable x:TypeArguments="x:String" Name="CurrDate2" />
       <Variable x:TypeArguments="x:String" Name="FolderMonth2" />
       <Variable x:TypeArguments="x:String" Name="BankFee1" />
@@ -91,7 +92,6 @@
       <Variable x:TypeArguments="x:String" Name="BankFee60" />
       <Variable x:TypeArguments="x:String" Name="Gross128" />
       <Variable x:TypeArguments="x:String" Name="BankFee128" />
-      <Variable x:TypeArguments="x:Int32" Name="Counter" />
       <Variable x:TypeArguments="x:String" Name="MsgMOL60" />
       <Variable x:TypeArguments="x:String" Name="MsgIPAY01" />
       <Variable x:TypeArguments="x:String" Name="MsgCIMB54" />
@@ -110,16 +110,16 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="519.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Start SAGE_ReloadReconCIMB&quot;]" />
-    <Assign sap:VirtualizedContainerService.HintSize="519.2,60" sap2010:WorkflowViewState.IdRef="Assign_12">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="620.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Start SAGE_ReloadReconCIMB&quot;]" />
+    <Assign sap:VirtualizedContainerService.HintSize="620.8,60" sap2010:WorkflowViewState.IdRef="Assign_12">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[CurrDate2]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[Now.AddDays(-2).ToString("MM")]</InArgument>
+        <InArgument x:TypeArguments="x:String">[in_DateT2.ToString("MM")]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[CurrDate2 &lt; &quot;10&quot;]" sap:VirtualizedContainerService.HintSize="519.2,52.8" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[CurrDate2 &lt; &quot;10&quot;]" sap:VirtualizedContainerService.HintSize="620.8,52.8" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -144,15 +144,15 @@
         </Sequence>
       </If.Then>
     </If>
-    <Assign sap:VirtualizedContainerService.HintSize="519.2,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+    <Assign sap:VirtualizedContainerService.HintSize="620.8,60" sap2010:WorkflowViewState.IdRef="Assign_14">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[FolderMonth2]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[CurrDate2 + ". " + Now.AddDays(-2).ToString("MMM") + "'" + Now.AddDays(-2).ToString("yy")]</InArgument>
+        <InArgument x:TypeArguments="x:String">[CurrDate2 + ". " + in_DateT2.ToString("MMM") + "'" + in_DateT2.ToString("yy")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe TNGD'" sap:VirtualizedContainerService.HintSize="519.2,52.8" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="a09c0d0d07d4fdafe636c86ccd7e1beb" Selector="&lt;html app='chrome.exe' title='TNGD eWallet (Admin Portal) (TNGD eWallet (Admin Portal)) (TNGD*' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe TNGD'" sap:VirtualizedContainerService.HintSize="620.8,52.8" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="a09c0d0d07d4fdafe636c86ccd7e1beb" Selector="&lt;html app='chrome.exe' title='TNGD eWallet (Admin Portal) (TNGD eWallet (Admin Portal)) (TNGD*' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -249,26 +249,18 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:BrowserScope>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe TNGD'" sap:VirtualizedContainerService.HintSize="519.2,4922.4" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="73d5c7e4b5ca0f017451718705145531" Selector="&lt;html app='chrome.exe' title='TNGD * (E-Wallet) Settlement Report (TNGD eWallet (Admin Portal)) (TNGD*' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe TNGD'" sap:VirtualizedContainerService.HintSize="620.8,4822.4" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="73d5c7e4b5ca0f017451718705145531" Selector="&lt;html app='chrome.exe' title='TNGD * (E-Wallet) Settlement Report (TNGD eWallet (Admin Portal)) (TNGD*' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="452,4775.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="452,4675.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="410.4,60" sap2010:WorkflowViewState.IdRef="Assign_2">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[CurrDate]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[Now.AddDays(-1).ToString("dd/MM/yyyy")]</InArgument>
-              </Assign.Value>
-            </Assign>
             <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Supplier BP Invoice Process button" sap:VirtualizedContainerService.HintSize="410.4,107.2" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
@@ -288,7 +280,7 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
-            <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text -  From Date" sap:VirtualizedContainerService.HintSize="410.4,135.2" sap2010:WorkflowViewState.IdRef="SetValue_1" Text="[CurrDate]">
+            <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text -  From Date" sap:VirtualizedContainerService.HintSize="410.4,135.2" sap2010:WorkflowViewState.IdRef="SetValue_1" Text="[in_DateT1.ToString(&quot;dd/MM/yyyy&quot;)]">
               <ui:SetValue.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a254ea98-b137-45a7-83f8-422e20e27975" InformativeScreenshot="35846df717c2d2ec74027d9de5094ac6" Selector="&lt;webctrl tag='INPUT' tableCol='2' tableRow='1' /&gt;" WaitForReady="INTERACTIVE">
                   <ui:Target.TimeoutMS>
@@ -297,7 +289,7 @@
                 </ui:Target>
               </ui:SetValue.Target>
             </ui:SetValue>
-            <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text -  From Date" sap:VirtualizedContainerService.HintSize="410.4,135.2" sap2010:WorkflowViewState.IdRef="SetValue_2" Text="[CurrDate]">
+            <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text -  From Date" sap:VirtualizedContainerService.HintSize="410.4,135.2" sap2010:WorkflowViewState.IdRef="SetValue_2" Text="[in_DateT1.ToString(&quot;dd/MM/yyyy&quot;)]">
               <ui:SetValue.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a254ea98-b137-45a7-83f8-422e20e27975" InformativeScreenshot="b4cab9fb86d604375327597b5d4e270d" Selector="&lt;webctrl tag='INPUT' tableCol='2' tableRow='2' /&gt;" WaitForReady="INTERACTIVE">
                   <ui:Target.TimeoutMS>
@@ -1144,26 +1136,37 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:BrowserScope>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SAGE_Close workflow" sap:VirtualizedContainerService.HintSize="519.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="SAGE\SAGE_Close.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SAGE_Close workflow" sap:VirtualizedContainerService.HintSize="620.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="SAGE\SAGE_Close.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If Condition="[bCIMB = True]" DisplayName="If - CIMB (E54)" sap:VirtualizedContainerService.HintSize="519.2,526.4" sap2010:WorkflowViewState.IdRef="If_13">
+    <If Condition="[bCIMB = True]" DisplayName="If - CIMB (E54)" sap:VirtualizedContainerService.HintSize="620.8,697.6" sap2010:WorkflowViewState.IdRef="If_13">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="375.2,376.8" sap2010:WorkflowViewState.IdRef="Sequence_42">
+        <Sequence sap:VirtualizedContainerService.HintSize="476.8,548" sap2010:WorkflowViewState.IdRef="Sequence_42">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke DingTalk_Open workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="DingTalk\DingTalk_Open.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="In_Msg">[MsgCIMB54]</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="333.6,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_7">
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="435.2,284.8" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,206.4" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke DingTalk_Open workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="DingTalk\DingTalk_Open.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="In_Msg">[MsgCIMB54]</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+              </Sequence>
+            </ui:CommentOut.Body>
+          </ui:CommentOut>
+          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="435.2,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_7">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_31">
@@ -1188,7 +1191,7 @@
         </Sequence>
       </If.Then>
     </If>
-    <If Condition="[bIPAY88 = True]" DisplayName="If - IPAY88 (E01)" sap:VirtualizedContainerService.HintSize="519.2,526.4" sap2010:WorkflowViewState.IdRef="If_14">
+    <If Condition="[bIPAY88 = True]" DisplayName="If - IPAY88 (E01)" sap:VirtualizedContainerService.HintSize="620.8,526.4" sap2010:WorkflowViewState.IdRef="If_14">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="375.2,376.8" sap2010:WorkflowViewState.IdRef="Sequence_43">
           <sap:WorkflowViewStateService.ViewState>
@@ -1227,7 +1230,7 @@
         </Sequence>
       </If.Then>
     </If>
-    <If Condition="[bMOL = True]" DisplayName="If - MOL (E60)" sap:VirtualizedContainerService.HintSize="519.2,526.4" sap2010:WorkflowViewState.IdRef="If_15">
+    <If Condition="[bMOL = True]" DisplayName="If - MOL (E60)" sap:VirtualizedContainerService.HintSize="620.8,526.4" sap2010:WorkflowViewState.IdRef="If_15">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="375.2,376.8" sap2010:WorkflowViewState.IdRef="Sequence_44">
           <sap:WorkflowViewStateService.ViewState>
@@ -1266,7 +1269,7 @@
         </Sequence>
       </If.Then>
     </If>
-    <If Condition="[bMBB = True]" DisplayName="If -  MBB (E128)" sap:VirtualizedContainerService.HintSize="519.2,526.4" sap2010:WorkflowViewState.IdRef="If_16">
+    <If Condition="[bMBB = True]" DisplayName="If -  MBB (E128)" sap:VirtualizedContainerService.HintSize="620.8,526.4" sap2010:WorkflowViewState.IdRef="If_16">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="375.2,376.8" sap2010:WorkflowViewState.IdRef="Sequence_45">
           <sap:WorkflowViewStateService.ViewState>
@@ -1305,7 +1308,7 @@
         </Sequence>
       </If.Then>
     </If>
-    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-2)" sap:VirtualizedContainerService.HintSize="519.2,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + Now.AddDays(-2).ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + Now.AddDays(-2).ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderMonth2 + &quot;\&quot; + &quot;1. Reload Recon &quot; + Now.AddDays(-2).ToString(&quot;MMM&quot;) + &quot;'&quot; + Now.AddDays(-2).ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-2)" sap:VirtualizedContainerService.HintSize="620.8,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + in_DateT2.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + in_DateT2.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderMonth2 + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_DateT2.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT2.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -1332,7 +1335,7 @@
                       <OutArgument x:TypeArguments="x:String">[DatePre2]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:String">[Now.AddDays(-2).ToString("dd")]</InArgument>
+                      <InArgument x:TypeArguments="x:String">[in_DateT2.ToString("dd")]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
@@ -1340,7 +1343,7 @@
                       <OutArgument x:TypeArguments="x:String">[SheetName]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:String">[Now.AddDays(-2).ToString("MMM") + "'" + Now.AddDays(-2).ToString("yy")]</InArgument>
+                      <InArgument x:TypeArguments="x:String">[in_DateT2.ToString("MMM") + "'" + in_DateT2.ToString("yy")]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
@@ -1378,22 +1381,22 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-1)" sap:VirtualizedContainerService.HintSize="519.2,620" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + io_FolderMonth + &quot;\&quot; + &quot;1. Reload Recon &quot; + Now.AddDays(-1).ToString(&quot;MMM&quot;) + &quot;'&quot; + Now.AddDays(-1).ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-1)" sap:VirtualizedContainerService.HintSize="519.2,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + io_FolderMonth + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_DateT1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT1.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,510.4" sap2010:WorkflowViewState.IdRef="Sequence_37">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_37">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="DatePre1" />
               <Variable x:TypeArguments="x:String" Name="SheetName1" />
-              <Variable x:TypeArguments="x:Int32" Name="IndexColCIMB" />
               <Variable x:TypeArguments="x:Int32" Name="IndexColBank1" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="333.6,161.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
@@ -1404,7 +1407,7 @@
                       <OutArgument x:TypeArguments="x:String">[DatePre1]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:String">[Now.AddDays(-1).ToString("dd")]</InArgument>
+                      <InArgument x:TypeArguments="x:String">[in_DateT1.ToString("dd")]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
@@ -1412,7 +1415,7 @@
                       <OutArgument x:TypeArguments="x:String">[SheetName1]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:String">[Now.AddDays(-1).ToString("MMM") + "'" + Now.AddDays(-1).ToString("yy")]</InArgument>
+                      <InArgument x:TypeArguments="x:String">[in_DateT1.ToString("MMM") + "'" + in_DateT1.ToString("yy")]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">

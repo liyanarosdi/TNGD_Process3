@@ -1,10 +1,11 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CIMB_Download" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:uascw="clr-namespace:UiPath.Activities.System.Compression.Workflow;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CIMB_Download" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:uascw="clr-namespace:UiPath.Activities.System.Compression.Workflow;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="io_CurrDateI1" Type="InArgument(x:String)" />
     <x:Property Name="io_CurrDateFormat" Type="InArgument(x:String)" />
     <x:Property Name="io_FolderMonth" Type="InArgument(x:String)" />
     <x:Property Name="io_statCIMB" Type="InOutArgument(x:Int32)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_DateT1" Type="InArgument(s:DateTime)" />
   </x:Members>
   <this:CIMB_Download.io_CurrDateI1>
     <InArgument x:TypeArguments="x:String" />
@@ -18,7 +19,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>900.8,3813.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1010.4,4184</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CIMB_Download_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -80,9 +81,10 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CIMB_Download" sap:VirtualizedContainerService.HintSize="911.2,3708.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CIMB_Download" sap:VirtualizedContainerService.HintSize="1020.8,4079.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="bFolderMonth" />
       <Variable x:TypeArguments="x:Boolean" Name="bFolderDate" />
@@ -94,7 +96,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="869.6,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="979.2,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
@@ -102,7 +104,7 @@
               <OutArgument x:TypeArguments="x:String">[MoveFile]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String" xml:space="preserve">["C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year " + Now.AddDays(-1).ToString("yyyy") + "\" + io_FolderMonth + "\"  + io_CurrDateFormat +"\TerminalActivity_" + io_CurrDateFormat + "\Terminal\" + io_CurrDateFormat]</InArgument>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">["C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year " + in_DateT1.ToString("yyyy") + "\" + io_FolderMonth + "\"  + io_CurrDateFormat +"\TerminalActivity_" + io_CurrDateFormat + "\Terminal\" + io_CurrDateFormat]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
@@ -116,25 +118,25 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:PathExists DisplayName="Path Exists - Month" Exists="[bFolderMonth]" sap:VirtualizedContainerService.HintSize="869.6,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth]" PathType="Folder" />
-    <If Condition="[bFolderMonth = False]" DisplayName="If - File path month" sap:VirtualizedContainerService.HintSize="869.6,230.4" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:PathExists DisplayName="Path Exists - Month" Exists="[bFolderMonth]" sap:VirtualizedContainerService.HintSize="979.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth]" PathType="Folder" />
+    <If Condition="[bFolderMonth = False]" DisplayName="If - File path month" sap:VirtualizedContainerService.HintSize="979.2,230.4" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth]" />
+        <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth]" />
       </If.Then>
     </If>
-    <ui:PathExists DisplayName="Path Exists - Date" Exists="[bFolderDate]" sap:VirtualizedContainerService.HintSize="869.6,90.4" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\&quot; + io_CurrDateFormat]" PathType="Folder" />
-    <If Condition="[bFolderDate = False]" DisplayName="If - File path date" sap:VirtualizedContainerService.HintSize="869.6,230.4" sap2010:WorkflowViewState.IdRef="If_2">
+    <ui:PathExists DisplayName="Path Exists - Date" Exists="[bFolderDate]" sap:VirtualizedContainerService.HintSize="979.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\&quot; + io_CurrDateFormat]" PathType="Folder" />
+    <If Condition="[bFolderDate = False]" DisplayName="If - File path date" sap:VirtualizedContainerService.HintSize="979.2,230.4" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\&quot; + io_CurrDateFormat]" />
+        <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\&quot; + io_CurrDateFormat]" />
       </If.Then>
     </If>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe mPortal'" sap:VirtualizedContainerService.HintSize="869.6,2202.4" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="7808d94682d79442c0a469cf9c398b92" Selector="&lt;html app='chrome.exe' title='mPortal System' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe mPortal'" sap:VirtualizedContainerService.HintSize="979.2,2572.8" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="7808d94682d79442c0a469cf9c398b92" Selector="&lt;html app='chrome.exe' title='mPortal System' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="836,2055.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="945.6,2425.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="bCIMB" />
             </Sequence.Variables>
@@ -143,7 +145,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Reports button" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Reports button" sap:VirtualizedContainerService.HintSize="904,107.2" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -162,7 +164,7 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
-            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Terminal Activity button" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Terminal Activity button" sap:VirtualizedContainerService.HintSize="904,107.2" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -181,7 +183,7 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
-            <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text - SettlementDateFrom" sap:VirtualizedContainerService.HintSize="794.4,135.2" sap2010:WorkflowViewState.IdRef="SetValue_1" Text="[Now.AddDays(-1).ToString(&quot;dd/MM/yyyy&quot;)]">
+            <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text - SettlementDateFrom" sap:VirtualizedContainerService.HintSize="904,135.2" sap2010:WorkflowViewState.IdRef="SetValue_1" Text="[in_DateT1.ToString(&quot;dd/MM/yyyy&quot;)]">
               <ui:SetValue.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="422656b9-73d5-452b-a393-ae0bff372055" InformativeScreenshot="eea0d48129141227cf8a3f529edda4d9" Selector="&lt;webctrl id='settlementDateFrom' tag='INPUT' type='text' /&gt;" WaitForReady="INTERACTIVE">
                   <ui:Target.TimeoutMS>
@@ -190,7 +192,7 @@
                 </ui:Target>
               </ui:SetValue.Target>
             </ui:SetValue>
-            <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text - SettlementDateTo" sap:VirtualizedContainerService.HintSize="794.4,135.2" sap2010:WorkflowViewState.IdRef="SetValue_2" Text="[Now.AddDays(-1).ToString(&quot;dd/MM/yyyy&quot;)]">
+            <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text - SettlementDateTo" sap:VirtualizedContainerService.HintSize="904,135.2" sap2010:WorkflowViewState.IdRef="SetValue_2" Text="[in_DateT1.ToString(&quot;dd/MM/yyyy&quot;)]">
               <ui:SetValue.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="422656b9-73d5-452b-a393-ae0bff372055" InformativeScreenshot="0c3120ab22b9caf597ef50a903d93f1f" Selector="&lt;webctrl id='settlementDateTo' tag='INPUT' type='text' /&gt;" WaitForReady="INTERACTIVE">
                   <ui:Target.TimeoutMS>
@@ -199,7 +201,7 @@
                 </ui:Target>
               </ui:SetValue.Target>
             </ui:SetValue>
-            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Search button" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Search button" sap:VirtualizedContainerService.HintSize="904,107.2" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -218,21 +220,21 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
-            <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="794.4,22.4" sap2010:WorkflowViewState.IdRef="Delay_1" />
-            <ui:UiElementExists DisplayName="Element Exists - have data or not" Exists="[bCIMB]" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+            <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="904,22.4" sap2010:WorkflowViewState.IdRef="Delay_1" />
+            <ui:UiElementExists DisplayName="Element Exists - have data or not" Exists="[bCIMB]" sap:VirtualizedContainerService.HintSize="904,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
               <ui:UiElementExists.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a60fa62f-2dd9-45fa-846d-4d2765cc4abc" InformativeScreenshot="f163efc8da28b504db4246bbf131c859" Selector="&lt;webctrl aaname='Showing 0 to 0 of 0 entries' tag='DIV' /&gt;" TimeoutMS="5000" WaitForReady="INTERACTIVE" />
               </ui:UiElementExists.Target>
             </ui:UiElementExists>
-            <If Condition="[bCIMB = False]" sap:VirtualizedContainerService.HintSize="794.4,960.8" sap2010:WorkflowViewState.IdRef="If_3">
+            <If Condition="[bCIMB = False]" sap:VirtualizedContainerService.HintSize="904,1331.2" sap2010:WorkflowViewState.IdRef="If_3">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="375.2,811.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence sap:VirtualizedContainerService.HintSize="484.8,1181.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Select All button" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Select All button" sap:VirtualizedContainerService.HintSize="443.2,107.2" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -251,7 +253,7 @@
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
-                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Select All button" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Select All button" sap:VirtualizedContainerService.HintSize="443.2,107.2" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -270,15 +272,16 @@
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
-                  <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear 'dialog  Save As'" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_1" RepeatForever="False">
+                  <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear 'dialog  Save As'" sap:VirtualizedContainerService.HintSize="443.2,52.8" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_1" RepeatForever="False">
                     <ui:OnUiElementAppear.Body>
                       <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,375.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text - File Path" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="SetValue_3" Text="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\&quot; + io_CurrDateFormat + &quot;\TerminalActivity_&quot; + io_CurrDateFormat + &quot;.zip&quot;]">
+                        <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text - File Path" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="SetValue_3" Text="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\&quot; + io_CurrDateFormat + &quot;\TerminalActivity_&quot; + io_CurrDateFormat + &quot;.zip&quot;]">
                           <ui:SetValue.Target>
                             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="99377bb1-3606-41fd-a45b-dce1a590d098" InformativeScreenshot="3f73db18dcac03d642454e3248d10e8a" Selector="&lt;wnd app='chrome.exe' cls='#32770' title='Save As' /&gt;&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd aaname='File name:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;" WaitForReady="INTERACTIVE">
                               <ui:Target.TimeoutMS>
@@ -325,7 +328,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:OnUiElementAppear>
-                  <ui:OnUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" ContinueOnError="True" DisplayName="On Element Appear 'chrome.exe Confirm'" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_2" RepeatForever="False">
+                  <ui:OnUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" ContinueOnError="True" DisplayName="On Element Appear 'chrome.exe Confirm'" sap:VirtualizedContainerService.HintSize="443.2,52.8" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_2" RepeatForever="False">
                     <ui:OnUiElementAppear.Body>
                       <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,200" sap2010:WorkflowViewState.IdRef="Sequence_4">
                         <sap:WorkflowViewStateService.ViewState>
@@ -360,26 +363,26 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:OnUiElementAppear>
-                  <uascw:ExtractFiles DestinationFolderInfo="{x:Null}" Password="{x:Null}" CodePage="Default" DestinationFolder="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\&quot; + io_CurrDateFormat]" DisplayName="Extract/Unzip Files" ExtractToADedicatedFolder="True" FileToExtract="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_CurrDateI1 + &quot;. &quot; + Now.AddDays(-1).ToString(&quot;MMM&quot;) + &quot;'&quot; + Now.AddDays(-1).ToString(&quot;yy&quot;) + &quot;\&quot; + io_CurrDateFormat + &quot;\TerminalActivity_&quot; + io_CurrDateFormat + &quot;.zip&quot;]" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="ExtractFiles_1" SkipUnsupportedFiles="False">
+                  <uascw:ExtractFiles DestinationFolderInfo="{x:Null}" Password="{x:Null}" CodePage="Default" DestinationFolder="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\&quot; + io_CurrDateFormat]" DisplayName="Extract/Unzip Files" ExtractToADedicatedFolder="True" FileToExtract="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_CurrDateI1 + &quot;. &quot; + in_DateT1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT1.ToString(&quot;yy&quot;) + &quot;\&quot; + io_CurrDateFormat + &quot;\TerminalActivity_&quot; + io_CurrDateFormat + &quot;.zip&quot;]" sap:VirtualizedContainerService.HintSize="443.2,208.8" sap2010:WorkflowViewState.IdRef="ExtractFiles_1" SkipUnsupportedFiles="False">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </uascw:ExtractFiles>
-                  <ui:CopyFile ContinueOnError="{x:Null}" Destination="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\&quot; + io_CurrDateFormat + &quot;\&quot; + &quot;Transaction_000001190700195_&quot; + Now.AddDays(-1).ToString(&quot;ddMMyyyy&quot;) + &quot;.csv&quot;]" DisplayName="Copy File - 195" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[MoveFile + &quot;\&quot; + &quot;Transaction_000001190700195_&quot; + DateMoveFile + &quot;.csv&quot;]">
+                  <ui:CopyFile ContinueOnError="{x:Null}" Destination="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\&quot; + io_CurrDateFormat + &quot;\&quot; + &quot;Transaction_000001190700195_&quot; + in_DateT1.ToString(&quot;ddMMyyyy&quot;) + &quot;.csv&quot;]" DisplayName="Copy File - 195" sap:VirtualizedContainerService.HintSize="443.2,160" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[MoveFile + &quot;\&quot; + &quot;Transaction_000001190700195_&quot; + DateMoveFile + &quot;.csv&quot;]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:CopyFile>
-                  <ui:CopyFile ContinueOnError="{x:Null}" Destination="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\&quot; + io_CurrDateFormat + &quot;\&quot; + &quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;ddMMyyyy&quot;) + &quot;.csv&quot;]" DisplayName="Copy File - 203" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="[MoveFile + &quot;\&quot; + &quot;Transaction_000001190700203_&quot; + DateMoveFile + &quot;.csv&quot;]">
+                  <ui:CopyFile ContinueOnError="{x:Null}" Destination="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\&quot; + io_CurrDateFormat + &quot;\&quot; + &quot;Transaction_000001190700203_&quot; + in_DateT1.ToString(&quot;ddMMyyyy&quot;) + &quot;.csv&quot;]" DisplayName="Copy File - 203" sap:VirtualizedContainerService.HintSize="443.2,160" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="[MoveFile + &quot;\&quot; + &quot;Transaction_000001190700203_&quot; + DateMoveFile + &quot;.csv&quot;]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -431,7 +434,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:BrowserScope>
-    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - User button" sap:VirtualizedContainerService.HintSize="869.6,107.2" sap2010:WorkflowViewState.IdRef="Click_7" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - User button" sap:VirtualizedContainerService.HintSize="979.2,107.2" sap2010:WorkflowViewState.IdRef="Click_7" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
       <ui:Click.CursorPosition>
         <ui:CursorPosition Position="Center">
           <ui:CursorPosition.OffsetX>

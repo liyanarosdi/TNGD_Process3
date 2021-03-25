@@ -6,11 +6,12 @@
     <x:Property Name="io_MotoColLEarly" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_MotoColN" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_MotoColL" Type="InOutArgument(x:Double)" />
-    <x:Property Name="io_CurrDate0" Type="InOutArgument(x:String)" />
-    <x:Property Name="io_CurrDate1" Type="InOutArgument(x:String)" />
-    <x:Property Name="in_ValueMEarly" Type="InOutArgument(s:DateTime)" />
-    <x:Property Name="in_ValueMLatest" Type="InOutArgument(s:DateTime)" />
     <x:Property Name="io_FolderMonth" Type="InArgument(x:String)" />
+    <x:Property Name="in_DateT1" Type="InArgument(s:DateTime)" />
+    <x:Property Name="io_bEarlyM" Type="InOutArgument(x:Boolean)" />
+    <x:Property Name="io_bLatestM" Type="InOutArgument(x:Boolean)" />
+    <x:Property Name="io_ValueMEarly" Type="InOutArgument(s:DateTime)" />
+    <x:Property Name="io_ValueMLatest" Type="InOutArgument(s:DateTime)" />
   </x:Members>
   <this:CIMB_MOTO.io_FolderMonth>
     <InArgument x:TypeArguments="x:String" />
@@ -18,10 +19,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>852,4451.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>956.8,5505.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CIMB_MOTO_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="56">
+    <scg:List x:TypeArguments="x:String" Capacity="32">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -53,10 +54,11 @@
       <x:String>System.Reflection</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
       <x:String>BalaReva.EasyDataTable</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="62">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="33">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -89,38 +91,79 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>BalaReva.EasyDataTable</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CIMB_MOTO" sap:VirtualizedContainerService.HintSize="492,4346.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CIMB_MOTO" sap:VirtualizedContainerService.HintSize="727.2,5400.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FolderT1" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtMoto" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="450.4,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign sap:VirtualizedContainerService.HintSize="685.6,60" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[FolderT1]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[Now.AddDays(-1).ToString("yyyy") + "_" + Now.AddDays(-1).ToString("MM") + "_" + Now.AddDays(-1).ToString("dd")]</InArgument>
+        <InArgument x:TypeArguments="x:String">[in_DateT1.ToString("yyyy") + "_" + in_DateT1.ToString("MM") + "_" + in_DateT1.ToString("dd")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - CIMB MOTO (T-1)" sap:VirtualizedContainerService.HintSize="450.4,4153.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + Now.AddDays(-1).ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\&quot; + FolderT1 + &quot;\Transaction_000001190700203_&quot;+ Now.AddDays(-1).ToString(&quot;ddMMyyyy&quot;) +&quot;.csv&quot;]">
+    <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - CIMB MOTO (T-1)" sap:VirtualizedContainerService.HintSize="685.6,324.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" ReadOnly="True" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; +  in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\&quot; + FolderT1 + &quot;\Transaction_000001190700203_&quot;+ in_DateT1.ToString(&quot;ddMMyyyy&quot;) +&quot;.csv&quot;]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416.8,4044" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,215.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
             <Sequence.Variables>
               <Variable x:TypeArguments="scg:IEnumerable(x:Object)" Name="ColLIndex" />
               <Variable x:TypeArguments="sd:DataTable" Name="dtIndexColK" />
               <Variable x:TypeArguments="x:String" Name="NewDateColI" />
               <Variable x:TypeArguments="x:String" Name="ResultColI" />
-              <Variable x:TypeArguments="sd:DataTable" Name="dtMoto" />
+              <Variable x:TypeArguments="x:String" Name="LastRowK" />
+              <Variable x:TypeArguments="x:Double" Name="SumColM" />
+              <Variable x:TypeArguments="x:String" Name="sSheetName" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelGetWorkbookSheet DisplayName="Get Workbook Sheet" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheet_1" Index="0" Sheet="[sSheetName]" />
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[dtMoto]" DisplayName="Read Range - Read all" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_11" SheetName="[sSheetName]">
+              <ui:ExcelReadRange.Range>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ui:ExcelReadRange.Range>
+            </ui:ExcelReadRange>
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ExcelApplicationScope>
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - CIMB MOTO (T-1)" sap:VirtualizedContainerService.HintSize="685.6,4780.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="C:\Users\rpavendor\Desktop\RPATEST\Process 3\CIMBMOTO.xlsx">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="652,4671.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="scg:IEnumerable(x:Object)" Name="ColLIndex" />
+              <Variable x:TypeArguments="sd:DataTable" Name="dtIndexColK" />
+              <Variable x:TypeArguments="x:String" Name="NewDateColI" />
+              <Variable x:TypeArguments="x:String" Name="ResultColI" />
               <Variable x:TypeArguments="x:String" Name="LastRowK" />
               <Variable x:TypeArguments="x:Double" Name="SumColM" />
             </Sequence.Variables>
@@ -129,9 +172,10 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelInsertDeleteRows DisplayName="Insert/Delete Rows" sap:VirtualizedContainerService.HintSize="375.2,22.4" sap2010:WorkflowViewState.IdRef="ExcelInsertDeleteRows_1" Mode="Remove" NoRows="4" Position="1" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) +  io_CurrDate0]" />
-            <ui:ExcelReadRange AddHeaders="False" DataTable="[dtIndexColK]" DisplayName="Read Range - Column K" sap:VirtualizedContainerService.HintSize="375.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_2" Range="K1" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]" />
-            <Assign DisplayName="Assign - Last row column K" sap:VirtualizedContainerService.HintSize="375.2,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <ui:ExcelWriteRange AddHeaders="True" DataTable="[dtMoto]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="610.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_5" SheetName="Sheet1" StartingCell="A1" />
+            <ui:ExcelInsertDeleteRows DisplayName="Insert/Delete Rows" sap:VirtualizedContainerService.HintSize="610.4,22.4" sap2010:WorkflowViewState.IdRef="ExcelInsertDeleteRows_1" Mode="Remove" NoRows="4" Position="1" SheetName="Sheet1" />
+            <ui:ExcelReadRange AddHeaders="False" DataTable="[dtIndexColK]" DisplayName="Read Range - Column K" sap:VirtualizedContainerService.HintSize="610.4,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_2" Range="K1" SheetName="Sheet1" />
+            <Assign DisplayName="Assign - Last row column K" sap:VirtualizedContainerService.HintSize="610.4,60" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[LastRowK]</OutArgument>
               </Assign.To>
@@ -139,59 +183,59 @@
                 <InArgument x:TypeArguments="x:String">[dtIndexColK.Rows.Count.ToString]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:ExcelWriteCell Cell="[&quot;K&quot; + LastRowK.ToString]" DisplayName="Write Cell - Delete total column K" sap:VirtualizedContainerService.HintSize="375.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]">
+            <ui:ExcelWriteCell Cell="[&quot;K&quot; + LastRowK.ToString]" DisplayName="Write Cell - Delete total column K" sap:VirtualizedContainerService.HintSize="610.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="Sheet1">
               <ui:ExcelWriteCell.Text>
                 <InArgument x:TypeArguments="x:String">
                   <Literal x:TypeArguments="x:String" Value="" />
                 </InArgument>
               </ui:ExcelWriteCell.Text>
             </ui:ExcelWriteCell>
-            <ui:ExcelReadCell Cell="[&quot;L&quot; + LastRowK.ToString]" DisplayName="Read Cell - Column L" sap:VirtualizedContainerService.HintSize="375.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_3" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]">
+            <ui:ExcelReadCell Cell="[&quot;L&quot; + LastRowK.ToString]" DisplayName="Read Cell - Column L" sap:VirtualizedContainerService.HintSize="610.4,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_3" SheetName="Sheet1">
               <ui:ExcelReadCell.Result>
                 <OutArgument x:TypeArguments="x:Double">[io_MotoColL]</OutArgument>
               </ui:ExcelReadCell.Result>
             </ui:ExcelReadCell>
-            <ui:ExcelReadCell Cell="[&quot;N&quot; + LastRowK.ToString]" DisplayName="Read Cell - Column N" sap:VirtualizedContainerService.HintSize="375.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_4" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]">
+            <ui:ExcelReadCell Cell="[&quot;N&quot; + LastRowK.ToString]" DisplayName="Read Cell - Column N" sap:VirtualizedContainerService.HintSize="610.4,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_4" SheetName="Sheet1">
               <ui:ExcelReadCell.Result>
                 <OutArgument x:TypeArguments="x:Double">[io_MotoColN]</OutArgument>
               </ui:ExcelReadCell.Result>
             </ui:ExcelReadCell>
-            <ui:ExcelWriteCell Cell="[&quot;L&quot; + LastRowK.ToString]" DisplayName="Write Cell - Delete total column L" sap:VirtualizedContainerService.HintSize="375.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]">
+            <ui:ExcelWriteCell Cell="[&quot;L&quot; + LastRowK.ToString]" DisplayName="Write Cell - Delete total column L" sap:VirtualizedContainerService.HintSize="610.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="Sheet1">
               <ui:ExcelWriteCell.Text>
                 <InArgument x:TypeArguments="x:String">
                   <Literal x:TypeArguments="x:String" Value="" />
                 </InArgument>
               </ui:ExcelWriteCell.Text>
             </ui:ExcelWriteCell>
-            <ui:ExcelWriteCell Cell="[&quot;M&quot; + LastRowK.ToString]" DisplayName="Write Cell - Delete total column M" sap:VirtualizedContainerService.HintSize="375.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_3" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]">
+            <ui:ExcelWriteCell Cell="[&quot;M&quot; + LastRowK.ToString]" DisplayName="Write Cell - Delete total column M" sap:VirtualizedContainerService.HintSize="610.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_3" SheetName="Sheet1">
               <ui:ExcelWriteCell.Text>
                 <InArgument x:TypeArguments="x:String">
                   <Literal x:TypeArguments="x:String" Value="" />
                 </InArgument>
               </ui:ExcelWriteCell.Text>
             </ui:ExcelWriteCell>
-            <ui:ExcelWriteCell Cell="[&quot;N&quot; + LastRowK.ToString]" DisplayName="Write Cell - Delete total column N" sap:VirtualizedContainerService.HintSize="375.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_4" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]">
+            <ui:ExcelWriteCell Cell="[&quot;N&quot; + LastRowK.ToString]" DisplayName="Write Cell - Delete total column N" sap:VirtualizedContainerService.HintSize="610.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_4" SheetName="Sheet1">
               <ui:ExcelWriteCell.Text>
                 <InArgument x:TypeArguments="x:String">
                   <Literal x:TypeArguments="x:String" Value="" />
                 </InArgument>
               </ui:ExcelWriteCell.Text>
             </ui:ExcelWriteCell>
-            <ui:ExcelWriteCell Cell="[&quot;O&quot; + LastRowK.ToString]" DisplayName="Write Cell - Delete total column O" sap:VirtualizedContainerService.HintSize="375.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_5" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]">
+            <ui:ExcelWriteCell Cell="[&quot;O&quot; + LastRowK.ToString]" DisplayName="Write Cell - Delete total column O" sap:VirtualizedContainerService.HintSize="610.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_5" SheetName="Sheet1">
               <ui:ExcelWriteCell.Text>
                 <InArgument x:TypeArguments="x:String">
                   <Literal x:TypeArguments="x:String" Value="" />
                 </InArgument>
               </ui:ExcelWriteCell.Text>
             </ui:ExcelWriteCell>
-            <ui:ExcelReadRange AddHeaders="True" DataTable="[dtMoto]" DisplayName="Read Range - Read after delete total" sap:VirtualizedContainerService.HintSize="375.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_3" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]">
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[dtMoto]" DisplayName="Read Range - Read after delete total" sap:VirtualizedContainerService.HintSize="610.4,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_3" SheetName="Sheet1">
               <ui:ExcelReadRange.Range>
                 <InArgument x:TypeArguments="x:String">
                   <Literal x:TypeArguments="x:String" Value="" />
                 </InArgument>
               </ui:ExcelReadRange.Range>
             </ui:ExcelReadRange>
-            <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="375.2,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+            <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="610.4,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_3">
               <ui:CommentOut.Body>
                 <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,254.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <sap:WorkflowViewStateService.ViewState>
@@ -238,7 +282,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:CommentOut>
-            <Sequence DisplayName="Sequence - Earliest date column L" sap:VirtualizedContainerService.HintSize="375.2,1116" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence DisplayName="Sequence - Earliest date column L" sap:VirtualizedContainerService.HintSize="610.4,1365.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
               <Sequence.Variables>
                 <Variable x:TypeArguments="sd:DataTable" Name="dtColIEarly" />
                 <Variable x:TypeArguments="x:String" Name="LastRowIEarly" />
@@ -251,23 +295,23 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ExcelReadRange AddHeaders="True" DataTable="[dtColIEarly]" DisplayName="Read Range - Read range column I until last row" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_5" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]">
+              <ui:ExcelReadRange AddHeaders="True" DataTable="[dtColIEarly]" DisplayName="Read Range - Read range column I until last row" sap:VirtualizedContainerService.HintSize="568.8,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_5" SheetName="Sheet1">
                 <ui:ExcelReadRange.Range>
                   <InArgument x:TypeArguments="x:String">
                     <Literal x:TypeArguments="x:String" Value="" />
                   </InArgument>
                 </ui:ExcelReadRange.Range>
               </ui:ExcelReadRange>
-              <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="Trans. Date" DataTable="[dtColIEarly]" DisplayName="Sort Data Table - Column I" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Ascending" OutputDataTable="[dtColIEarly]" SortOrder="Ascending" />
-              <ui:ExcelWriteRange AddHeaders="True" DataTable="[dtColIEarly]" DisplayName="Write Range - After sort ascending Column I" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]">
+              <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="Trans. Date" DataTable="[dtColIEarly]" DisplayName="Sort Data Table - Column I" sap:VirtualizedContainerService.HintSize="568.8,22.4" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Ascending" OutputDataTable="[dtColIEarly]" SortOrder="Ascending" />
+              <ui:ExcelWriteRange AddHeaders="True" DataTable="[dtColIEarly]" DisplayName="Write Range - After sort ascending Column I" sap:VirtualizedContainerService.HintSize="568.8,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Sheet1">
                 <ui:ExcelWriteRange.StartingCell>
                   <InArgument x:TypeArguments="x:String">
                     <Literal x:TypeArguments="x:String" Value="" />
                   </InArgument>
                 </ui:ExcelWriteRange.StartingCell>
               </ui:ExcelWriteRange>
-              <ui:ExcelReadRange AddHeaders="True" DataTable="[dtTransDateEarly]" DisplayName="Read Range - Read range column I" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_4" Range="I1" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]" />
-              <Assign DisplayName="Assign - Last row column I" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <ui:ExcelReadRange AddHeaders="True" DataTable="[dtTransDateEarly]" DisplayName="Read Range - Read range column I" sap:VirtualizedContainerService.HintSize="568.8,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_4" Range="I1" SheetName="Sheet1" />
+              <Assign DisplayName="Assign - Last row column I" sap:VirtualizedContainerService.HintSize="568.8,60" sap2010:WorkflowViewState.IdRef="Assign_2">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[LastRowIEarly]</OutArgument>
                 </Assign.To>
@@ -275,20 +319,20 @@
                   <InArgument x:TypeArguments="x:String">[dtTransDateEarly.Rows.Count.ToString]</InArgument>
                 </Assign.Value>
               </Assign>
-              <ui:ExcelReadCell Cell="I2" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]">
+              <ui:ExcelReadCell Cell="I2" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="568.8,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" SheetName="Sheet1">
                 <ui:ExcelReadCell.Result>
-                  <OutArgument x:TypeArguments="s:DateTime">[in_ValueMEarly]</OutArgument>
+                  <OutArgument x:TypeArguments="s:DateTime">[io_ValueMEarly]</OutArgument>
                 </ui:ExcelReadCell.Result>
               </ui:ExcelReadCell>
-              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="333.6,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[in_ValueMEarly.ToString]" />
-              <ui:ExcelReadRange AddHeaders="True" DataTable="[dtMainEarly]" DisplayName="Read Range - Read range column I" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_6" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]">
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="568.8,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[io_ValueMEarly.ToString]" />
+              <ui:ExcelReadRange AddHeaders="True" DataTable="[dtMainEarly]" DisplayName="Read Range - Read range column I" sap:VirtualizedContainerService.HintSize="568.8,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_6" SheetName="Sheet1">
                 <ui:ExcelReadRange.Range>
                   <InArgument x:TypeArguments="x:String">
                     <Literal x:TypeArguments="x:String" Value="" />
                   </InArgument>
                 </ui:ExcelReadRange.Range>
               </ui:ExcelReadRange>
-              <ui:FilterDataTable DataTable="[dtMainEarly]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtMainEarly]" SelectColumnsMode="Keep">
+              <ui:FilterDataTable DataTable="[dtMainEarly]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="568.8,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtMainEarly]" SelectColumnsMode="Keep">
                 <ui:FilterDataTable.Filters>
                   <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                     <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
@@ -296,7 +340,7 @@
                         <InArgument x:TypeArguments="x:String">["Trans. Date"]</InArgument>
                       </ui:FilterOperationArgument.Column>
                       <ui:FilterOperationArgument.Operand>
-                        <InArgument x:TypeArguments="s:DateTime">[in_ValueMEarly]</InArgument>
+                        <InArgument x:TypeArguments="s:DateTime">[io_ValueMEarly]</InArgument>
                       </ui:FilterOperationArgument.Operand>
                     </ui:FilterOperationArgument>
                   </scg:List>
@@ -307,7 +351,7 @@
                   </scg:List>
                 </ui:FilterDataTable.SelectColumns>
               </ui:FilterDataTable>
-              <ui:MultipleAssign DisplayName="Multiple Assign - Total Column L,M,N" sap:VirtualizedContainerService.HintSize="333.6,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+              <ui:MultipleAssign DisplayName="Multiple Assign - Total Column L,M,N" sap:VirtualizedContainerService.HintSize="568.8,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
                 <ui:MultipleAssign.AssignOperations>
                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
@@ -329,8 +373,36 @@
                   </scg:List>
                 </ui:MultipleAssign.AssignOperations>
               </ui:MultipleAssign>
+              <If Condition="[io_ValueMEarly &lt;&gt; Nothing]" sap:VirtualizedContainerService.HintSize="568.8,209.6" sap2010:WorkflowViewState.IdRef="If_1">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="s:DateTime">[io_ValueMEarly]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="s:DateTime">[io_ValueMEarly]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Then>
+                <If.Else>
+                  <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[io_bEarlyM]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Else>
+              </If>
             </Sequence>
-            <Sequence DisplayName="Sequence - Latest date column L" sap:VirtualizedContainerService.HintSize="375.2,1116" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence DisplayName="Sequence - Latest date column L" sap:VirtualizedContainerService.HintSize="610.4,1365.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="LastRowILatest" />
                 <Variable x:TypeArguments="sd:DataTable" Name="dtMainLatest" />
@@ -343,8 +415,8 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ExcelReadRange AddHeaders="True" DataTable="[dtTransDateLatest]" DisplayName="Read Range - Read range column I" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_7" Range="I1" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]" />
-              <Assign DisplayName="Assign - Last row column I" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <ui:ExcelReadRange AddHeaders="True" DataTable="[dtTransDateLatest]" DisplayName="Read Range - Read range column I" sap:VirtualizedContainerService.HintSize="568.8,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_7" Range="I1" SheetName="Sheet1" />
+              <Assign DisplayName="Assign - Last row column I" sap:VirtualizedContainerService.HintSize="568.8,60" sap2010:WorkflowViewState.IdRef="Assign_3">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[LastRowILatest]</OutArgument>
                 </Assign.To>
@@ -352,35 +424,35 @@
                   <InArgument x:TypeArguments="x:String">[dtTransDateLatest.Rows.Count.ToString]</InArgument>
                 </Assign.Value>
               </Assign>
-              <ui:ExcelReadRange AddHeaders="True" DataTable="[dtColILatest]" DisplayName="Read Range - Read range column I until last row" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_8" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]">
+              <ui:ExcelReadRange AddHeaders="True" DataTable="[dtColILatest]" DisplayName="Read Range - Read range column I until last row" sap:VirtualizedContainerService.HintSize="568.8,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_8" SheetName="Sheet1">
                 <ui:ExcelReadRange.Range>
                   <InArgument x:TypeArguments="x:String">
                     <Literal x:TypeArguments="x:String" Value="" />
                   </InArgument>
                 </ui:ExcelReadRange.Range>
               </ui:ExcelReadRange>
-              <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="Trans. Date" DataTable="[dtColILatest]" DisplayName="Sort Data Table - Column I" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="SortDataTable_2" Order="Decending" OutputDataTable="[dtColILatest]" SortOrder="Descending" />
-              <ui:ExcelWriteRange AddHeaders="True" DataTable="[dtColILatest]" DisplayName="Write Range - After sort ascending Column I" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]">
+              <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="Trans. Date" DataTable="[dtColILatest]" DisplayName="Sort Data Table - Column I" sap:VirtualizedContainerService.HintSize="568.8,22.4" sap2010:WorkflowViewState.IdRef="SortDataTable_2" Order="Decending" OutputDataTable="[dtColILatest]" SortOrder="Descending" />
+              <ui:ExcelWriteRange AddHeaders="True" DataTable="[dtColILatest]" DisplayName="Write Range - After sort ascending Column I" sap:VirtualizedContainerService.HintSize="568.8,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="Sheet1">
                 <ui:ExcelWriteRange.StartingCell>
                   <InArgument x:TypeArguments="x:String">
                     <Literal x:TypeArguments="x:String" Value="" />
                   </InArgument>
                 </ui:ExcelWriteRange.StartingCell>
               </ui:ExcelWriteRange>
-              <ui:ExcelReadCell Cell="I2" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_2" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]">
+              <ui:ExcelReadCell Cell="I2" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="568.8,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_2" SheetName="Sheet1">
                 <ui:ExcelReadCell.Result>
-                  <OutArgument x:TypeArguments="s:DateTime">[in_ValueMLatest]</OutArgument>
+                  <OutArgument x:TypeArguments="s:DateTime">[io_ValueMLatest]</OutArgument>
                 </ui:ExcelReadCell.Result>
               </ui:ExcelReadCell>
-              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="333.6,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[in_ValueMLatest.ToString]" />
-              <ui:ExcelReadRange AddHeaders="True" DataTable="[dtMainLatest]" DisplayName="Read Range - Read range column I" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_9" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]">
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="568.8,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[io_ValueMLatest.ToString]" />
+              <ui:ExcelReadRange AddHeaders="True" DataTable="[dtMainLatest]" DisplayName="Read Range - Read range column I" sap:VirtualizedContainerService.HintSize="568.8,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_9" SheetName="Sheet1">
                 <ui:ExcelReadRange.Range>
                   <InArgument x:TypeArguments="x:String">
                     <Literal x:TypeArguments="x:String" Value="" />
                   </InArgument>
                 </ui:ExcelReadRange.Range>
               </ui:ExcelReadRange>
-              <ui:FilterDataTable DataTable="[dtMainLatest]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dtMainLatest]" SelectColumnsMode="Keep">
+              <ui:FilterDataTable DataTable="[dtMainLatest]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="568.8,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dtMainLatest]" SelectColumnsMode="Keep">
                 <ui:FilterDataTable.Filters>
                   <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                     <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
@@ -388,7 +460,7 @@
                         <InArgument x:TypeArguments="x:String">["Trans. Date"]</InArgument>
                       </ui:FilterOperationArgument.Column>
                       <ui:FilterOperationArgument.Operand>
-                        <InArgument x:TypeArguments="s:DateTime">[in_ValueMLatest]</InArgument>
+                        <InArgument x:TypeArguments="s:DateTime">[io_ValueMLatest]</InArgument>
                       </ui:FilterOperationArgument.Operand>
                     </ui:FilterOperationArgument>
                   </scg:List>
@@ -399,7 +471,7 @@
                   </scg:List>
                 </ui:FilterDataTable.SelectColumns>
               </ui:FilterDataTable>
-              <ui:MultipleAssign DisplayName="Multiple Assign - Total Column L,M,N" sap:VirtualizedContainerService.HintSize="333.6,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+              <ui:MultipleAssign DisplayName="Multiple Assign - Total Column L,M,N" sap:VirtualizedContainerService.HintSize="568.8,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
                 <ui:MultipleAssign.AssignOperations>
                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
@@ -421,10 +493,38 @@
                   </scg:List>
                 </ui:MultipleAssign.AssignOperations>
               </ui:MultipleAssign>
+              <If Condition="[io_ValueMLatest &lt;&gt; Nothing]" sap:VirtualizedContainerService.HintSize="568.8,209.6" sap2010:WorkflowViewState.IdRef="If_2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="s:DateTime">[io_ValueMLatest]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="s:DateTime">[io_ValueMLatest]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Then>
+                <If.Else>
+                  <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[io_bLatestM]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Else>
+              </If>
             </Sequence>
-            <ui:ExcelWriteCell Cell="[&quot;K&quot; + LastRowK.ToString]" DisplayName="Write Cell - Total column K" sap:VirtualizedContainerService.HintSize="375.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_6" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]" Text="TOTAL" />
-            <ui:ExcelWriteCell Cell="[&quot;L&quot; + LastRowK.ToString]" DisplayName="Write Cell - Total column L" sap:VirtualizedContainerService.HintSize="375.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_7" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]" Text="[io_MotoColL.ToString]" />
-            <ui:ExcelWriteCell Cell="[&quot;N&quot; + LastRowK.ToString]" DisplayName="Write Cell - Total column N" sap:VirtualizedContainerService.HintSize="375.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_8" SheetName="[&quot;Transaction_000001190700203_&quot; + Now.AddDays(-1).ToString(&quot;dd&quot;) + io_CurrDate0]" Text="[io_MotoColN.ToString]" />
+            <ui:ExcelWriteCell Cell="[&quot;K&quot; + LastRowK.ToString]" DisplayName="Write Cell - Total column K" sap:VirtualizedContainerService.HintSize="610.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_6" SheetName="Sheet1" Text="TOTAL" />
+            <ui:ExcelWriteCell Cell="[&quot;L&quot; + LastRowK.ToString]" DisplayName="Write Cell - Total column L" sap:VirtualizedContainerService.HintSize="610.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_7" SheetName="Sheet1" Text="[io_MotoColL.ToString]" />
+            <ui:ExcelWriteCell Cell="[&quot;N&quot; + LastRowK.ToString]" DisplayName="Write Cell - Total column N" sap:VirtualizedContainerService.HintSize="610.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_8" SheetName="Sheet1" Text="[io_MotoColN.ToString]" />
           </Sequence>
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
@@ -435,5 +535,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
+    <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="685.6,22.4" sap2010:WorkflowViewState.IdRef="Delete_1" Path="C:\Users\rpavendor\Desktop\RPATEST\Process 3\CIMBMOTO.xlsx" />
   </Sequence>
 </Activity>

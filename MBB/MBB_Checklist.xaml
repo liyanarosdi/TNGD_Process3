@@ -13,6 +13,8 @@
     <x:Property Name="io_TotalJDSColMT1" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_TotalJMColMT1" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_TotalJMColPT1" Type="InOutArgument(x:Double)" />
+    <x:Property Name="in_DateT2" Type="InArgument(s:DateTime)" />
+    <x:Property Name="in_DateT3" Type="InArgument(s:DateTime)" />
   </x:Members>
   <this:MBB_Checklist.io_FolderMonth>
     <InArgument x:TypeArguments="x:String" />
@@ -20,7 +22,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1004,8632.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>956.8,8405.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>MBB_Checklist_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -58,7 +60,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="56">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -87,9 +89,10 @@
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="MBB_Checklist" sap:VirtualizedContainerService.HintSize="760,8528" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="MBB_Checklist" sap:VirtualizedContainerService.HintSize="760,8300.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Double" Name="ValueCT2" />
       <Variable x:TypeArguments="x:Double" Name="ValueDT2" />
@@ -107,7 +110,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Bank_Checklist" sap:VirtualizedContainerService.HintSize="718.4,8435.2" sap2010:WorkflowViewState.IdRef="Sequence_14">
+    <Sequence DisplayName="Bank_Checklist" sap:VirtualizedContainerService.HintSize="718.4,8208" sap2010:WorkflowViewState.IdRef="Sequence_14">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="CurrDate2" />
         <Variable x:TypeArguments="x:String" Name="FolderMonth2" />
@@ -128,7 +131,7 @@
                 <OutArgument x:TypeArguments="x:String">[CurrDate2]</OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:String">[Now.AddDays(-2).ToString("MM")]</InArgument>
+                <InArgument x:TypeArguments="x:String">[in_DateT2.ToString("MM")]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
@@ -136,7 +139,7 @@
                 <OutArgument x:TypeArguments="x:String">[CurrDate3]</OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:String">[Now.AddDays(-3).ToString("MM")]</InArgument>
+                <InArgument x:TypeArguments="x:String">[in_DateT3.ToString("MM")]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
           </scg:List>
@@ -189,7 +192,7 @@
                 <OutArgument x:TypeArguments="x:String">[FolderMonth2]</OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:String">[CurrDate2 + ". " + Now.AddDays(-2).ToString("MMM") + "'" + Now.AddDays(-2).ToString("yy")]</InArgument>
+                <InArgument x:TypeArguments="x:String">[CurrDate2 + ". " + in_DateT2.ToString("MMM") + "'" + in_DateT2.ToString("yy")]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_18">
@@ -197,26 +200,26 @@
                 <OutArgument x:TypeArguments="x:String">[FolderMonth3]</OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:String">[CurrDate3 + ". " + Now.AddDays(-3).ToString("MMM") + "'" + Now.AddDays(-3).ToString("yy")]</InArgument>
+                <InArgument x:TypeArguments="x:String">[CurrDate3 + ". " + in_DateT3.ToString("MMM") + "'" + in_DateT3.ToString("yy")]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
           </scg:List>
         </ui:MultipleAssign.AssignOperations>
       </ui:MultipleAssign>
-      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (T-3)" sap:VirtualizedContainerService.HintSize="676.8,2468.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year 2021\1. Reload &quot; + Now.AddDays(-3).ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + FolderMonth3 + &quot;\&quot; + &quot;1. Reload &quot; + Now.AddDays(-3).ToString(&quot;MMM&quot;) + &quot;'&quot; + Now.AddDays(-3).ToString(&quot;yy&quot;) +&quot;.xlsx&quot;]">
+      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (T-3)" sap:VirtualizedContainerService.HintSize="676.8,2241.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year 2021\1. Reload &quot; + in_DateT3.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + FolderMonth3 + &quot;\&quot; + &quot;1. Reload &quot; + in_DateT3.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT3.ToString(&quot;yy&quot;) +&quot;.xlsx&quot;]">
         <ui:ExcelApplicationScope.Body>
           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="643.2,2359.2" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="643.2,2132" sap2010:WorkflowViewState.IdRef="Sequence_7">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Sequence - MBB (T- 3)" sap:VirtualizedContainerService.HintSize="601.6,2266.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <Sequence DisplayName="Sequence - MBB (T- 3)" sap:VirtualizedContainerService.HintSize="601.6,2039.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:Int32" Name="IndexMBBT2" />
                   <Variable x:TypeArguments="x:Int32" Name="ModuloMBB2" />
@@ -242,7 +245,7 @@
                 </ui:ExcelReadRange>
                 <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="560,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_4">
                   <ui:CommentOut.Body>
-                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="241.6,145.6" sap2010:WorkflowViewState.IdRef="Sequence_42">
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="643.2,145.6" sap2010:WorkflowViewState.IdRef="Sequence_42">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -383,7 +386,7 @@
                             </scg:List>
                           </ui:MultipleAssign.AssignOperations>
                         </ui:MultipleAssign>
-                        <If Condition="[DayMBBT3(0) = Now.AddDays(-3).ToString(&quot;ddMMyy&quot;)]" DisplayName="If - Check column date (T-3)" sap:VirtualizedContainerService.HintSize="483.2,218.4" sap2010:WorkflowViewState.IdRef="If_9">
+                        <If Condition="[DayMBBT3(0) = in_DateT3.ToString(&quot;ddMMyy&quot;)]" DisplayName="If - Check column date (T-3)" sap:VirtualizedContainerService.HintSize="483.2,218.4" sap2010:WorkflowViewState.IdRef="If_9">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -488,10 +491,10 @@
                     <OutArgument x:TypeArguments="x:Double">[ValueMTDT3]</OutArgument>
                   </ui:ExcelReadCell.Result>
                 </ui:ExcelReadCell>
-                <If Condition="[ValueDT3.ToString.Contains(&quot;-&quot;) Or ValueMTDT3.ToString.Contains(&quot;-&quot;)]" sap:VirtualizedContainerService.HintSize="560,280" sap2010:WorkflowViewState.IdRef="If_11">
+                <If Condition="[ValueDT3.ToString.Contains(&quot;-&quot;) Or ValueMTDT3.ToString.Contains(&quot;-&quot;)]" sap:VirtualizedContainerService.HintSize="560,52.8" sap2010:WorkflowViewState.IdRef="If_11">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -531,7 +534,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:ExcelApplicationScope>
-      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (T-2)" sap:VirtualizedContainerService.HintSize="676.8,2860.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year 2021\1. Reload &quot; + Now.AddDays(-2).ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + FolderMonth2 + &quot;\&quot; + &quot;1. Reload &quot; + Now.AddDays(-2).ToString(&quot;MMM&quot;) + &quot;'&quot; + Now.AddDays(-2).ToString(&quot;yy&quot;) +&quot;.xlsx&quot;]">
+      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (T-2)" sap:VirtualizedContainerService.HintSize="676.8,2860.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year 2021\1. Reload &quot; + in_DateT2.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + FolderMonth2 + &quot;\&quot; + &quot;1. Reload &quot; + in_DateT2.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT2.ToString(&quot;yy&quot;) +&quot;.xlsx&quot;]">
         <ui:ExcelApplicationScope.Body>
           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
             <ActivityAction.Argument>
@@ -600,7 +603,7 @@
                             </scg:List>
                           </ui:MultipleAssign.AssignOperations>
                         </ui:MultipleAssign>
-                        <If Condition="[DayMBBT2(0) = Now.AddDays(-2).ToString(&quot;ddMMyy&quot;)]" DisplayName="If - Check column date (T-2)" sap:VirtualizedContainerService.HintSize="483.2,218.4" sap2010:WorkflowViewState.IdRef="If_6">
+                        <If Condition="[DayMBBT2(0) = in_DateT2.ToString(&quot;ddMMyy&quot;)]" DisplayName="If - Check column date (T-2)" sap:VirtualizedContainerService.HintSize="483.2,218.4" sap2010:WorkflowViewState.IdRef="If_6">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -770,7 +773,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:ExcelApplicationScope>
-      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-3)" sap:VirtualizedContainerService.HintSize="676.8,876" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + Now.AddDays(-3).ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + Now.AddDays(-3).ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderMonth3 + &quot;\&quot; + &quot;1. Reload Recon &quot; + Now.AddDays(-3).ToString(&quot;MMM&quot;) + &quot;'&quot; + Now.AddDays(-3).ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
+      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-3)" sap:VirtualizedContainerService.HintSize="676.8,876" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + in_DateT3.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + in_DateT3.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderMonth3 + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_DateT3.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT3.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
         <ui:ExcelApplicationScope.Body>
           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
             <ActivityAction.Argument>
@@ -796,7 +799,7 @@
                         <OutArgument x:TypeArguments="x:String">[DatePre3]</OutArgument>
                       </ui:AssignOperation.To>
                       <ui:AssignOperation.Value>
-                        <InArgument x:TypeArguments="x:String">[Now.AddDays(-3).ToString("dd")]</InArgument>
+                        <InArgument x:TypeArguments="x:String">[in_DateT3.ToString("dd")]</InArgument>
                       </ui:AssignOperation.Value>
                     </ui:AssignOperation>
                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
@@ -804,7 +807,7 @@
                         <OutArgument x:TypeArguments="x:String">[SheetName3]</OutArgument>
                       </ui:AssignOperation.To>
                       <ui:AssignOperation.Value>
-                        <InArgument x:TypeArguments="x:String">[Now.AddDays(-3).ToString("MMM") + "'" + Now.AddDays(-3).ToString("yy")]</InArgument>
+                        <InArgument x:TypeArguments="x:String">[in_DateT3.ToString("MMM") + "'" + in_DateT3.ToString("yy")]</InArgument>
                       </ui:AssignOperation.Value>
                     </ui:AssignOperation>
                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
@@ -832,7 +835,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:ExcelApplicationScope>
-      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-2)" sap:VirtualizedContainerService.HintSize="676.8,1132" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_6" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + Now.AddDays(-2).ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + Now.AddDays(-2).ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderMonth2 + &quot;\&quot; + &quot;1. Reload Recon &quot; + Now.AddDays(-2).ToString(&quot;MMM&quot;) + &quot;'&quot; + Now.AddDays(-2).ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
+      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-2)" sap:VirtualizedContainerService.HintSize="676.8,1132" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_6" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + in_DateT2.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + in_DateT2.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderMonth2 + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_DateT2.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT2.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
         <ui:ExcelApplicationScope.Body>
           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
             <ActivityAction.Argument>
@@ -858,7 +861,7 @@
                         <OutArgument x:TypeArguments="x:String">[DatePre2]</OutArgument>
                       </ui:AssignOperation.To>
                       <ui:AssignOperation.Value>
-                        <InArgument x:TypeArguments="x:String">[Now.AddDays(-2).ToString("dd")]</InArgument>
+                        <InArgument x:TypeArguments="x:String">[in_DateT2.ToString("dd")]</InArgument>
                       </ui:AssignOperation.Value>
                     </ui:AssignOperation>
                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_29">
@@ -866,7 +869,7 @@
                         <OutArgument x:TypeArguments="x:String">[SheetName]</OutArgument>
                       </ui:AssignOperation.To>
                       <ui:AssignOperation.Value>
-                        <InArgument x:TypeArguments="x:String">[Now.AddDays(-2).ToString("MMM") + "'" + Now.AddDays(-2).ToString("yy")]</InArgument>
+                        <InArgument x:TypeArguments="x:String">[in_DateT2.ToString("MMM") + "'" + in_DateT2.ToString("yy")]</InArgument>
                       </ui:AssignOperation.Value>
                     </ui:AssignOperation>
                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_30">
