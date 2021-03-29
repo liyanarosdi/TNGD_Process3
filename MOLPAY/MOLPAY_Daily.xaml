@@ -93,6 +93,7 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>BalaReva.EasyDataTable</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="MOLPAY_Daily" sap:VirtualizedContainerService.HintSize="727.2,4263.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
