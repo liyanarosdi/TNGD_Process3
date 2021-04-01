@@ -32,10 +32,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>952,2106.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1277.6,3168.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>MOLPAY_Checklist_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="31">
+    <scg:List x:TypeArguments="x:String" Capacity="62">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -67,10 +67,11 @@
       <x:String>System.Activities.DynamicUpdate</x:String>
       <x:String>UiPath.Excel.Activities</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="56">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="29">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -107,7 +108,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="MOLPAY_Checklist" sap:VirtualizedContainerService.HintSize="677.6,2001.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="MOLPAY_Checklist" sap:VirtualizedContainerService.HintSize="1288,3064" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Double" Name="M1Row25" />
       <Variable x:TypeArguments="x:Double" Name="M1Row24" />
@@ -119,8 +120,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="636,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start Bank_Checklist&quot;]" />
-    <If Condition="[io_bMiddle1 = False]" sap:VirtualizedContainerService.HintSize="636,1550.4" sap2010:WorkflowViewState.IdRef="If_18">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1246.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start Bank_Checklist&quot;]" />
+    <If Condition="[io_bMiddle1 = False]" sap:VirtualizedContainerService.HintSize="1246.4,2612.8" sap2010:WorkflowViewState.IdRef="If_18">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -128,27 +129,27 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="492,1400.8" sap2010:WorkflowViewState.IdRef="Sequence_59">
+        <Sequence sap:VirtualizedContainerService.HintSize="1102.4,2463.2" sap2010:WorkflowViewState.IdRef="Sequence_59">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (Mid 1)" sap:VirtualizedContainerService.HintSize="450.4,1089.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;\9. Reload - Daily Check List\4. Year 2021\1. Reload &quot; + in_YearMid + &quot; Checklist\&quot; + in_FolderMid + &quot;\&quot; + &quot;1. Reload &quot; + in_FullPath +&quot;.xlsx&quot;]">
+          <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (Mid 1)" sap:VirtualizedContainerService.HintSize="1060.8,2152" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;\9. Reload - Daily Check List\4. Year 2021\1. Reload &quot; + in_YearMid + &quot; Checklist\&quot; + in_FolderMid + &quot;\&quot; + &quot;1. Reload &quot; + in_FullPath +&quot;.xlsx&quot;]">
             <ui:ExcelApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416.8,980" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1027.2,2042.4" sap2010:WorkflowViewState.IdRef="Sequence_25">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="Sequence - MOL (Mid 1)" sap:VirtualizedContainerService.HintSize="375.2,887.2" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                  <Sequence DisplayName="Sequence - MOL (Mid 1)" sap:VirtualizedContainerService.HintSize="985.6,1949.6" sap2010:WorkflowViewState.IdRef="Sequence_24">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:Int32" Name="IndexMOLT3" />
                       <Variable x:TypeArguments="x:Int32" Name="ModuloMOLT3" />
@@ -158,9 +159,9 @@
                       <Variable x:TypeArguments="x:Double" Name="Row20T3" />
                       <Variable x:TypeArguments="x:Double" Name="Val20T3" />
                       <Variable x:TypeArguments="x:Double" Name="Val19T3" />
-                      <Variable x:TypeArguments="x:Double" Name="bRow19T3" />
-                      <Variable x:TypeArguments="x:Double" Name="bRow20T3" />
                       <Variable x:TypeArguments="s:String[]" Name="DayMolT3" />
+                      <Variable x:TypeArguments="x:String" Name="VRow19T3" />
+                      <Variable x:TypeArguments="x:String" Name="VRow20T3" />
                     </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -168,14 +169,14 @@
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:ExcelReadRange AddHeaders="True" DataTable="[dtMOLT3]" DisplayName="Read Range - Sheect MOL" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_4" SheetName="MOL">
+                    <ui:ExcelReadRange AddHeaders="True" DataTable="[dtMOLT3]" DisplayName="Read Range - Sheect MOL" sap:VirtualizedContainerService.HintSize="944,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_4" SheetName="MOL">
                       <ui:ExcelReadRange.Range>
                         <InArgument x:TypeArguments="x:String">
                           <Literal x:TypeArguments="x:String" Value="" />
                         </InArgument>
                       </ui:ExcelReadRange.Range>
                     </ui:ExcelReadRange>
-                    <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="[IndexMOLT3]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[dtMOLT3.Columns]">
+                    <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="[IndexMOLT3]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="944,52.8" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[dtMOLT3.Columns]">
                       <ui:ForEach.Body>
                         <ActivityAction x:TypeArguments="sd:DataColumn">
                           <ActivityAction.Argument>
@@ -291,107 +292,108 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:ForEach>
-                    <ui:ExcelWriteCell Cell="[ColMOLT3 + &quot;19&quot;]" DisplayName="Write Cell - MOL Row 19 for total M (Mid 1)" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_38" SheetName="MOL" Text="[io_MiddleDateMolM.ToString]" />
-                    <ui:ExcelWriteCell Cell="[ColMOLT3 + &quot;20&quot;]" DisplayName="Write Cell - MOL Row 20 for total P (Mid 1)" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_39" SheetName="MOL" Text="[&quot;-&quot; + io_MiddleDateMolP.ToString]" />
-                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+                    <ui:ExcelReadCell Cell="[ColMOLT3 + &quot;19&quot;]" DisplayName="Read Cell - Row 19 (T-3)" sap:VirtualizedContainerService.HintSize="944,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_17" PreserveFormat="True" SheetName="MOL">
+                      <ui:ExcelReadCell.Result>
+                        <OutArgument x:TypeArguments="x:String">[VRow19T3]</OutArgument>
+                      </ui:ExcelReadCell.Result>
+                    </ui:ExcelReadCell>
+                    <ui:ExcelReadCell Cell="[ColMOLT3 + &quot;20&quot;]" DisplayName="Read Cell - Row 20 (T-3)" sap:VirtualizedContainerService.HintSize="944,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_18" PreserveFormat="True" SheetName="MOL">
+                      <ui:ExcelReadCell.Result>
+                        <OutArgument x:TypeArguments="x:String">[VRow20T3]</OutArgument>
+                      </ui:ExcelReadCell.Result>
+                    </ui:ExcelReadCell>
+                    <If Condition="[System.Text.RegularExpressions.Regex.IsMatch(VRow19T3, “\d+(?:[.,]\d+)*”) Or System.Text.RegularExpressions.Regex.IsMatch(VRow20T3, “\d+(?:[.,]\d+)*”)]" sap:VirtualizedContainerService.HintSize="944,1078.4" sap2010:WorkflowViewState.IdRef="If_16">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="524.8,928.8" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:ExcelReadCell Cell="[ColMOLT3 + &quot;19&quot;]" DisplayName="Read Cell - Row 19 (T-3)" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_11" SheetName="MOL">
+                            <ui:ExcelReadCell.Result>
+                              <OutArgument x:TypeArguments="x:Double">[Row19T3]</OutArgument>
+                            </ui:ExcelReadCell.Result>
+                          </ui:ExcelReadCell>
+                          <ui:ExcelReadCell Cell="[ColMOLT3 + &quot;20&quot;]" DisplayName="Read Cell - Row 20 (T-3)" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_12" SheetName="MOL">
+                            <ui:ExcelReadCell.Result>
+                              <OutArgument x:TypeArguments="x:Double">[Row20T3]</OutArgument>
+                            </ui:ExcelReadCell.Result>
+                          </ui:ExcelReadCell>
+                          <If Condition="[Row20T3.ToString.Contains(&quot;-&quot;)]" DisplayName="If - Row 20 (T-3)" sap:VirtualizedContainerService.HintSize="483.2,209.6" sap2010:WorkflowViewState.IdRef="If_13">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If.Then>
+                              <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_26">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Double">[Row20T3]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Double">[CDbl(Row20T3.ToString.Replace("-", ""))]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </If.Then>
+                          </If>
+                          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="483.2,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_12">
+                            <ui:MultipleAssign.AssignOperations>
+                              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_27">
+                                  <ui:AssignOperation.To>
+                                    <OutArgument x:TypeArguments="x:Double">[Row19T3]</OutArgument>
+                                  </ui:AssignOperation.To>
+                                  <ui:AssignOperation.Value>
+                                    <InArgument x:TypeArguments="x:Double">[Row19T3 + io_MiddleDateMolM]</InArgument>
+                                  </ui:AssignOperation.Value>
+                                </ui:AssignOperation>
+                                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_28">
+                                  <ui:AssignOperation.To>
+                                    <OutArgument x:TypeArguments="x:Double">[Row20T3]</OutArgument>
+                                  </ui:AssignOperation.To>
+                                  <ui:AssignOperation.Value>
+                                    <InArgument x:TypeArguments="x:Double">[Row20T3 + io_MiddleDateMolP]</InArgument>
+                                  </ui:AssignOperation.Value>
+                                </ui:AssignOperation>
+                              </scg:List>
+                            </ui:MultipleAssign.AssignOperations>
+                          </ui:MultipleAssign>
+                          <ui:ExcelWriteCell Cell="[ColMOLT3 + &quot;19&quot;]" DisplayName="Write Cell - MOL Row 19 for total M (T-3)" sap:VirtualizedContainerService.HintSize="483.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_28" SheetName="MOL" Text="[Row19T3.ToString]" />
+                          <ui:ExcelWriteCell Cell="[ColMOLT3 + &quot;20&quot;]" DisplayName="Write Cell - MOL Row 20 for total P (T-3)" sap:VirtualizedContainerService.HintSize="483.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_29" SheetName="MOL" Text="[&quot;-&quot; + Row20T3.ToString]" />
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence sap:VirtualizedContainerService.HintSize="375.2,308.8" sap2010:WorkflowViewState.IdRef="Sequence_66">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:ExcelWriteCell Cell="[ColMOLT3 + &quot;19&quot;]" DisplayName="Write Cell - MOL Row 19 for total M (Mid 1)" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_50" SheetName="MOL" Text="[io_MiddleDateMolM.ToString]" />
+                          <ui:ExcelWriteCell Cell="[ColMOLT3 + &quot;20&quot;]" DisplayName="Write Cell - MOL Row 20 for total P (Mid 1)" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_51" SheetName="MOL" Text="[&quot;-&quot; + io_MiddleDateMolP.ToString]" />
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="944,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_10">
                       <ui:CommentOut.Body>
-                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="985.6,1371.2" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,308.8" sap2010:WorkflowViewState.IdRef="Sequence_65">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:ExcelReadCell Cell="[ColMOLT3 + &quot;19&quot;]" DisplayName="Read Cell - Row 19 (T-3)" sap:VirtualizedContainerService.HintSize="944,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_17" SheetName="MOL">
-                            <ui:ExcelReadCell.Result>
-                              <OutArgument x:TypeArguments="x:Double">[bRow19T3]</OutArgument>
-                            </ui:ExcelReadCell.Result>
-                          </ui:ExcelReadCell>
-                          <ui:ExcelReadCell Cell="[ColMOLT3 + &quot;20&quot;]" DisplayName="Read Cell - Row 20 (T-3)" sap:VirtualizedContainerService.HintSize="944,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_18" SheetName="MOL">
-                            <ui:ExcelReadCell.Result>
-                              <OutArgument x:TypeArguments="x:Double">[bRow20T3]</OutArgument>
-                            </ui:ExcelReadCell.Result>
-                          </ui:ExcelReadCell>
-                          <If Condition="[bRow19T3 &lt; 0.2 or bRow20T3 &lt; 0.2]" sap:VirtualizedContainerService.HintSize="944,1078.4" sap2010:WorkflowViewState.IdRef="If_16">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <If.Then>
-                              <Sequence sap:VirtualizedContainerService.HintSize="375.2,308.8" sap2010:WorkflowViewState.IdRef="Sequence_37">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ui:ExcelWriteCell Cell="[ColMOLT3 + &quot;19&quot;]" DisplayName="Write Cell - MOL Row 19 for total M (T-3)" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_26" SheetName="MOL" Text="[io_MiddleDateMolM.ToString]" />
-                                <ui:ExcelWriteCell Cell="[ColMOLT3 + &quot;20&quot;]" DisplayName="Write Cell - MOL Row 20 for total P (T-3)" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_27" SheetName="MOL" Text="[&quot;-&quot; + io_MiddleDateMolP.ToString]" />
-                              </Sequence>
-                            </If.Then>
-                            <If.Else>
-                              <Sequence sap:VirtualizedContainerService.HintSize="524.8,928.8" sap2010:WorkflowViewState.IdRef="Sequence_38">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ui:ExcelReadCell Cell="[ColMOLT3 + &quot;19&quot;]" DisplayName="Read Cell - Row 19 (T-3)" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_11" SheetName="MOL">
-                                  <ui:ExcelReadCell.Result>
-                                    <OutArgument x:TypeArguments="x:Double">[Row19T3]</OutArgument>
-                                  </ui:ExcelReadCell.Result>
-                                </ui:ExcelReadCell>
-                                <ui:ExcelReadCell Cell="[ColMOLT3 + &quot;20&quot;]" DisplayName="Read Cell - Row 20 (T-3)" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_12" SheetName="MOL">
-                                  <ui:ExcelReadCell.Result>
-                                    <OutArgument x:TypeArguments="x:Double">[Row20T3]</OutArgument>
-                                  </ui:ExcelReadCell.Result>
-                                </ui:ExcelReadCell>
-                                <If Condition="[Row20T3.ToString.Contains(&quot;-&quot;)]" DisplayName="If - Row 20 (T-3)" sap:VirtualizedContainerService.HintSize="483.2,209.6" sap2010:WorkflowViewState.IdRef="If_13">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <If.Then>
-                                    <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_26">
-                                      <Assign.To>
-                                        <OutArgument x:TypeArguments="x:Double">[Val20T3]</OutArgument>
-                                      </Assign.To>
-                                      <Assign.Value>
-                                        <InArgument x:TypeArguments="x:Double">[CDbl(Row20T3.ToString.Replace("-", ""))]</InArgument>
-                                      </Assign.Value>
-                                    </Assign>
-                                  </If.Then>
-                                </If>
-                                <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="483.2,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_12">
-                                  <ui:MultipleAssign.AssignOperations>
-                                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_27">
-                                        <ui:AssignOperation.To>
-                                          <OutArgument x:TypeArguments="x:Double">[Val19T3]</OutArgument>
-                                        </ui:AssignOperation.To>
-                                        <ui:AssignOperation.Value>
-                                          <InArgument x:TypeArguments="x:Double">[Row19T3 + io_MiddleDateMolM]</InArgument>
-                                        </ui:AssignOperation.Value>
-                                      </ui:AssignOperation>
-                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_28">
-                                        <ui:AssignOperation.To>
-                                          <OutArgument x:TypeArguments="x:Double">[Val20T3]</OutArgument>
-                                        </ui:AssignOperation.To>
-                                        <ui:AssignOperation.Value>
-                                          <InArgument x:TypeArguments="x:Double">[Val20T3 + io_MiddleDateMolP]</InArgument>
-                                        </ui:AssignOperation.Value>
-                                      </ui:AssignOperation>
-                                    </scg:List>
-                                  </ui:MultipleAssign.AssignOperations>
-                                </ui:MultipleAssign>
-                                <ui:ExcelWriteCell Cell="[ColMOLT3 + &quot;19&quot;]" DisplayName="Write Cell - MOL Row 19 for total M (T-3)" sap:VirtualizedContainerService.HintSize="483.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_28" SheetName="MOL" Text="[Val19T3.ToString]" />
-                                <ui:ExcelWriteCell Cell="[ColMOLT3 + &quot;20&quot;]" DisplayName="Write Cell - MOL Row 20 for total P (T-3)" sap:VirtualizedContainerService.HintSize="483.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_29" SheetName="MOL" Text="[&quot;-&quot; + Val20T3.ToString]" />
-                              </Sequence>
-                            </If.Else>
-                          </If>
+                          <ui:ExcelWriteCell Cell="[ColMOLT3 + &quot;19&quot;]" DisplayName="Write Cell - MOL Row 19 for total M (Mid 1)" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_38" SheetName="MOL" Text="[io_MiddleDateMolM.ToString]" />
+                          <ui:ExcelWriteCell Cell="[ColMOLT3 + &quot;20&quot;]" DisplayName="Write Cell - MOL Row 20 for total P (Mid 1)" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_39" SheetName="MOL" Text="[&quot;-&quot; + io_MiddleDateMolP.ToString]" />
                         </Sequence>
                       </ui:CommentOut.Body>
                       <sap:WorkflowViewStateService.ViewState>
@@ -401,17 +403,17 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:CommentOut>
-                    <ui:ExcelReadCell Cell="[ColMOLT3 + &quot;24&quot;]" DisplayName="Read Cell - (Mid 1) Row 24" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_5" SheetName="MOL">
+                    <ui:ExcelReadCell Cell="[ColMOLT3 + &quot;24&quot;]" DisplayName="Read Cell - (Mid 1) Row 24" sap:VirtualizedContainerService.HintSize="944,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_5" SheetName="MOL">
                       <ui:ExcelReadCell.Result>
                         <OutArgument x:TypeArguments="x:Double">[M1Row24]</OutArgument>
                       </ui:ExcelReadCell.Result>
                     </ui:ExcelReadCell>
-                    <ui:ExcelReadCell Cell="[ColMOLT3 + &quot;25&quot;]" DisplayName="Read Cell - (Mid 1) Row 25" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_6" SheetName="MOL">
+                    <ui:ExcelReadCell Cell="[ColMOLT3 + &quot;25&quot;]" DisplayName="Read Cell - (Mid 1) Row 25" sap:VirtualizedContainerService.HintSize="944,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_6" SheetName="MOL">
                       <ui:ExcelReadCell.Result>
                         <OutArgument x:TypeArguments="x:Double">[M1Row25]</OutArgument>
                       </ui:ExcelReadCell.Result>
                     </ui:ExcelReadCell>
-                    <If Condition="[M1Row25.ToString.Contains(&quot;-&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="If_9">
+                    <If Condition="[M1Row25.ToString.Contains(&quot;-&quot;)]" sap:VirtualizedContainerService.HintSize="944,52.8" sap2010:WorkflowViewState.IdRef="If_9">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -453,7 +455,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ExcelApplicationScope>
-          <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (Mid 1)" sap:VirtualizedContainerService.HintSize="450.4,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_10" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;\9. Reload - Daily Check List\4. Year &quot; + in_YearMid + &quot;\2. Reload &quot; + in_YearMid + &quot; Recon\&quot; + in_FolderMid + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_FullPath + &quot;.xlsx&quot;]">
+          <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (Mid 1)" sap:VirtualizedContainerService.HintSize="1060.8,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_10" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;\9. Reload - Daily Check List\4. Year &quot; + in_YearMid + &quot;\2. Reload &quot; + in_YearMid + &quot; Recon\&quot; + in_FolderMid + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_FullPath + &quot;.xlsx&quot;]">
             <ui:ExcelApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                 <ActivityAction.Argument>
