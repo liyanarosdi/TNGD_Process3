@@ -4,14 +4,18 @@
     <x:Property Name="io_IPAYColI" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_FolderMonth" Type="InArgument(x:String)" />
     <x:Property Name="in_DateT2" Type="InArgument(s:DateTime)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <this:iPay88_Checlist.io_FolderMonth>
     <InArgument x:TypeArguments="x:String" />
   </this:iPay88_Checlist.io_FolderMonth>
+  <this:iPay88_Checlist.in_Config>
+    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
+  </this:iPay88_Checlist.in_Config>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>956.8,1966.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>952,1966.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>iPay88_Checlist_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -139,7 +143,7 @@
           <InArgument x:TypeArguments="x:String">[CurrDate2 + ". " + in_DateT2.ToString("MMM") + "'" + in_DateT2.ToString("yy")]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (T-2)" sap:VirtualizedContainerService.HintSize="450.4,806.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year 2021&quot; + &quot;\1. Reload &quot; + in_DateT2.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + FolderMonth2 + &quot;\&quot; + &quot;1. Reload &quot; + in_DateT2.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT2.ToString(&quot;yy&quot;) +&quot;.xlsx&quot;]">
+      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (T-2)" sap:VirtualizedContainerService.HintSize="450.4,806.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;\9. Reload - Daily Check List\4. Year 2021&quot; + &quot;\1. Reload &quot; + in_DateT2.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + FolderMonth2 + &quot;\&quot; + &quot;1. Reload &quot; + in_DateT2.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT2.ToString(&quot;yy&quot;) +&quot;.xlsx&quot;]">
         <ui:ExcelApplicationScope.Body>
           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
             <ActivityAction.Argument>
@@ -302,7 +306,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:ExcelApplicationScope>
-      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-2)" sap:VirtualizedContainerService.HintSize="450.4,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + in_DateT2.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + in_DateT2.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderMonth2 + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_DateT2.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT2.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
+      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-2)" sap:VirtualizedContainerService.HintSize="450.4,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;\9. Reload - Daily Check List\4. Year &quot; + in_DateT2.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + in_DateT2.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderMonth2 + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_DateT2.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT2.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
         <ui:ExcelApplicationScope.Body>
           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
             <ActivityAction.Argument>

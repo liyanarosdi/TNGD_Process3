@@ -4,14 +4,18 @@
     <x:Property Name="io_IPAYColJ" Type="InOutArgument(x:Double)" />
     <x:Property Name="in_DateT1" Type="InArgument(s:DateTime)" />
     <x:Property Name="io_FolderMonth" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <this:iPay88_Daily.io_FolderMonth>
     <InArgument x:TypeArguments="x:String" />
   </this:iPay88_Daily.io_FolderMonth>
+  <this:iPay88_Daily.in_Config>
+    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
+  </this:iPay88_Daily.in_Config>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>958.4,1180.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>952,1180.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>iPay88_Daily_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -77,6 +81,7 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="iPay88_Daily" sap:VirtualizedContainerService.HintSize="475.2,1076" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -90,7 +95,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start iPay88_Daily&quot;]" />
-    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="433.6,624.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\5. Reload - IPay88 FPX Report\1. Terminal Activity Report\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\ipay88 Transaction Report &quot; +in_DateT1.ToString(&quot;ddMMyyyy&quot;) + &quot;.xlsx&quot;]">
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="433.6,624.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;\5. Reload - IPay88 FPX Report\1. Terminal Activity Report\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\ipay88 Transaction Report &quot; +in_DateT1.ToString(&quot;ddMMyyyy&quot;) + &quot;.xlsx&quot;]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>

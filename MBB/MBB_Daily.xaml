@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="MBB_Filter" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:be="clr-namespace:BalaReva.EasyDataTable;assembly=BalaReva.EasyDataTable" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="MBB_Filter" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:be="clr-namespace:BalaReva.EasyDataTable;assembly=BalaReva.EasyDataTable" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="io_FolderMonth" Type="InArgument(x:String)" />
     <x:Property Name="io_DSLatestPT1" Type="InOutArgument(x:Double)" />
@@ -14,11 +14,15 @@
     <x:Property Name="io_TotalJMColPT1" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_TotalJMColMT1" Type="InOutArgument(x:Double)" />
     <x:Property Name="in_DateT1" Type="InArgument(s:DateTime)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
+  <this:MBB_Filter.in_Config>
+    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
+  </this:MBB_Filter.in_Config>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>676,5454.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>952,6404</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>MBB_Filter_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="35">
@@ -94,9 +98,10 @@
       <AssemblyReference>BalaReva.EasyDataTable</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="MBB_Filter" sap:VirtualizedContainerService.HintSize="533.6,5349.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="MBB_Filter" sap:VirtualizedContainerService.HintSize="533.6,6299.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="CurrDate" />
       <Variable x:TypeArguments="x:String" Name="FolderT2" />
@@ -113,7 +118,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="492,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start MBB_Daily&quot;]" />
-    <Sequence DisplayName="Sequence - MBB 3DS (T-1)" sap:VirtualizedContainerService.HintSize="492,1581.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+    <Sequence DisplayName="Sequence - MBB 3DS (T-1)" sap:VirtualizedContainerService.HintSize="492,2702.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="LastRowDST1" />
         <Variable x:TypeArguments="sd:DataTable" Name="dtTotalDS1" />
@@ -129,7 +134,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - MBB 3MDS (T-1)" sap:VirtualizedContainerService.HintSize="435.2,495.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" ReadOnly="True" Visible="False" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\2. Prod - Recon Reload\4. MBB Bank\3. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\3DS\Recon_Report_MBB_3DS_&quot; + in_DateT1.ToString(&quot;yyyyMMdd&quot;) + &quot;.csv&quot;]">
+      <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - MBB 3MDS (T-1)" sap:VirtualizedContainerService.HintSize="450.4,495.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" ReadOnly="True" Visible="False" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;\2. Prod - Recon Reload\4. MBB Bank\3. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\3DS\Recon_Report_MBB_3DS_&quot; + in_DateT1.ToString(&quot;yyyyMMdd&quot;) + &quot;.csv&quot;]">
         <ui:ExcelApplicationScope.Body>
           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
             <ActivityAction.Argument>
@@ -185,20 +190,20 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:ExcelApplicationScope>
-      <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - 3DS (T-1)" sap:VirtualizedContainerService.HintSize="435.2,689.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="C:\Users\rpavendor\Desktop\RPATEST\Process 3\3DST1.xlsx">
+      <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - 3DS (T-1)" sap:VirtualizedContainerService.HintSize="450.4,1981.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;\3DST1.xlsx&quot;]">
         <ui:ExcelApplicationScope.Body>
           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Do - 3DS (T-1)" sap:VirtualizedContainerService.HintSize="375.2,580" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence DisplayName="Do - 3DS (T-1)" sap:VirtualizedContainerService.HintSize="416.8,1872" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+              <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="375.2,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_4">
                 <ui:CommentOut.Body>
                   <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416.8,1091.2" sap2010:WorkflowViewState.IdRef="Sequence_30">
                     <sap:WorkflowViewStateService.ViewState>
@@ -289,7 +294,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:CommentOut>
-              <Sequence DisplayName="Sequence - Sheet 2 (Filter Column K) " sap:VirtualizedContainerService.HintSize="333.6,68.8" sap2010:WorkflowViewState.IdRef="Sequence_25">
+              <Sequence DisplayName="Sequence - Sheet 2 (Filter Column K) " sap:VirtualizedContainerService.HintSize="375.2,1360.8" sap2010:WorkflowViewState.IdRef="Sequence_25">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="sd:DataTable" Name="dtAfterColKT1" />
                   <Variable x:TypeArguments="x:String" Name="AscColKT1" />
@@ -300,7 +305,7 @@
                 </Sequence.Variables>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -407,7 +412,7 @@
                   </ui:FilterDataTable.SelectColumns>
                 </ui:FilterDataTable>
               </Sequence>
-              <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+              <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="375.2,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_5">
                 <ui:CommentOut.Body>
                   <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,145.6" sap2010:WorkflowViewState.IdRef="Sequence_31">
                     <sap:WorkflowViewStateService.ViewState>
@@ -484,7 +489,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:CommentOut>
-              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="333.6,192.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_11">
+              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="375.2,192.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_11">
                 <ui:MultipleAssign.AssignOperations>
                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_35">
@@ -532,12 +537,13 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:ExcelApplicationScope>
-      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="435.2,224" sap2010:WorkflowViewState.IdRef="CommentOut_14">
+      <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="450.4,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_14">
         <ui:CommentOut.Body>
           <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="241.6,145.6" sap2010:WorkflowViewState.IdRef="Sequence_52">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - MBB 3DS (T-1)" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\2. Prod - Recon Reload\4. MBB Bank\3. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\3DS\Recon_Report_MBB_3DS_&quot; + in_DateT1.ToString(&quot;yyyyMMdd&quot;) + &quot;.csv&quot;]">
@@ -595,17 +601,23 @@
             </ui:ExcelApplicationScope>
           </Sequence>
         </ui:CommentOut.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
     </Sequence>
     <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="492,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_8">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="241.6,270.4" sap2010:WorkflowViewState.IdRef="Sequence_40">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="516.8,270.4" sap2010:WorkflowViewState.IdRef="Sequence_40">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Sequence - MBB 3DS (T-2)" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <Sequence DisplayName="Sequence - MBB 3DS (T-2)" sap:VirtualizedContainerService.HintSize="492,68.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dtAfterDST2" />
               <Variable x:TypeArguments="sd:DataTable" Name="dtOutDST2" />
@@ -846,7 +858,7 @@
               </sap:WorkflowViewStateService.ViewState>
             </ui:ExcelApplicationScope>
           </Sequence>
-          <Sequence DisplayName="Sequence - MBB 3DS (T-1)" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_39">
+          <Sequence DisplayName="Sequence - MBB 3DS (T-1)" sap:VirtualizedContainerService.HintSize="492,68.8" sap2010:WorkflowViewState.IdRef="Sequence_39">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="LastRowDST1" />
               <Variable x:TypeArguments="sd:DataTable" Name="dtTotalDS1" />
@@ -1321,7 +1333,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <Sequence DisplayName="Sequence - MBB MOTO (T-1)" sap:VirtualizedContainerService.HintSize="492,2873.6" sap2010:WorkflowViewState.IdRef="Sequence_15">
+    <Sequence DisplayName="Sequence - MBB MOTO (T-1)" sap:VirtualizedContainerService.HintSize="492,2702.4" sap2010:WorkflowViewState.IdRef="Sequence_15">
       <Sequence.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="dtMainMOTOT1" />
         <Variable x:TypeArguments="sd:DataTable" Name="dtTotalMT1" />
@@ -1337,7 +1349,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - MBB MOTO (T-2)" sap:VirtualizedContainerService.HintSize="450.4,495.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_7" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\2. Prod - Recon Reload\4. MBB Bank\3. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\MOTO\Recon_Report_MBB_MOTO_&quot; + in_DateT1.ToString(&quot;yyyyMMdd&quot;) + &quot;.csv&quot;]">
+      <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - MBB MOTO (T-2)" sap:VirtualizedContainerService.HintSize="450.4,495.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_7" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;\2. Prod - Recon Reload\4. MBB Bank\3. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\MOTO\Recon_Report_MBB_MOTO_&quot; + in_DateT1.ToString(&quot;yyyyMMdd&quot;) + &quot;.csv&quot;]">
         <ui:ExcelApplicationScope.Body>
           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
             <ActivityAction.Argument>
@@ -1393,7 +1405,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:ExcelApplicationScope>
-      <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - MBB MOTO (T-1)" sap:VirtualizedContainerService.HintSize="450.4,1981.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_12" InstanceCachePeriod="3000" WorkbookPath="C:\Users\rpavendor\Desktop\RPATEST\Process 3\MOTOT1.xlsx">
+      <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - MBB MOTO (T-1)" sap:VirtualizedContainerService.HintSize="450.4,1981.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_12" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;\MOTOT1.xlsx&quot;]">
         <ui:ExcelApplicationScope.Body>
           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
             <ActivityAction.Argument>
@@ -1729,27 +1741,27 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:ExcelApplicationScope>
-      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450.4,224" sap2010:WorkflowViewState.IdRef="CommentOut_13">
+      <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="450.4,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_13">
         <ui:CommentOut.Body>
-          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="241.6,145.6" sap2010:WorkflowViewState.IdRef="Sequence_51">
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="475.2,271.2" sap2010:WorkflowViewState.IdRef="Sequence_51">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - MBB MOTO (T-1)" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_13" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\2. Prod - Recon Reload\4. MBB Bank\3. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\MOTO\Recon_Report_MBB_MOTO_&quot; + in_DateT1.ToString(&quot;yyyyMMdd&quot;) + &quot;.csv&quot;]">
+            <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - MBB MOTO (T-1)" sap:VirtualizedContainerService.HintSize="433.6,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_13" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\2. Prod - Recon Reload\4. MBB Bank\3. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\MOTO\Recon_Report_MBB_MOTO_&quot; + in_DateT1.ToString(&quot;yyyyMMdd&quot;) + &quot;.csv&quot;]">
               <ui:ExcelApplicationScope.Body>
                 <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,671.2" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_20">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="sSheetMT1" />
                     </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -1778,13 +1790,19 @@
               </ui:ExcelApplicationScope.Body>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:ExcelApplicationScope>
           </Sequence>
         </ui:CommentOut.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
     </Sequence>
     <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="492,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_9">
@@ -2393,7 +2411,7 @@
     </ui:CommentOut>
     <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="492,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="475.2,1232.8" sap2010:WorkflowViewState.IdRef="Sequence_23">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="475.2,1192.8" sap2010:WorkflowViewState.IdRef="Sequence_23">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -2517,7 +2535,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete - MBB 3DS (T-1)" sap:VirtualizedContainerService.HintSize="492,22.4" sap2010:WorkflowViewState.IdRef="Delete_1" Path="C:\Users\rpavendor\Desktop\RPATEST\Process 3\3DST1.xlsx" />
+    <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete - MBB 3DS (T-1)" sap:VirtualizedContainerService.HintSize="492,22.4" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;\3DST1.xlsx&quot;]" />
     <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="492,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_12">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="241.6,177.6" sap2010:WorkflowViewState.IdRef="Sequence_50">
@@ -2537,7 +2555,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete - MBB MOTO (T-1)" sap:VirtualizedContainerService.HintSize="492,22.4" sap2010:WorkflowViewState.IdRef="Delete_3" Path="C:\Users\rpavendor\Desktop\RPATEST\Process 3\MOTOT1.xlsx" />
+    <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete - MBB MOTO (T-1)" sap:VirtualizedContainerService.HintSize="492,22.4" sap2010:WorkflowViewState.IdRef="Delete_3" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;\MOTOT1.xlsx&quot;]" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="492,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;End MBB_Daily&quot;]" />
   </Sequence>
 </Activity>

@@ -1,9 +1,13 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="NextCloud_Extract" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="NextCloud_Extract" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="io_CurrDate1" Type="InArgument(x:String)" />
     <x:Property Name="io_FolderMonth" Type="InArgument(x:String)" />
     <x:Property Name="in_DateT1" Type="InArgument(s:DateTime)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
+  <this:NextCloud_Extract.in_Config>
+    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
+  </this:NextCloud_Extract.in_Config>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
@@ -43,7 +47,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="56">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -72,6 +76,7 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="NextCloud_Extract" sap:VirtualizedContainerService.HintSize="852.8,6055.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -122,7 +127,7 @@
         <InArgument x:TypeArguments="x:String">[in_DateT1.ToString("yyyy-MM-dd")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - Split 0" sap:VirtualizedContainerService.HintSize="811.2,1224.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  io_FolderMonth + &quot;\&quot; + DateT1 + &quot;\successful-transaction-details-&quot; + DateT1 + &quot;_0&quot; + &quot;.csv&quot;]">
+    <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - Split 0" sap:VirtualizedContainerService.HintSize="811.2,1224.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  io_FolderMonth + &quot;\&quot; + DateT1 + &quot;\successful-transaction-details-&quot; + DateT1 + &quot;_0&quot; + &quot;.csv&quot;]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -336,7 +341,7 @@
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
     </ui:ExcelApplicationScope>
-    <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - Split 1" sap:VirtualizedContainerService.HintSize="811.2,1315.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  io_FolderMonth + &quot;\&quot; + DateT1 + &quot;\successful-transaction-details-&quot; + DateT1 + &quot;_1&quot; + &quot;.csv&quot;]">
+    <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - Split 1" sap:VirtualizedContainerService.HintSize="811.2,1315.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  io_FolderMonth + &quot;\&quot; + DateT1 + &quot;\successful-transaction-details-&quot; + DateT1 + &quot;_1&quot; + &quot;.csv&quot;]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -557,10 +562,10 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <ui:PathExists DisplayName="Path Exists" Exists="[bStat2]" sap:VirtualizedContainerService.HintSize="811.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  io_FolderMonth + &quot;\&quot; + DateT1 + &quot;\successful-transaction-details-&quot; + DateT1 + &quot;_2&quot; + &quot;.csv&quot;]" PathType="File" />
+    <ui:PathExists DisplayName="Path Exists" Exists="[bStat2]" sap:VirtualizedContainerService.HintSize="811.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  io_FolderMonth + &quot;\&quot; + DateT1 + &quot;\successful-transaction-details-&quot; + DateT1 + &quot;_2&quot; + &quot;.csv&quot;]" PathType="File" />
     <If Condition="[bStat2 = True]" sap:VirtualizedContainerService.HintSize="811.2,2072" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="433.6,1922.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  io_FolderMonth + &quot;\&quot; + DateT1 + &quot;\successful-transaction-details-&quot; + DateT1 + &quot;_2&quot; + &quot;.csv&quot;]">
+        <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="433.6,1922.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  io_FolderMonth + &quot;\&quot; + DateT1 + &quot;\successful-transaction-details-&quot; + DateT1 + &quot;_2&quot; + &quot;.csv&quot;]">
           <ui:ExcelApplicationScope.Body>
             <ActivityAction x:TypeArguments="ui:WorkbookApplication">
               <ActivityAction.Argument>
@@ -1139,7 +1144,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-1)" sap:VirtualizedContainerService.HintSize="811.2,907.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + io_FolderMonth + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_DateT1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT1.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-1)" sap:VirtualizedContainerService.HintSize="811.2,907.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;\9. Reload - Daily Check List\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + io_FolderMonth + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_DateT1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT1.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>

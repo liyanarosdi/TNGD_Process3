@@ -9,6 +9,7 @@
     <x:Property Name="in_FullPath" Type="InArgument(x:String)" />
     <x:Property Name="in_DateFilter" Type="InArgument(x:String)" />
     <x:Property Name="in_DateMid" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <this:MOLPAY_Checklist.in_FolderMid>
     <InArgument x:TypeArguments="x:String" />
@@ -25,6 +26,9 @@
   <this:MOLPAY_Checklist.in_DateMid>
     <InArgument x:TypeArguments="x:String" />
   </this:MOLPAY_Checklist.in_DateMid>
+  <this:MOLPAY_Checklist.in_Config>
+    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
+  </this:MOLPAY_Checklist.in_Config>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
@@ -131,7 +135,7 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (Mid 1)" sap:VirtualizedContainerService.HintSize="450.4,1089.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year 2021\1. Reload &quot; + in_YearMid + &quot; Checklist\&quot; + in_FolderMid + &quot;\&quot; + &quot;1. Reload &quot; + in_FullPath +&quot;.xlsx&quot;]">
+          <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (Mid 1)" sap:VirtualizedContainerService.HintSize="450.4,1089.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;\9. Reload - Daily Check List\4. Year 2021\1. Reload &quot; + in_YearMid + &quot; Checklist\&quot; + in_FolderMid + &quot;\&quot; + &quot;1. Reload &quot; + in_FullPath +&quot;.xlsx&quot;]">
             <ui:ExcelApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                 <ActivityAction.Argument>
@@ -449,7 +453,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ExcelApplicationScope>
-          <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (Mid 1)" sap:VirtualizedContainerService.HintSize="450.4,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_10" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + in_YearMid + &quot;\2. Reload &quot; + in_YearMid + &quot; Recon\&quot; + in_FolderMid + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_FullPath + &quot;.xlsx&quot;]">
+          <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (Mid 1)" sap:VirtualizedContainerService.HintSize="450.4,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_10" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;\9. Reload - Daily Check List\4. Year &quot; + in_YearMid + &quot;\2. Reload &quot; + in_YearMid + &quot; Recon\&quot; + in_FolderMid + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_FullPath + &quot;.xlsx&quot;]">
             <ui:ExcelApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                 <ActivityAction.Argument>

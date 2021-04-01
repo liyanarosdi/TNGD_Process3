@@ -12,14 +12,18 @@
     <x:Property Name="io_ValueILatest" Type="InOutArgument(s:DateTime)" />
     <x:Property Name="io_bEarlyDS" Type="InOutArgument(x:Boolean)" />
     <x:Property Name="io_bLatestDS" Type="InOutArgument(x:Boolean)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <this:CIMB_3DS.io_FolderMonth>
     <InArgument x:TypeArguments="x:String" />
   </this:CIMB_3DS.io_FolderMonth>
+  <this:CIMB_3DS.in_Config>
+    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
+  </this:CIMB_3DS.in_Config>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>956.8,5542.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>952,5542.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CIMB_3DS_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -116,7 +120,7 @@
         <InArgument x:TypeArguments="x:String">[in_DateT1.ToString("yyyy") + "_" + in_DateT1.ToString("MM") + "_" + in_DateT1.ToString("dd")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - CIMB 3DS (T-1)" sap:VirtualizedContainerService.HintSize="685.6,324.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" ReadOnly="True" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\&quot; + FolderT1+ &quot;\Transaction_000001190700195_&quot;+ in_DateT1.ToString(&quot;ddMMyyyy&quot;) +&quot;.csv&quot;]">
+    <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - CIMB 3DS (T-1)" sap:VirtualizedContainerService.HintSize="685.6,324.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" ReadOnly="True" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\&quot; + FolderT1+ &quot;\Transaction_000001190700195_&quot;+ in_DateT1.ToString(&quot;ddMMyyyy&quot;) +&quot;.csv&quot;]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -154,7 +158,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - CIMB 3DS (T-1)" sap:VirtualizedContainerService.HintSize="685.6,4817.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="C:\Users\rpavendor\Desktop\RPATEST\Process 3\CIMB.xlsx">
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - CIMB 3DS (T-1)" sap:VirtualizedContainerService.HintSize="685.6,4817.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;\CIMB.xlsx&quot;]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -510,6 +514,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="685.6,22.4" sap2010:WorkflowViewState.IdRef="Delete_1" Path="C:\Users\rpavendor\Desktop\RPATEST\Process 3\CIMB.xlsx" />
+    <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="685.6,22.4" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;\CIMB.xlsx&quot;]" />
   </Sequence>
 </Activity>
