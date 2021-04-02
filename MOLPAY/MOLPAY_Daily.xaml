@@ -11,14 +11,11 @@
     <x:Property Name="io_DouleColM" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_LatestDateMolM" Type="InOutArgument(x:Double)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="io_bEarlyDateMol" Type="InArgument(x:Boolean)" />
+    <x:Property Name="io_bEarlyDateMol" Type="InOutArgument(x:Boolean)" />
   </x:Members>
   <this:MOLPAY_Daily.in_Config>
     <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
   </this:MOLPAY_Daily.in_Config>
-  <this:MOLPAY_Daily.io_bEarlyDateMol>
-    <InArgument x:TypeArguments="x:Boolean" />
-  </this:MOLPAY_Daily.io_bEarlyDateMol>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
