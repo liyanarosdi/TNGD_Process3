@@ -19,7 +19,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1010.4,4184</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1010.4,3828.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CIMB_Download_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -81,10 +81,9 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CIMB_Download" sap:VirtualizedContainerService.HintSize="1020.8,4079.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CIMB_Download" sap:VirtualizedContainerService.HintSize="1020.8,3724" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="bFolderMonth" />
       <Variable x:TypeArguments="x:Boolean" Name="bFolderDate" />
@@ -119,18 +118,30 @@
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
     <ui:PathExists DisplayName="Path Exists - Month" Exists="[bFolderMonth]" sap:VirtualizedContainerService.HintSize="979.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth]" PathType="Folder" />
-    <If Condition="[bFolderMonth = False]" DisplayName="If - File path month" sap:VirtualizedContainerService.HintSize="979.2,230.4" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[bFolderMonth = False]" DisplayName="If - File path month" sap:VirtualizedContainerService.HintSize="979.2,52.8" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <If.Then>
         <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth]" />
       </If.Then>
     </If>
     <ui:PathExists DisplayName="Path Exists - Date" Exists="[bFolderDate]" sap:VirtualizedContainerService.HintSize="979.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\&quot; + io_CurrDateFormat]" PathType="Folder" />
-    <If Condition="[bFolderDate = False]" DisplayName="If - File path date" sap:VirtualizedContainerService.HintSize="979.2,230.4" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[bFolderDate = False]" DisplayName="If - File path date" sap:VirtualizedContainerService.HintSize="979.2,52.8" sap2010:WorkflowViewState.IdRef="If_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <If.Then>
         <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;\4. Reload - CIMB\1. Terminal Activity Report\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonth + &quot;\&quot; + io_CurrDateFormat]" />
       </If.Then>
     </If>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe mPortal'" sap:VirtualizedContainerService.HintSize="979.2,2572.8" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="7808d94682d79442c0a469cf9c398b92" Selector="&lt;html app='chrome.exe' title='mPortal System' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser - CIMB Portal" sap:VirtualizedContainerService.HintSize="979.2,2572.8" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="7808d94682d79442c0a469cf9c398b92" Selector="&lt;html app='chrome.exe' title='mPortal System' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -453,7 +464,7 @@
         </ui:Target>
       </ui:Click.Target>
     </ui:Click>
-    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Logout button" sap:VirtualizedContainerService.HintSize="869.6,107.2" sap2010:WorkflowViewState.IdRef="Click_8" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Logout button" sap:VirtualizedContainerService.HintSize="979.2,107.2" sap2010:WorkflowViewState.IdRef="Click_8" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
       <ui:Click.CursorPosition>
         <ui:CursorPosition Position="Center">
           <ui:CursorPosition.OffsetX>
@@ -472,6 +483,6 @@
         </ui:Target>
       </ui:Click.Target>
     </ui:Click>
-    <ui:CloseWindow TimeoutMS="{x:Null}" UseWindow="{x:Null}" DisplayName="Close Window 'chrome.exe  Login'" sap:VirtualizedContainerService.HintSize="869.6,107.2" sap2010:WorkflowViewState.IdRef="CloseWindow_1" InformativeScreenshot="4e7104de2f9e9d1fb4b27f730a5e4f24" Selector="&lt;html app='chrome.exe' title='Login' /&gt;" WaitForReady="INTERACTIVE" />
+    <ui:CloseWindow TimeoutMS="{x:Null}" UseWindow="{x:Null}" DisplayName="Close Window 'chrome.exe  Login'" sap:VirtualizedContainerService.HintSize="979.2,107.2" sap2010:WorkflowViewState.IdRef="CloseWindow_1" InformativeScreenshot="4e7104de2f9e9d1fb4b27f730a5e4f24" Selector="&lt;html app='chrome.exe' title='Login' /&gt;" WaitForReady="INTERACTIVE" />
   </Sequence>
 </Activity>

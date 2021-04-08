@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>952,11339.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>942.4,5032</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Admin_SubmitMolPay_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="27">
@@ -75,7 +75,6 @@
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -83,7 +82,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Admin_DownBank" sap:VirtualizedContainerService.HintSize="952.8,11234.4" sap2010:WorkflowViewState.IdRef="Sequence_81">
+  <Sequence DisplayName="Admin_DownBank" sap:VirtualizedContainerService.HintSize="952.8,4927.2" sap2010:WorkflowViewState.IdRef="Sequence_81">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="bFolderMOL" />
       <Variable x:TypeArguments="x:Boolean" Name="bFolderIPay88" />
@@ -145,13 +144,13 @@
         </Sequence>
       </If.Then>
     </If>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser - Admin Portal" sap:VirtualizedContainerService.HintSize="911.2,9192" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="d1cc4542cb9e9b5f0f93400a1dcf76e1" Selector="&lt;html app='chrome.exe' title='glo' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser - Admin Portal" sap:VirtualizedContainerService.HintSize="911.2,2884.8" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="d1cc4542cb9e9b5f0f93400a1dcf76e1" Selector="&lt;html app='chrome.exe' title='glo' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="877.6,9044.8" sap2010:WorkflowViewState.IdRef="Sequence_80">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="877.6,2737.6" sap2010:WorkflowViewState.IdRef="Sequence_80">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -509,14 +508,14 @@
                 </If.Else>
               </If>
             </Sequence>
-            <Sequence DisplayName="Sequence - iPay88" sap:VirtualizedContainerService.HintSize="836,2171.2" sap2010:WorkflowViewState.IdRef="Sequence_65">
+            <Sequence DisplayName="Sequence - iPay88" sap:VirtualizedContainerService.HintSize="836,68.8" sap2010:WorkflowViewState.IdRef="Sequence_65">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:Boolean" Name="bIPAY88" />
               </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Admin button" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="Click_51" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
@@ -860,14 +859,14 @@
                 </If.Else>
               </If>
             </Sequence>
-            <Sequence DisplayName="Sequence - MBB 3DS" sap:VirtualizedContainerService.HintSize="836,2171.2" sap2010:WorkflowViewState.IdRef="Sequence_72">
+            <Sequence DisplayName="Sequence - MBB 3DS" sap:VirtualizedContainerService.HintSize="836,68.8" sap2010:WorkflowViewState.IdRef="Sequence_72">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:Boolean" Name="bMBB3DS" />
               </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Admin button" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="Click_60" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
@@ -1217,14 +1216,14 @@
                 </If.Else>
               </If>
             </Sequence>
-            <Sequence DisplayName="Sequence - MBB MOTO" sap:VirtualizedContainerService.HintSize="836,2171.2" sap2010:WorkflowViewState.IdRef="Sequence_79">
+            <Sequence DisplayName="Sequence - MBB MOTO" sap:VirtualizedContainerService.HintSize="836,68.8" sap2010:WorkflowViewState.IdRef="Sequence_79">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:Boolean" Name="bMBBMOTO" />
               </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Admin button" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="Click_69" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
